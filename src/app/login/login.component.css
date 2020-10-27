@@ -1,0 +1,27 @@
+.container {
+    font-size: 20px;
+     background: snow;
+     border-radius: 4px;
+     margin: auto;
+     width: 60%;
+     padding: 10px;
+   }
+   .blue{
+     background-color: blue;
+     color: white;
+     padding: 10px;
+   } 
+  .form-control{
+   box-sizing: border-box;
+ } 
+ 
+ /* .example-card {
+   max-width: 400px;
+ }
+ 
+ .example-header-image {
+   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+   background-size: cover;
+ }
+ 
+     */

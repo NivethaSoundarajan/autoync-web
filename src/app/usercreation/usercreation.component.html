@@ -1,0 +1,84 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Edit Profile</h4>
+                        <p class="card-category">Complete your profile</p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Username">
+                                    </mat-form-field>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="password" type="password">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Folder FileName" type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="AutoSyncTime" type="text">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="DeviceId" type="text">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Supervisor</mat-label>
+                                        <mat-select [formControl]="supervisor" multiple>
+                                          <mat-select-trigger>
+                                            {{supervisor.value ? supervisor.value[0] : ''}}
+                                            <span *ngIf="supervisor.value?.length > 1" class="example-additional-selection">
+                                              (+{{supervisor.value.length - 1}} {{supervisor.value?.length === 2 ? 'other' : 'others'}})
+                                            </span>
+                                          </mat-select-trigger>
+                                          <mat-option *ngFor="let topping of supervisorList" [value]="supervisor">{{supervisor}}</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="User role" type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="AutoSyncDay" type="text">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Save</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+                
+            
+        </div>
+    </div>
+  </div>
+  
