@@ -3,3 +3,17 @@
     width: 150%;
     margin: 5%;
   }
+
+  .example-label{
+    margin-top: 100px;
+    padding-left: 50px;
+  }
+
+  .mat-elevation-z8{
+    margin-top: 50px;
+  }
+
+  .mat-header-row{
+    background-color: #0d7bb9;
+  }
+  
