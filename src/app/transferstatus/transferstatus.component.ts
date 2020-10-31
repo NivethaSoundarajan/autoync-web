@@ -38,7 +38,7 @@ export interface autosync {
 
 const syncvalues: autosync[] = [
  {sno: 1, transferid: '20-07-12345', userid:'MT041', supervisor: 'Kumar',size:'40MB',foldername:'C:/Mreaders',photo:'5/10',reads:'0/1',bills:1,overallstatus:'InProgress',action:'View'},
- {sno: 2, transferid: '20-07-23456', userid:'MT042', supervisor: 'Kumar',size:'300MB',foldername:'C:/Mreaders',photo:'6/10',reads:'1/1',bills:2,overallstatus:'completed',action:'View'},
+ {sno: 2, transferid: '20-07-23456', userid:'MT042', supervisor: 'Kumar',size:'300MB',foldername:'C:/Mreaders',photo:'6/10',reads:'1/1',bills:2,overallstatus:'completed',action:'Visibility'},
 
 ];
   

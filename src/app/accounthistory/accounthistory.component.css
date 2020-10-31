@@ -1,5 +1,20 @@
 .row{
-margin-top: 100px;
-padding-left: 15px;
+margin-top: 60px;
+padding-left: 75px;
+background-color: white;
 }
 
+table {
+    width: 100%;
+    margin: 5%;
+    padding-right: 50px;
+    background-color: white;
+  }
+
+  .mat-header-row{
+    background-color: #0d7bb9;
+  }
+
+  .container-fluid{
+background-color: white;
+  }

@@ -15,5 +15,11 @@
 
   .mat-header-row{
     background-color: #0d7bb9;
+    font-size:white;
   }
-  
+  /* th.mat-header-cell {
+    text-align: left;
+    font-size: large;
+    color: white;
+    text-align: center;
+} */

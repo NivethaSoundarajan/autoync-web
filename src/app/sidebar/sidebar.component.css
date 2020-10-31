@@ -5,3 +5,11 @@
 .menuItem.class{
     text-decoration-color: white;
 }
+
+.sidebar, .main-panel, .sidebar-wrapper {
+    transition-property: top, bottom, width;
+    transition-duration: 0.2s, 0.2s, 0.35s;
+    transition-timing-function: linear, linear, ease;
+    -webkit-overflow-scrolling: touch;
+    background-color: white;
+}

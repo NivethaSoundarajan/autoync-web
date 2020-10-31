@@ -34,8 +34,8 @@ export interface reading {
 }
 
 const readingvalues: reading[] = [
- {sno: 1 ,name:'Kumar',accountnumber:'12',meterreading:'258',latlog:'+2555',image:'Image 1',status:'Completed',action:'25'},
- {sno: 2 ,name:'Kumar',accountnumber:'12',meterreading:'258',latlog:'+2555',image:'Image 1',status:'Completed',action:'8'}
+ {sno: 1 ,name:'Kumar',accountnumber:'12',meterreading:'258',latlog:'+2555',image:'Image 1',status:'Completed',action:'view'},
+ {sno: 2 ,name:'Kumar',accountnumber:'12',meterreading:'258',latlog:'+2555',image:'Image 1',status:'Completed',action:'view'}
 
 ];
   
