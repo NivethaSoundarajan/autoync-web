@@ -1,12 +1,12 @@
 .table {
     width: 100%;
     margin: 5%;
-    margin-left: 10%;
+    
   }
 .mat-elevation-z8{
   margin-top: 150px;
 }
 
 .mat-header-row {
-  background-color: blue;
+  background-color: #0d7bb9;
 }

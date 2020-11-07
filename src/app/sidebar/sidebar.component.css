@@ -1,5 +1,5 @@
 .nav{
-    background-color: white;
+    background-color: #0e7bb9;
 }
 
 .menuItem.class{
@@ -11,5 +11,5 @@
     transition-duration: 0.2s, 0.2s, 0.35s;
     transition-timing-function: linear, linear, ease;
     -webkit-overflow-scrolling: touch;
-    background-color: white;
+    background-color: #0e7bb9;
 }

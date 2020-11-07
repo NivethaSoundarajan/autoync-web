@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-interface Food {
+interface Supervisor {
   value: string;
   viewValue: string;
 }
+
+
 
 @Component({
   selector: 'app-usercreation',
@@ -16,16 +18,13 @@ export class UsercreationComponent implements OnInit {
 
   selectedValue: string;
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
+  supervisor: Supervisor[] = [
+    {value: 'kumar-0', viewValue: 'kumar'},
+    {value: 'kishore-1', viewValue: 'kishore'},
+    {value: 'ram-2', viewValue: 'ram'}
   ];
 
-
-  supervisorList: string[] = ['kumar', 'ashwini' ,'nivetha','kishore', 'satheesh', 'ram', 'arvindh'];
-
-  
+ 
   constructor() { }
 
   ngOnInit(): void {

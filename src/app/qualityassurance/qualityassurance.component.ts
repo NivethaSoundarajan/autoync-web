@@ -10,7 +10,7 @@ import {MatSort} from '@angular/material/sort';
 })
 export class QualityassuranceComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['sno', 'transferid', 'deviceid', 'supervisor','accountnumber','meternumber','type','reading','geo','lat','log','reason','image','status','remarks','view'];
+  displayedColumns: string[] = ['sno', 'transferid', 'deviceid', 'supervisor','accountnumber','meternumber','type','reading','geo','lat','log','reason','image','status','remarks','action'];
   dataSource = new MatTableDataSource<qualityassurance>(qualityvalues);  
 
  @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -38,14 +38,14 @@ export interface qualityassurance {
  image:string;
  status:string;
  remarks:string;
- view:string;
+ action:string;
 
 
 }
 
 const qualityvalues: qualityassurance[] = [
- {sno:1, transferid:'20-10-2020', deviceid:'MT041', supervisor:'kumar',accountnumber:'236954',meternumber:'1456',type:'E',reading:'256',geo:2263,lat:'23.639',log:'26.698',reason:'actualreading',image:'pic.jpg',status:'manual entry',remarks:'Meter in',view:'abc'},
- ,
+ {sno:1, transferid:'20-10-2020', deviceid:'MT041', supervisor:'kumar',accountnumber:'236954',meternumber:'1456',type:'E',reading:'256',geo:2263,lat:'23.639',log:'26.698',reason:'actualreading',image:'pic.jpg',status:'manual entry',remarks:'Meter in',action:''},
+ 
 
 ];
   

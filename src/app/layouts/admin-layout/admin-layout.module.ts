@@ -20,6 +20,7 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
 
 import { DashOverviewComponent } from '../../dash-overview/dash-overview.component';
 import { UsercreationComponent } from '../../usercreation/usercreation.component';
@@ -45,7 +46,8 @@ import { QualityassuranceComponent } from '../../qualityassurance/qualityassuran
     MatTooltipModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatIconModule
   ],
   declarations: [
     DashboardComponent,

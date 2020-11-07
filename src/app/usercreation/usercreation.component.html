@@ -10,9 +10,9 @@
                     <div class="card-body">
                         <form>
                             <div class="row">
-                              <div class="col-md-4">
+                              <div class="col-md-5">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="User role" type="text">
+                                  <input matInput placeholder="Userrole">
                                 </mat-form-field>
                               </div>
                                 <div class="col-md-3">
@@ -49,19 +49,19 @@
                             <div class="row">
                                 <div class="col-md-4">
                                   <mat-form-field appearance="fill">
-                                    <mat-label>Favorite food</mat-label>
-                                    <mat-select [(ngModel)]="selectedValue" name="food">
-                                      <mat-option *ngFor="let food of foods" [value]="food.value">
-                                        {{food.viewValue}}
+                                    <mat-label>Supervisor</mat-label>
+                                    <mat-select [(ngModel)]="selectedValue" name="supervisor">
+                                      <mat-option *ngFor="let supervisor of supervisor" [value]="supervisor.value">
+                                        {{supervisor.viewValue}}
                                       </mat-option>
                                     </mat-select>
                                   </mat-form-field>
                                 </div>
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
                                     <input matInput placeholder="User role" type="text">
                                   </mat-form-field>
-                                </div>
+                                </div> -->
                                 <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
                                     <input matInput placeholder="AutoSyncDay" type="text">
