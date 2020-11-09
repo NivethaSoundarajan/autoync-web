@@ -50,9 +50,24 @@
 
        <!-- Action ID Column -->
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action </th>
-        <td mat-cell *matCellDef="let element"> {{element.action}} </td>
-      </ng-container>
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+         <button mat-icon-button color="blue" [routerLink]="['/usercreation']">
+              <mat-icon>visibility</mat-icon>
+         </button>
+          <button mat-icon-button color="blue" [routerLink]="['/usercreation']">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="blue" [routerLink]="['/usercreation']">
+              <mat-icon>delete</mat-icon>
+         </button>
+         <button mat-icon-button color="blue" [routerLink]="['/usercreation']">
+          <mat-icon>person</mat-icon>
+     </button>
+      </td>
+    </ng-container>
+
+    
       
   
      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

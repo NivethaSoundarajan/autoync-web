@@ -1,6 +1,6 @@
-<div class="col-lg-12">
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <div fxLayout="row" fxLayoutAlign="space-between center" >
     <!-- S.No Column -->
     <ng-container matColumnDef="sno">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>S No </th>
@@ -102,6 +102,7 @@
   
      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </div>
   </table>
-</div>
+
 

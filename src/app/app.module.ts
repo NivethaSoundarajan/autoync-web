@@ -21,6 +21,8 @@ import { LoginComponent } from './login/login.component';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +45,8 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     RouterModule,
     AdminLayoutModule,
+   
+  
     
     
   ],

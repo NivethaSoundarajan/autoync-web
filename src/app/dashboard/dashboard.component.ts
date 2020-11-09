@@ -6,12 +6,18 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
-
-
-constructor(){}
-
-ngOnInit() {
-
+export class DashboardComponent  {
+  public pieChartLabels:string[] = ['No of Received Files', 'No of Reads', 'No of Bills','No of Images'];
+  public pieChartData:number[] = [40, 20, 20 ,10];
+  public pieChartType:string = 'pie';
+ 
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+ 
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
 }
-}  
+

@@ -37,8 +37,8 @@ export interface viewValues {
 }
 
 const dashView: viewValues[] = [
- {sno: 1, username:'Kishore',password:'1234512',jobid:'Technician',supervisor:'kumar',folderpath:'c:\mreaders',deviceid:'1658963215',action:'view/update/edit/delete'},
- {sno: 2, username:'satheesh',password:'123987',jobid:'Admin',supervisor:'kumar',folderpath:'c:\mreaders',deviceid:'1658963216',action:'view/update/edit/delete'}
+ {sno: 1, username:'Kishore',password:'1234512',jobid:'Technician',supervisor:'kumar',folderpath:'c:\mreaders',deviceid:'1658963215',action:''},
+ {sno: 2, username:'satheesh',password:'123987',jobid:'Admin',supervisor:'kumar',folderpath:'c:\mreaders',deviceid:'1658963216',action:''}
 
 ];
   
