@@ -1,4 +1,4 @@
-<div class="col-lg-12">
+<div class="container">
 <div class="example-label">
 <!-- <a mat-raised-button href= "/usercreation">Create User</a>   -->
 <button mat-raised-button [routerLink]="['/usercreation']">Create User</button>
@@ -66,9 +66,6 @@
      </button>
       </td>
     </ng-container>
-
-    
-      
   
      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
