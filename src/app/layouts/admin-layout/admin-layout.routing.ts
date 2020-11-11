@@ -13,7 +13,7 @@ import { QualitycheckComponent } from '../../qualitycheck/qualitycheck.component
 
 
 export const AdminLayoutRoutes: Routes = [
-    // { path: 'login',      component: LoginComponent},
+      { path: '',      component: LoginComponent},
       { path: 'dashboard',      component: DashboardComponent },
       { path: 'dash-overview',  component: DashOverviewComponent },
       { path: 'usercreation',  component:UsercreationComponent  },

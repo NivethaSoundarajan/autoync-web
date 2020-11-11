@@ -1,6 +1,5 @@
-
-  table {
-    width: 150%;
+table {
+    width: 100%;
     margin: 5%;
   }
 
@@ -10,7 +9,7 @@
   }
 
   .mat-elevation-z8{
-    margin-top: 50px;
+    margin-top: 15%;
   }
 
   .mat-header-row{
