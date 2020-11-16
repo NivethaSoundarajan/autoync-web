@@ -69,11 +69,7 @@ import { QualityassuranceComponent } from '../../qualityassurance/qualityassuran
     ImagestatusComponent,
     ReadingsComponent,
     AccounthistoryComponent,
-    QualityassuranceComponent,
-
-    
-   
-    
+    QualityassuranceComponent   
     
   ]
 })

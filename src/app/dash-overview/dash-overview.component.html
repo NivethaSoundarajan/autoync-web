@@ -1,5 +1,5 @@
- 
- <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+<div class="container col-md-12"> 
+  <table mat-table [dataSource]="dataSource" matSort class="col-md-12">
 
     <!-- S.No Column -->
     <ng-container matColumnDef="sno">
@@ -65,3 +65,5 @@
      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
+</div>

@@ -1,7 +1,5 @@
+<div class="container col-md-12">
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
- 
-  
-
     <!-- S.No Column -->
     <ng-container matColumnDef="sno">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>S No </th>
@@ -79,3 +77,6 @@
         [pageSize]="3"
         [pageSizeOptions]="[5, 10, 25, 100]"
       ></mat-paginator>
+ 
+
+</div>

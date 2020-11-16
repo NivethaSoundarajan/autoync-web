@@ -9,18 +9,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
-
-
-
-
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -43,11 +34,7 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    AdminLayoutModule,
-   
-  
-    
-    
+    AdminLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

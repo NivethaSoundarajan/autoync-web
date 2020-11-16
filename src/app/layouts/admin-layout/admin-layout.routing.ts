@@ -13,16 +13,14 @@ import { QualitycheckComponent } from '../../qualitycheck/qualitycheck.component
 
 
 export const AdminLayoutRoutes: Routes = [
-      // { path: '',      component: LoginComponent},
-      // { path: 'dashboard',      component: DashboardComponent },
-      { path: 'dash-overview',  component: DashOverviewComponent },
-      { path: 'usercreation',  component:UsercreationComponent  },
-      { path: 'transferstatus',  component: TransferstatusComponent },
-      { path: 'imagestatus',  component: ImagestatusComponent },
-      { path: 'readings',component:ReadingsComponent},
-      { path: 'accounthistory',component:AccounthistoryComponent},
-      { path: 'qualityassurance',component:QualityassuranceComponent},
-      { path: 'qualitycheck',component:QualitycheckComponent},
+      { path: 'admin/dash-overview',  component: DashOverviewComponent },
+      { path: 'admin/usercreation',  component:UsercreationComponent  },
+      { path: 'admin/transferstatus',  component: TransferstatusComponent },
+      { path: 'admin/imagestatus',  component: ImagestatusComponent },
+      { path: 'admin/readings',component:ReadingsComponent},
+      { path: 'admin/accounthistory',component:AccounthistoryComponent},
+      { path: 'admin/qualityassurance',component:QualityassuranceComponent},
+      { path: 'admin/qualitycheck',component:QualitycheckComponent},
 
     
 ];
