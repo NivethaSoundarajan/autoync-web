@@ -9,23 +9,12 @@ import {FormControl, Validators} from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-
-
-
-
 export class LoginComponent implements OnInit {
-    
-
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        
-    ) {
-         { 
-            this.router.navigate(['/']);
-        }
-    }
+    ) {}
 
     ngOnInit() {
        ({
