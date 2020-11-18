@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
+import { MatInputModule } from '@angular/material/input';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { LoginComponent } from './login/login.component';
     AdminLayoutComponent,
     NavbarComponent,
     SidebarComponent,
-    LoginComponent
+    LoginComponent,
+    FooterComponent
     
   ],
   imports: [
@@ -34,7 +37,9 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    AdminLayoutModule
+    AdminLayoutModule,
+    MatInputModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

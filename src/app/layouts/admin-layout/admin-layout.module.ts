@@ -28,11 +28,6 @@ import { DashOverviewComponent } from '../../dash-overview/dash-overview.compone
 import { UsercreationComponent } from '../../usercreation/usercreation.component';
 import { TransferstatusComponent } from '../../transferstatus/transferstatus.component';
 import { ImagestatusComponent } from '../../imagestatus/imagestatus.component';
-import { ReadingsComponent } from '../../readings/readings.component';
-import { AccounthistoryComponent } from '../../accounthistory/accounthistory.component';
-import { QualityassuranceComponent } from '../../qualityassurance/qualityassurance.component';
-
-
 
 
 
@@ -67,9 +62,8 @@ import { QualityassuranceComponent } from '../../qualityassurance/qualityassuran
     UsercreationComponent,
     TransferstatusComponent,
     ImagestatusComponent,
-    ReadingsComponent,
-    AccounthistoryComponent,
-    QualityassuranceComponent   
+    
+    
     
   ]
 })

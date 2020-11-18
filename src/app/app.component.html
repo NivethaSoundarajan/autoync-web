@@ -1,4 +1,4 @@
-<div class="wrapper" *ngIf="isLoginPage();else elseBlock">
+ <div class="wrapper" *ngIf="isLoginPage();else elseBlock">
     <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
         <app-sidebar></app-sidebar>
         <div class="sidebar-background" style="background-image: url(./assets/img/sidebar-4.jpg)"></div>
@@ -10,4 +10,6 @@
 </div>
 <ng-template #elseBlock>
     <router-outlet></router-outlet>
-</ng-template>
+</ng-template> 
+
+<!-- <router-outlet></router-outlet> -->

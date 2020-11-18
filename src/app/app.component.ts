@@ -11,8 +11,7 @@ export class AppComponent {
   public isAuth: boolean = false;
   public isAuth1: boolean = true;
 
-  constructor(public location:Location){
-  }
+  constructor(public location:Location){}
   isLoginPage(){
     var titlee = this.location.prepareExternalUrl(this.location.path());
     titlee = titlee.slice( 2 );
@@ -20,4 +19,6 @@ export class AppComponent {
       return false;
     return true;
   }
+
+  
 } 

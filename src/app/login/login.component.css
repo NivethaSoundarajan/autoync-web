@@ -1,4 +1,8 @@
-.form-control{
+.email{
+  color: white ;
+}
+
+.password{
   color: white ;
 }
 
@@ -32,11 +36,13 @@
   padding: 9px;
   border-radius: 18px;
 }
-.login-form-2 .ForgetPwd{
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-}
+
 .form-group {
   margin: 8px 0px 35px!important;
+}
+.invalid-feedback{
+  color: red;
+}
+.example-container {
+  background-color: aliceblue;
 }
