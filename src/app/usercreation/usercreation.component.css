@@ -4,11 +4,13 @@
     margin: 5%;
     padding-right: 50px;
 
+  } 
+  .btn-action
+  {
+    background-color: lightcoral !important;
+      color: white;
+      font-weight: normal;
   }
-  .main-content{
-    margin-left: 150px;
-  }
-
   .mat-header-row{
     background-color: #0d7bb9;
     margin: 10%;
@@ -16,5 +18,8 @@
 
   .card-header{
     background-color: #0d7bb9;
+  }
+  .row{
+    margin: 0;
   }
   

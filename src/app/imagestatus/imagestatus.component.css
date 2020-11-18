@@ -1,4 +1,17 @@
 .card-header {
     text-align: center;
 }
-  
+.row{
+    margin: 0;
+  }
+  .tab-head {
+
+    font-size: 14px;
+    color: white;
+    font-weight: normal;
+   
+  }
+  .mat-header-row{
+    background-color: #0d7bb9;
+    color: white;
+  }

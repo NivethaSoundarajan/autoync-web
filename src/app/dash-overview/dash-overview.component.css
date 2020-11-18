@@ -1,6 +1,9 @@
 table {
-    width: 100%;
-    margin-left:2%;
+    width: 100%;  
+  }
+
+  .row{
+    margin: 0;
   }
 
   .example-label{
@@ -15,6 +18,26 @@ table {
     color: white;
   }
   .col-md-12{
-    margin-top: 5%;
+    margin-top: 2%;
   }
+  .align-right
+  {
+    text-align: right;
+  }
+  .tab-head {
   
+    color: white;
+    font-weight: normal;
+    font-size: 14px;
+   
+}
+.btn-action
+{
+  background-color: lightcoral;
+    color: white;
+    font-weight: normal;
+}
+.zero-padding-right
+{
+  padding-right:0;
+}
