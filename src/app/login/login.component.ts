@@ -1,53 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
-
+import { LoginService } from './service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [LoginService]
 })
 export class LoginComponent  {
+  constructor(public route:Router,private service: LoginService){}
   loginForm: FormGroup;
   submitted = false;
   loading = false;
+  isValid = true;
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required]);
+  email = new FormControl('', [Validators.required, Validators.maxLength(20),Validators.minLength(10)]);
+  password = new FormControl('', [Validators.required,Validators.maxLength(15),Validators.minLength(8)]);
 
-     getErrorMessage() {
-      if (this.email.hasError('required')) {
-      return 'You must enter a value';
+  onSubmit(form : NgForm){
+    var self= this;
+    if(form.valid){
+      this.service.Login(this.email.value,this.password.value)
+      .subscribe((result) => { 
+        debugger;
+        this.route.navigate(["/dashboard"]);
+      },
+      (err) => {self.isValid = false; },
+      () => { });
+      this.route.navigate(["/dashboard"]);
     }
-    if (this.password.hasError('required')) {
-      return 'Enter password';
-    }
-    
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  } 
-    
+    else
+      this.isValid = false;
   }
-//   onSubmit() {
-//     this.submitted = true;
-
-//     // stop here if form is invalid
-//     if (this.loginForm.invalid) {
-//         return;
-//     }
-
-//     this.loading = true;
-//     this.authenticationService.login(this.username.value, this.password.value)
-//         .pipe(first())
-//         .subscribe(
-//             data => {
-//                 this.router.navigate([this.returnUrl]);
-//             },
-//             error => {
-//                 this.error = error;
-//                 this.loading = false;
-//             });
-// }
+}
 
     

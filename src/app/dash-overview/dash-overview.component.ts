@@ -1,39 +1,35 @@
-
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
+import { ActivatedRoute,Router } from '@angular/router';
+import { viewValues } from './modal';
+import { UserListService } from './service';
 
 
 @Component({
   selector: 'app-dash-overview',
   templateUrl: './dash-overview.component.html',
-  styleUrls: ['./dash-overview.component.css']
+  styleUrls: ['./dash-overview.component.css'],
+  providers: [UserListService]
 })
 export class DashOverviewComponent implements AfterViewInit {
-
+  constructor(public route:Router,private service: UserListService){}
   displayedColumns: string[] = ['sno','username','password','jobid','supervisor','folderpath','deviceid','action'];
   dataSource = new MatTableDataSource<viewValues>(dashView);  
-
- @ViewChild(MatPaginator) paginator: MatPaginator;
- @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
  ngAfterViewInit() {
    this.dataSource.paginator = this.paginator;
    this.dataSource.sort = this.sort;
+   this.service.GetUserList()
+      .subscribe((result) => { 
+        
+      },
+      (err) => {},
+      () => { });
  }
-}
-
-export interface viewValues {
- sno: number;
- username:string;
- password:string;
- jobid:string;
- supervisor:string;
- folderpath:string;
- deviceid:string;
- action:string;
- 
 }
 
 const dashView: viewValues[] = [

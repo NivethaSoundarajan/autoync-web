@@ -36,3 +36,8 @@
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
+
+  .navbar .navbar-brand {
+    font-size: 1.400rem !important;
+    font-weight: 400 !important;
+}
