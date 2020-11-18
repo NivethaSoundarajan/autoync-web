@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
+import {MatDatepickerModule} from '@angular/material/datepicker'
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent  {
+export class DashboardComponent implements OnInit  {
   public pieChartLabels:string[] = ['No of Received Files', 'No of Reads', 'No of Bills','No of Images'];
   public pieChartData:number[] = [40, 20, 20 ,10];
   public pieChartType:string = 'pie';
@@ -19,5 +19,12 @@ export class DashboardComponent  {
   public chartHovered(e:any):void {
     
   }
+
+  ngOnInit()
+  {
+    
+  }
+
+
 }
 

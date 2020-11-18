@@ -23,7 +23,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { ChartsModule } from 'ng2-charts';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import {MatDatepickerModule} from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core';
 import { DashOverviewComponent } from '../../dash-overview/dash-overview.component';
 import { UsercreationComponent } from '../../usercreation/usercreation.component';
 import { TransferstatusComponent } from '../../transferstatus/transferstatus.component';
@@ -53,7 +54,11 @@ import { ImagestatusComponent } from '../../imagestatus/imagestatus.component';
     MatSortModule,
     MatIconModule,
     ChartsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+MatDatepickerModule,
+MatNativeDateModule
+
+
 
   ],
   declarations: [

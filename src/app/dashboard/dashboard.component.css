@@ -4,12 +4,34 @@
      padding-top: 50px;
 }
 .chart{
-    width: 50%;
+  width:60%;
     height: 50%;
     text-align: center;
+    margin:0 auto;
 }
 .card-title{
-    text-align: center;
-    font-size: 20px;
-    font-family: "Times New Roman", Times, serif;
+    text-align: center;  
+
 }
+.border-top-0
+{
+    border-top: none;
+}
+
+.lightcoral
+{
+    /* background-color: lightcoral !important; */
+    background-color: #0e7bb9 !important;
+}
+
+.padding-top-30
+{
+    padding-top:30px;
+}
+.mat-form-field {
+    margin-right: 12px;
+  }
+  .form-bg-color
+  {
+      background-color:#e5e5e5;
+  }

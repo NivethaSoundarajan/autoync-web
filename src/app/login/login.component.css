@@ -5,6 +5,12 @@
 .password{
   color: white ;
 }
+.btn-action
+{
+  background-color: lightcoral;
+    color: white;
+    font-weight: normal;
+}
 
 .bg-img {
   background-image: url("../../assets/img/cover1.jpeg");
@@ -17,13 +23,18 @@
 }
 
 .login-form-2{
-  margin-top: 10%;
-  margin-right: 2%;
-  padding: 3% 3% 0% 3%;
-  background: #0062cc;
-  box-shadow: 0 11px 10px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 8px rgba(0, 0, 0, 0.19);
-  opacity: 0.98;
-  border-radius: 30px;
+     /* margin-top: 10%; */
+    /* margin-right: 2%; */
+    padding: 3%;
+    background: #0e7bb9;
+    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 8px rgba(0, 0, 0, 0.19);
+    opacity: 0.98;
+    border-radius: 30px;
+    margin: 0 auto;
+    top: 28%;
+    right: -30%;
+    color:white;
+
 }
 .login-form-2 h3{
   text-align: center;
@@ -31,7 +42,7 @@
 }
 .login-form-2 .btnSubmit{
   font-weight: 600;
-  color: #0062cc;
+  color: #0e7bb9;
   background-color: #fff;
   padding: 9px;
   border-radius: 18px;
@@ -41,8 +52,16 @@
   margin: 8px 0px 35px!important;
 }
 .invalid-feedback{
-  color: red;
+  color: indianred;
 }
 .example-container {
   background-color: aliceblue;
+}
+.align-right
+{
+  text-align: right;
+}
+
+.form-input-bg {
+  background-color: white !important;
 }
