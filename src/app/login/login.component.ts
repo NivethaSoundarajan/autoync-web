@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
+import {FormControl, Validators} from '@angular/forms';
 
 
 @Component({
@@ -8,29 +9,48 @@ import { ActivatedRoute,Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
+  loginForm: FormGroup;
+  submitted = false;
+  loading = false;
 
-  username:string;
-  password:string;
+  // constructor(
+  //   private authenticationService: AuthenticationService) 
 
-  constructor(private router: Router) { 
-    debugger;
-    this.username="";
-    this.password="";
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
+
+     getErrorMessage() {
+      if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+    if (this.password.hasError('required')) {
+      return 'Enter password';
+    }
+    
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  } 
+    
   }
+//   onSubmit() {
+//     this.submitted = true;
 
-  ngOnInit(): void {
-  }
-  
-  onSubmit()
-  {
-    debugger;
-    this.router.navigate(['/newuser'])
-  }
+//     // stop here if form is invalid
+//     if (this.loginForm.invalid) {
+//         return;
+//     }
 
-  newUser(){
+//     this.loading = true;
+//     this.authenticationService.login(this.username.value, this.password.value)
+//         .pipe(first())
+//         .subscribe(
+//             data => {
+//                 this.router.navigate([this.returnUrl]);
+//             },
+//             error => {
+//                 this.error = error;
+//                 this.loading = false;
+//             });
+// }
 
-  }
-
-}
-
+    

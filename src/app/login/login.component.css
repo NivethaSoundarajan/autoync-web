@@ -1,27 +1,48 @@
-.container {
-    font-size: 20px;
-     background: snow;
-     border-radius: 4px;
-     margin: auto;
-     width: 60%;
-     padding: 10px;
-   }
-   .blue{
-     background-color: blue;
-     color: white;
-     padding: 10px;
-   } 
-  .form-control{
-   box-sizing: border-box;
- } 
- 
- /* .example-card {
-   max-width: 400px;
- }
- 
- .example-header-image {
-   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-   background-size: cover;
- }
- 
-     */
+.email{
+  color: white ;
+}
+
+.password{
+  color: white ;
+}
+
+.bg-img {
+  background-image: url("../../assets/img/cover1.jpeg");
+  min-height: 380px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100%;
+}
+
+.login-form-2{
+  margin-top: 10%;
+  margin-right: 2%;
+  padding: 3% 3% 0% 3%;
+  background: #0062cc;
+  box-shadow: 0 11px 10px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 8px rgba(0, 0, 0, 0.19);
+  opacity: 0.98;
+  border-radius: 30px;
+}
+.login-form-2 h3{
+  text-align: center;
+  color: #fff;
+}
+.login-form-2 .btnSubmit{
+  font-weight: 600;
+  color: #0062cc;
+  background-color: #fff;
+  padding: 9px;
+  border-radius: 18px;
+}
+
+.form-group {
+  margin: 8px 0px 35px!important;
+}
+.invalid-feedback{
+  color: red;
+}
+.example-container {
+  background-color: aliceblue;
+}

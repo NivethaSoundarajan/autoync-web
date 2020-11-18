@@ -3,4 +3,18 @@
     width: 100%;
     margin: 5%;
     padding-right: 50px;
+
   }
+  .main-content{
+    margin-left: 150px;
+  }
+
+  .mat-header-row{
+    background-color: #0d7bb9;
+    margin: 10%;
+  }
+
+  .card-header{
+    background-color: #0d7bb9;
+  }
+  

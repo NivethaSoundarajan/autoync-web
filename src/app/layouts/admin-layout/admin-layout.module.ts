@@ -20,16 +20,14 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import { ChartsModule } from 'ng2-charts';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { DashOverviewComponent } from '../../dash-overview/dash-overview.component';
 import { UsercreationComponent } from '../../usercreation/usercreation.component';
 import { TransferstatusComponent } from '../../transferstatus/transferstatus.component';
 import { ImagestatusComponent } from '../../imagestatus/imagestatus.component';
-import { ReadingsComponent } from '../../readings/readings.component';
-import { AccounthistoryComponent } from '../../accounthistory/accounthistory.component';
-import { QualityassuranceComponent } from '../../qualityassurance/qualityassurance.component';
-
-
 
 @NgModule({
   imports: [
@@ -45,7 +43,11 @@ import { QualityassuranceComponent } from '../../qualityassurance/qualityassuran
     MatTooltipModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatIconModule,
+    ChartsModule,
+    FlexLayoutModule
+
   ],
   declarations: [
     DashboardComponent,
@@ -53,9 +55,8 @@ import { QualityassuranceComponent } from '../../qualityassurance/qualityassuran
     UsercreationComponent,
     TransferstatusComponent,
     ImagestatusComponent,
-    ReadingsComponent,
-    AccounthistoryComponent,
-    QualityassuranceComponent
+    
+    
     
   ]
 })

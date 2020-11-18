@@ -1,18 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
+
+interface Supervisor {
+  value: string;
+  viewValue: string;
+}
+
+
 
 @Component({
   selector: 'app-usercreation',
   templateUrl: './usercreation.component.html',
   styleUrls: ['./usercreation.component.css']
 })
+
+
 export class UsercreationComponent implements OnInit {
 
-  supervisor = new FormControl();
+  selectedValue: string;
 
-  supervisorList: string[] = ['kumar', 'ashwini' ,'nivetha','kishore', 'satheesh', 'ram', 'arvindh'];
+  supervisor: Supervisor[] = [
+    {value: 'kumar-0', viewValue: 'kumar'},
+    {value: 'kishore-1', viewValue: 'kishore'},
+    {value: 'ram-2', viewValue: 'ram'}
+  ];
 
-  
+ 
   constructor() { }
 
   ngOnInit(): void {
