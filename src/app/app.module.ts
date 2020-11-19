@@ -8,6 +8,7 @@ import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { OAuthModule } from 'angular-oauth2-oidc';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -39,6 +40,7 @@ import { FooterComponent } from './footer/footer.component';
     RouterModule,
     AdminLayoutModule,
     MatInputModule,
+    OAuthModule.forRoot(),
     
   ],
   providers: [],
