@@ -1,3 +1,5 @@
+
+
 <div class="main-content page-container">
     <div class="card">
         <div class="card-header">
@@ -8,44 +10,61 @@
             <form>
                 <div class="row">
                   <div class="col-md-5">
-                    <mat-form-field class="example-full-width">
-                      <input matInput placeholder="User role">
+                    <mat-form-field >
+                      <mat-label>User Role</mat-label>
+                      <select matNativeControl required>
+                        <option value="select">--Select--</option>
+                        <option value="Admin">Admin</option>
+                        <option value="SuperAdmin">SuperAdmin</option>
+                        <option value="Supervisor">Supervisor</option>
+                        <option value="Technician">Technician</option>
+                      </select>
                     </mat-form-field>
                   </div>
                     <div class="col-md-3">
                         <mat-form-field class="example-full-width">
-                          <input matInput placeholder="User name">
+                          <input matInput placeholder="User Name">
                         </mat-form-field>
                     </div>
                     
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <mat-form-field class="example-full-width">
-                          <input matInput placeholder="password" type="password">
+                          <input matInput placeholder="Password" type="password">
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                       <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Folder FileName" type="text">
+                        <input matInput placeholder="Folder FilePath" type="text">
                       </mat-form-field>
                     </div>
                     <div class="col-md-6">
                       <mat-form-field class="example-full-width">
-                        <input matInput placeholder="AutoSyncTime" type="text">
+                        <input matInput placeholder="Auto Sync Time" 
+                            type="time"
+                            id="input"
+                            class="form-control"
+                            value="13:00"
+                          />
                       </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-5">
                       <mat-form-field class="example-full-width">
-                        <input matInput placeholder="DeviceId" type="text">
+                        <input matInput placeholder="Device Id" type="text">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Auto Delete Time" type="number">
                       </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                      <mat-form-field appearance="fill">
+                    <div class="col-md-5">
+                      <mat-form-field >
                         <mat-label>Supervisor</mat-label>
                         <mat-select [(ngModel)]="selectedValue" name="supervisor">
                           <mat-option *ngFor="let supervisor of supervisor" [value]="supervisor.value">
@@ -54,9 +73,19 @@
                         </mat-select>
                       </mat-form-field>
                     </div>
-                    <div class="col-md-4">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="AutoSyncDay" type="text">
+                    <div class="col-md-6">
+                      <mat-form-field >
+                        <mat-label>Auto Sync Day</mat-label>
+                        <select matNativeControl required>
+                          <option value="select">--Select--</option>
+                          <option value="Admin">Sunday</option>
+                          <option value="SuperAdmin">Monday</option>
+                          <option value="Supervisor">Tuesday</option>
+                          <option value="Technician">Wednesday</option>
+                          <option value="Technician">Thursday</option>
+                          <option value="Technician">Friday</option>
+                          <option value="Technician">Saturday</option>
+                        </select>
                       </mat-form-field>
                     </div>
                 </div>

@@ -15,7 +15,7 @@ import { AutoSyncService } from '../../service';
 })
 export class UserListComponent implements OnInit {
   constructor(public route:Router,private service: AutoSyncService){}
-  displayedColumns: string[] = ['sno','username','password','jobid','supervisor','folderpath','deviceid','action'];
+  displayedColumns: string[] = ['sno','username','password','jobtitle','supervisor','folderpath','deviceid','action'];
   dataSource = new MatTableDataSource<viewValues>();  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
