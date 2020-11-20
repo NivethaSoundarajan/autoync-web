@@ -11,11 +11,12 @@ import { AutoSyncService } from '../../service';
 @Component({
   selector: 'app-transferstatus',
   templateUrl: './transferstatus.component.html',
-  styleUrls: ['./transferstatus.component.css']
+  styleUrls: ['./transferstatus.component.css'],
+  providers:[AutoSyncService]
 })
 export class TransferstatusComponent implements AfterViewInit{
   constructor(public route:Router,private service: AutoSyncService){}
-  displayedColumns: string[] = ['sno', 'transferid', 'userid', 'supervisor','size','foldername','photo','reads','bills','overallstatus','action'];
+  displayedColumns: string[] = ['Id', 'UserId', 'JobUniqueId', 'SourceFilePath','DestinationFilePath','TotalFileSize','Status','Reason','SyncType'];
   dataSource = new MatTableDataSource<transHistory>();  
 
  @ViewChild(MatPaginator) paginator: MatPaginator;

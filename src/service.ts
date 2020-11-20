@@ -21,10 +21,16 @@ export class AutoSyncService {
       headers: this.oauthheaders
     }); 
   }
+  saveuser(user) {
+    return this.http.get<any>(environment.apiBaseURL + '/User/GetAll',{
+      headers: this.oauthheaders
+    }); 
+  }
+
 
   GetTransferHistoryList() {
     return this.http.get<any>(environment.apiBaseURL + '/Transfer/History',{
       headers: this.oauthheaders
     }); 
   }
-}
+}

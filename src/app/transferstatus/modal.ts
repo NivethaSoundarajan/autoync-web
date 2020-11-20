@@ -13,10 +13,11 @@ export interface transHistory {
       InProgress: number,
       Completed: number
     },
-    Images: {
-      Total: number,
-      InProgress: number,
-      Completed: number
-    }
+    // Images: {
+    //   Total: number,
+    //   InProgress: number,
+    //   Completed: number
+    // }
+
    }
    
