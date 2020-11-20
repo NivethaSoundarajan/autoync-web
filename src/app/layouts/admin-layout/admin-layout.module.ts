@@ -25,7 +25,7 @@ import { ChartsModule } from 'ng2-charts';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
-import { DashOverviewComponent } from '../../dash-overview/dash-overview.component';
+import { UserListComponent } from '../../user-List/user-List.component';
 import { UsercreationComponent } from '../../usercreation/usercreation.component';
 import { TransferstatusComponent } from '../../transferstatus/transferstatus.component';
 import { ImagestatusComponent } from '../../imagestatus/imagestatus.component';
@@ -63,7 +63,7 @@ MatNativeDateModule
   ],
   declarations: [
     DashboardComponent,
-    DashOverviewComponent,
+    UserListComponent,
     UsercreationComponent,
     TransferstatusComponent,
     ImagestatusComponent,

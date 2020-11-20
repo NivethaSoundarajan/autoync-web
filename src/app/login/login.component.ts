@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
-import { FormGroup, NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { FormControl, Validators} from '@angular/forms';
-import { LoginService } from './service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { ActivatedRoute,Router } from '@angular/router';
+import {FormControl, Validators} from '@angular/forms';
+import { AutoSyncService } from './../../service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [LoginService]
+  providers: [AutoSyncService]
 })
 export class LoginComponent  {
-  constructor(public route:Router,private service: LoginService){}
+  constructor(public route:Router,private service: AutoSyncService){}
   loginForm: FormGroup;
   submitted = false;
   loading = false;
@@ -23,14 +23,13 @@ export class LoginComponent  {
   onSubmit(form : NgForm){
     var self= this;
     if(form.valid){
-      this.service.Login(this.email.value,this.password.value)
+      let object ={Username:this.email.value,Password:this.password.value}
+      this.service.Login(object)
       .subscribe((result) => { 
-        debugger;
         this.route.navigate(["/dashboard"]);
       },
       (err) => {self.isValid = false; },
       () => { });
-      // this.route.navigate(["/dashboard"]);
     }
     else
       this.isValid = false;

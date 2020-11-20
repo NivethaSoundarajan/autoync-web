@@ -1,5 +1,5 @@
 
-export class viewValues {
+export interface viewValues {
     Id: number;
     Username:string;
     Password:string;
