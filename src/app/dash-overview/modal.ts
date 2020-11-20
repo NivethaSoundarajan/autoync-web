@@ -1,11 +1,11 @@
 
-export interface viewValues {
-    sno: number;
-    username:string;
-    password:string;
-    jobid:string;
-    supervisor:string;
-    folderpath:string;
-    deviceid:string;
-    action:string;
+export class viewValues {
+    Id: number;
+    Username:string;
+    Password:string;
+    IsActive:boolean;
+    AuditDetailId:number;
+    UserRoles:any;
+    Setting:string;
+    UserPermission:string;
 }

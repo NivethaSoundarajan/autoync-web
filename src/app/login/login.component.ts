@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
-import { ActivatedRoute,Router } from '@angular/router';
-import {FormControl, Validators} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormControl, Validators} from '@angular/forms';
 import { LoginService } from './service';
 
 @Component({
@@ -30,7 +30,7 @@ export class LoginComponent  {
       },
       (err) => {self.isValid = false; },
       () => { });
-      this.route.navigate(["/dashboard"]);
+      // this.route.navigate(["/dashboard"]);
     }
     else
       this.isValid = false;

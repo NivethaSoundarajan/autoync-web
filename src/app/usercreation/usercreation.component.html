@@ -1,3 +1,5 @@
+
+
 <div class="main-content page-container">
     <div class="container-fluid">
         <div class="row">
@@ -10,8 +12,14 @@
                     <form>
                         <div class="row">
                           <div class="col-md-5">
-                            <mat-form-field class="example-full-width">
-                              <input matInput placeholder="User role">
+                            <mat-form-field appearance="fill">
+                              <mat-label>User Role</mat-label>
+                              <select matNativeControl required>
+                                <option value="Admin">Admin</option>
+                                <option value="SuperAdmin">SuperAdmin</option>
+                                <option value="Supervisor">Supervisor</option>
+                                <option value="Technician">Technician</option>
+                              </select>
                             </mat-form-field>
                           </div>
                             <div class="col-md-3">

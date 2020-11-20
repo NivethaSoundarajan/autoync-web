@@ -10,11 +10,13 @@ export class LoginService {
 
   Login(userName:String,password:String) {
     debugger;
-    return this.http.post<any>(environment.apiBaseURL + '/User/login',{
-        params:new HttpParams()
-        .set('Username',userName.toString())
-        .set('Password',password.toString())
-        .set('DeviceId',"")
-    }) 
+    var model={UserName:userName,Password:password}
+     return this.http.post<any>(environment.apiBaseURL + '/User/login',model)
+    // {
+    //     params:new HttpParams()
+    //     .set('Username',userName.toString())
+    //     .set('Password',password.toString())
+    //     .set('DeviceId',"")
+    // }) 
   }
 }

@@ -4,7 +4,10 @@ interface Supervisor {
   value: string;
   viewValue: string;
 }
-
+interface Food {
+  value: string;
+  viewValue: string;
+}
 
 
 @Component({
@@ -24,6 +27,11 @@ export class UsercreationComponent implements OnInit {
     {value: 'ram-2', viewValue: 'ram'}
   ];
 
+  foods: Food[] = [
+    {value: 'Admin-0', viewValue: 'Admin'},
+    {value: 'SuperAdmin-1', viewValue: 'SuperAdmin'},
+    {value: 'Supervisor-2', viewValue: 'Supervisor'}
+  ];
  
   constructor() { }
 

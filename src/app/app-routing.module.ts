@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: '',redirectTo: 'login',pathMatch: 'full',},
   { path: 'login',      component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent  },
-  { path: 'dash-overview',  component: DashOverviewComponent },
+  { path: 'user-list',  component: DashOverviewComponent },
   { path: 'usercreation',  component:UsercreationComponent  },
   { path: 'transferstatus',  component: TransferstatusComponent },
   { path: 'imagestatus',  component: ImagestatusComponent },
