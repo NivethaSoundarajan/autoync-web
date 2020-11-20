@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
 import { AutoSyncService } from './../../service';
+import { environment } from './../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,8 @@ export class LoginComponent  {
       let object ={Username:this.email.value,Password:this.password.value}
       this.service.Login(object)
       .subscribe((result) => { 
+        debugger;
+        environment.authKey = result.headers.get('user-key');
         this.route.navigate(["/dashboard"]);
       },
       (err) => {self.isValid = false; },
