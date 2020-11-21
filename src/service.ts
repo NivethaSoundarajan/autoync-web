@@ -23,7 +23,7 @@ export class AutoSyncService {
   }
 
   SaveUser(user) {
-    return this.http.post<any>(environment.apiBaseURL + '/User/GetAll',user,{
+    return this.http.post<any>(environment.apiBaseURL + '/User/AddOrUpdate',user,{
       headers: this.headers
     }); 
   }

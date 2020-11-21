@@ -17,3 +17,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .main-panel .main-content {
     padding: 10px 15px !important;
 }
+
+button[type=submit]{
+    border-radius: 20px !important;
+}

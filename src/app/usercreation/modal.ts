@@ -1,11 +1,12 @@
 export class userCreation{
-     UserRole:number;
-     UserName:string;
-     // Password:string;
-     // FolderFilePath:string;
-     // AutoSyncTime:string;
-     // DeviceId:string;
-     // Supervisor:number;
-     // AutoSyncDay:string;
-     // AutoDeleteTime:Date;
+     Id:number;
+     RoleId:number;
+     Username:string;
+     Password:string;
+     FolderFilePath:string;
+     AutoSyncTime:string;
+     DeviceId:string;
+     SupervisorId:number;
+     AutoSyncDays:string;
+     AutoDeleteInterval:Date;
 }

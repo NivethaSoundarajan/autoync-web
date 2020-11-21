@@ -38,22 +38,30 @@ export class UsercreationComponent implements OnInit {
   }
 
   userSave(){
-    if(this.userForm.valid){
-      debugger;
-    }
+    this.service.SaveUser(this.userForm.value)
+    .subscribe((result) => { 
+     debugger;
+    },
+    (err) => {},
+    () => { });
+    // if(this.userForm.valid){
+    //   debugger;
+
+    // }
   }
 
   inputCreation(){
     const userDetails: FormModel<userCreation> ={
-      UserRole :[0,Validators.min(1)],
-      UserName:['',Validators.required,Validators.maxLength(50)],
-      // Password:['',Validators.required,Validators.maxLength(20),Validators.minLength(8)],
-      // FolderFilePath:['',Validators.required,Validators.maxLength(150)],
-      // AutoSyncTime:['',Validators.required],
-      // DeviceId:['',Validators.required],
-      // Supervisor:[0,Validators.min(1)],
-      // AutoSyncDay:[0,Validators.required],
-      // AutoDeleteTime:[0,Validators.required]
+      Id:[0],
+      RoleId :[0,Validators.min(1)],
+      Username:['',Validators.required,Validators.maxLength(50)],
+      Password:['',Validators.required,Validators.maxLength(20),Validators.minLength(8)],
+      FolderFilePath:['',Validators.required,Validators.maxLength(150)],
+      AutoSyncTime:['',Validators.required],
+      DeviceId:['',Validators.required],
+      SupervisorId:[0,Validators.min(1)],
+      AutoSyncDays:[0,Validators.required],
+      AutoDeleteInterval:[0,Validators.required]
 
     }
     return this.form.group(userDetails);;
