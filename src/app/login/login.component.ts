@@ -27,7 +27,6 @@ export class LoginComponent  {
       let object ={Username:this.email.value,Password:this.password.value}
       this.service.Login(object)
       .subscribe((result) => { 
-        debugger;
         environment.authKey = result.headers.get('user-key');
         this.route.navigate(["/dashboard"]);
       },

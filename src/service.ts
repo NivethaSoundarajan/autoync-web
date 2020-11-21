@@ -28,6 +28,13 @@ export class AutoSyncService {
     }); 
   }
 
+  getMasterData(){
+    return this.http.post<any>(environment.apiBaseURL + '/Dropdown/GetData',null,{
+      headers: this.headers
+    }); 
+  }
+
+
   GetTransferHistoryList() {
     return this.http.post<any>(environment.apiBaseURL + '/Transfer/History',null,{
       headers: this.headers

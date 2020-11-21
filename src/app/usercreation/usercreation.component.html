@@ -7,32 +7,30 @@
             <p class="card-category"></p>
         </div>
         <div class="card-body">
-            <form [formGroup]="userForm">
+            <form [formGroup]="userForm" (ngSubmit)="userSave()">
                 <div class="row">
                   <div class="col-md-5">
                     <mat-form-field >
                       <mat-label>User Role</mat-label>
-                      <select matNativeControl formControlName="UserRole">
-                        <option value="select">--Select--</option>
-                        <option value="Admin">Admin</option>
-                        <option value="SuperAdmin">SuperAdmin</option>
-                        <option value="Supervisor">Supervisor</option>
-                        <option value="Technician">Technician</option>
-                      </select>
-                      <small [hidden]="userForm.controls.UserRole.valid||(userForm.controls.UserRole.pristine)">Require a Valid Input</small>
+                      <mat-select formControlName="UserRole" name="UserRole">
+                        <mat-option *ngFor="let role of roleList" [value]="role.Key">
+                          {{role.Value}}
+                        </mat-option>
+                      </mat-select>
                     </mat-form-field>
+                    <!-- <small [hidden]="userForm.controls.UserRole.valid||(userForm.controls.UserRole.pristine)">Require a Valid Input</small> -->
                   </div>
                     <div class="col-md-3">
                         <mat-form-field class="example-full-width">
                           <input matInput placeholder="User Name" formControlName="UserName">
-                          <small [hidden]="userForm.controls.UserName.valid||(userForm.controls.UserName.pristine)">Require a Valid Input</small>
+                          <!-- <small [hidden]="userForm.controls.UserName.valid||(userForm.controls.UserName.pristine)">Require a Valid Input</small> -->
                         </mat-form-field>
                     </div>
                     
                     <div class="col-md-3">
                         <mat-form-field class="example-full-width">
                           <input matInput placeholder="Password" type="password" formControlName="Password">
-                          <small [hidden]="userForm.controls.PAN.valid||(userForm.controls.PAN.pristine)">Require a Valid Input</small>
+                          <!-- <small [hidden]="userForm.controls.Password.valid||(userForm.controls.Password.pristine)">Require a Valid Input</small> -->
                         </mat-form-field>
                     </div>
                 </div>
@@ -40,13 +38,13 @@
                     <div class="col-md-5">
                       <mat-form-field class="example-full-width">
                         <input matInput placeholder="Folder FilePath" type="text" formControlName="FolderFilePath">
-                        <small [hidden]="userForm.controls.FolderFilePath.valid||(userForm.controls.FolderFilePath.pristine)">Require a Valid Input</small>
+                        <!-- <small [hidden]="userForm.controls.FolderFilePath.valid||(userForm.controls.FolderFilePath.pristine)">Require a Valid Input</small> -->
                       </mat-form-field>
                     </div>
                     <div class="col-md-6">
                       <mat-form-field class="example-full-width">
                         <input matInput placeholder="Auto Sync Time" type="time" id="input" class="form-control" formControlName="AutoSyncTime" value="13:00"value="13:00"/>
-                        <small [hidden]="userForm.controls.AutoSyncTime.valid||(userForm.controls.AutoSyncTime.pristine)">Require a Valid Input</small>
+                        <!-- <small [hidden]="userForm.controls.AutoSyncTime.valid||(userForm.controls.AutoSyncTime.pristine)">Require a Valid Input</small> -->
                       </mat-form-field>
                     </div>
                 </div>
@@ -54,13 +52,13 @@
                     <div class="col-md-5">
                       <mat-form-field class="example-full-width">
                         <input matInput placeholder="Device Id" type="text" formControlName="DeviceId">
-                        <small [hidden]="userForm.controls.DeviceId.valid||(userForm.controls.DeviceId.pristine)">Require a Valid Input</small>
+                        <!-- <small [hidden]="userForm.controls.DeviceId.valid||(userForm.controls.DeviceId.pristine)">Require a Valid Input</small> -->
                       </mat-form-field>
                     </div>
                     <div class="col-md-6">
                       <mat-form-field class="example-full-width">
                         <input matInput placeholder="Auto Delete Time" type="number" formControlName="Supervisor">
-                        <small [hidden]="userForm.controls.Supervisor.valid||(userForm.controls.Supervisor.pristine)">Require a Valid Input</small>
+                        <!-- <small [hidden]="userForm.controls.Supervisor.valid||(userForm.controls.Supervisor.pristine)">Require a Valid Input</small> -->
                       </mat-form-field>
                     </div>
                 </div>
@@ -68,18 +66,18 @@
                     <div class="col-md-5">
                       <mat-form-field >
                         <mat-label>Supervisor</mat-label>
-                        <mat-select formControlName="AutoSyncDay" name="supervisor">
-                          <mat-option *ngFor="let supervisor of supervisor" [value]="supervisor.value">
-                            {{supervisor.viewValue}}
+                        <mat-select formControlName="Supervisor" name="supervisor">
+                          <mat-option *ngFor="let supervisor of supervisorList" [value]="supervisor.Key">
+                            {{supervisor.Value}}
                           </mat-option>
                         </mat-select>
-                        <small [hidden]="userForm.controls.AutoSyncDay.valid||(userForm.controls.AutoSyncDay.pristine)">Require a Valid Input</small>
+                        <!-- <small [hidden]="userForm.controls.AutoSyncDay.valid||(userForm.controls.AutoSyncDay.pristine)">Require a Valid Input</small> -->
                       </mat-form-field>
                     </div>
                     <div class="col-md-6">
                       <mat-form-field >
                         <mat-label>Auto Sync Day</mat-label>
-                        <select matNativeControl formControlName="AccountNo">
+                        <select matNativeControl formControlName="AutoSyncDay">
                           <option value="select">--Select--</option>
                           <option value="Admin">Sunday</option>
                           <option value="SuperAdmin">Monday</option>
@@ -89,7 +87,7 @@
                           <option value="Technician">Friday</option>
                           <option value="Technician">Saturday</option>
                         </select>
-                        <small [hidden]="userForm.controls.PAN.valid||(userForm.controls.PAN.pristine)">Require a Valid Input</small>
+                        <!-- <small [hidden]="userForm.controls.AutoSyncDay.valid||(userForm.controls.AutoSyncDay.pristine)">Require a Valid Input</small> -->
                       </mat-form-field>
                     </div>
                 </div>

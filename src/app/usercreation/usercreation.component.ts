@@ -1,61 +1,64 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, Validators ,FormBuilder,FormGroup} from '@angular/forms';
-import { kMaxLength } from 'buffer';
-
-
-interface Supervisor {
-  value: string;
-  viewValue: string;
-}
-interface UserRole {
-  value: string;
-  viewValue: string;
-}
-interface AutoSyncDay{
-  value: string;
-  viewValue: string;
-}
+import { AutoSyncService } from '../../service';
+import { ActivatedRoute,Router } from '@angular/router';
+import { userCreation } from './modal';
+type FormModel<T> = { [P in keyof T]: any };
 
 @Component({
   selector: 'app-usercreation',
   templateUrl: './usercreation.component.html',
-  styleUrls: ['./usercreation.component.css']
+  styleUrls: ['./usercreation.component.css'],
+  providers: [AutoSyncService]
 })
 
 export class UsercreationComponent implements OnInit {
   selectedValue: string;
-  AutoDeleteTime:number;
-
-  supervisor: Supervisor[] = [
-    {value: '1', viewValue: 'kumar'},
-    {value: '2', viewValue: 'kishore'},
-    {value: '3', viewValue: 'ram'}
-  ];
-  userRole: UserRole[] = [
-    {value: '1', viewValue: 'Admin'},
-    {value: '2', viewValue: 'SuperAdmin'},
-    {value: '3', viewValue: 'Supervisor'}
-  ];
-  autoSyncDay: AutoSyncDay[] = [
-    {value: '1', viewValue: 'Admin'},
-    {value: '2', viewValue: 'SuperAdmin'},
-    {value: '3', viewValue: 'Supervisor'}
-  ];
+  autoDeleteTime:number;
   private formBuilder: FormBuilder;
+  supervisorList:[];
+  roleList:[];
   userForm:FormGroup;
-  constructor() { }
+  constructor(public route:Router,private service: AutoSyncService ,private form: FormBuilder){}
 
   ngOnInit(): void {
-    this.userForm = this.formBuilder.group({
-      UserRole :['',Validators.required],
-      UserName:['',Validators.required,Validators.maxLength(50)],
-      Password:['',Validators.required,Validators.maxLength(12),Validators.minLength(8)],
-      FolderFilePath:['',Validators.required,Validators.maxLength(150)],
-      AutoSyncTime:['',Validators.required],
-      DeviceId:['',Validators.required],
-      Supervisor:[0,Validators.required],
-      AutoSyncDay:[0,Validators.required]
-    })
+    this.userForm = this.inputCreation();
+    this.getMasterData();
   }
+
+  getMasterData(){
+    var self =this;
+    this.service.getMasterData()
+      .subscribe((result) => { 
+        this.supervisorList = result.Data.Supervisors;
+        this.roleList = result.Data.Roles;
+      },
+      (err) => {},
+      () => { });
+  }
+
+  userSave(){
+    if(this.userForm.valid){
+      debugger;
+    }
+  }
+
+  inputCreation(){
+    const userDetails: FormModel<userCreation> ={
+      UserRole :[0,Validators.min(1)],
+      UserName:['',Validators.required,Validators.maxLength(50)],
+      // Password:['',Validators.required,Validators.maxLength(20),Validators.minLength(8)],
+      // FolderFilePath:['',Validators.required,Validators.maxLength(150)],
+      // AutoSyncTime:['',Validators.required],
+      // DeviceId:['',Validators.required],
+      // Supervisor:[0,Validators.min(1)],
+      // AutoSyncDay:[0,Validators.required],
+      // AutoDeleteTime:[0,Validators.required]
+
+    }
+    return this.form.group(userDetails);;
+  }
+  
+
 
 }
