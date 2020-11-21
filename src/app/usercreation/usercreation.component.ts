@@ -40,7 +40,6 @@ export class UsercreationComponent implements OnInit {
   userSave(){
     this.service.SaveUser(this.userForm.value)
     .subscribe((result) => { 
-     debugger;
     },
     (err) => {},
     () => { });

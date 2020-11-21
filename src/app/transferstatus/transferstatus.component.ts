@@ -6,6 +6,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 import {MatSort} from '@angular/material/sort';
 import { transHistory } from './modal';
 import { AutoSyncService } from '../../service';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -16,8 +17,12 @@ import { AutoSyncService } from '../../service';
 })
 export class TransferstatusComponent implements AfterViewInit{
   constructor(public route:Router,private service: AutoSyncService){}
-  displayedColumns: string[] = ['Id', 'UserId', 'JobUniqueId', 'SourceFilePath','DestinationFilePath','TotalFileSize','Status','Reason','SyncType'];
-  dataSource = new MatTableDataSource<transHistory>();  
+  // displayedColumns: string[] = ['Id', 'JobUniqueId','UserId','SupervisorName','TotalFileSize','SourceFilePath','Photo','Excel','Status','action'];
+  displayedColumns: string[] = ['Id', 'JobUniqueId','UserId','SupervisorName','TotalFileSize','SourceFilePath','Status','action'];
+  dataSource = new MatTableDataSource<transHistory>();
+  @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator; 
+  selectedDataSource = new MatTableDataSource<transHistory>();  
+  searchText = "";
 
  @ViewChild(MatPaginator) paginator: MatPaginator;
  @ViewChild(MatSort) sort: MatSort;
@@ -28,13 +33,19 @@ export class TransferstatusComponent implements AfterViewInit{
    this.dataSource.sort = this.sort;
    this.service.GetTransferHistoryList()
    .subscribe((result) => {
-     debugger;
-     self.dataSource= result.Data;
+     if(result != null && result.Status)
+        self.selectedDataSource = self.dataSource= result.Data;
    },
    (err) => {},
    () => { });
  }
+ search(){
+  // this.selectedDataSource = this.dataSource.filter(x=>x.id.contains(this.searchText));
+ }
 
+ public doFilter = (value: string) => {
+  this.dataSource.filter = value.trim().toLocaleLowerCase();
+}
 
 }
 

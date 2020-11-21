@@ -1,100 +1,98 @@
 <div class="main-content page-container">
   <div class="container-fluid">
       <div class="row"><div class="col-lg-6"></div>
-      <div class="col-lg-3">          
+        <div class="col-lg-3">          
           <mat-form-field appearance="fill">
               <mat-label>Choose a date</mat-label>
               <input matInput [matDatepicker]="picker">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field></div>
-      <div class="col-lg-3 zero-padding-right"> <div class="navbar-collapse justify-content-end" id="navigation">
-          <form class="navbar-form">
-              <div class="input-group no-border form-bg-color">
-                  <input style="height:52px; padding-left:10px" type="text" value="" class="form-control" placeholder="Search...">
-                  <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
-                      <i class="material-icons">search</i>
-                      <div class="ripple-container"></div>
-                  </button>
-              </div>
-          </form>        
-      </div></div>
-  </div>       
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3 zero-padding-right"> 
+          <div class="navbar-collapse justify-content-end" id="navigation">
+            <form class="navbar-form">
+                <div class="input-group no-border form-bg-color">
+                    <input style="height:52px; padding-left:10px" type="text" value="" [(ngModel)]="searchText" name="searchText" (keyup)="doFilter($event.target.value)" class="form-control" placeholder="Search...">
+                    <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon"  >
+                        <i class="material-icons">search</i>
+                        <div class="ripple-container"></div>
+                    </button>
+                </div>
+            </form>        
+          </div>
+        </div>
+      </div>       
 
-<div class="row">
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-    <!-- S.No Column -->
-    <ng-container matColumnDef="Id">
-      <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header>Id </th>
-      <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
-    </ng-container>
-  
-    <!-- User ID Column -->
-     <ng-container matColumnDef="UserId">
-      <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header> User ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.UserId}} </td>
-    </ng-container>
-  
-    <!-- Job Unique Id Column -->
-    <ng-container matColumnDef="JobUniqueId">
-      <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header>Job Unique Id</th>
-      <td mat-cell *matCellDef="let element"> {{element.JobUniqueId}} </td>
-    </ng-container> 
+      <div class="row">
+        <table mat-table [dataSource]="dataSource" matSort MatTableDataSource class="mat-elevation-z8">
+            <!-- S.No Column -->
+            <ng-container matColumnDef="Id">
+              <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header>Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+            </ng-container>
+          
+            <!-- Job Unique Id Column -->
+            <ng-container matColumnDef="JobUniqueId">
+              <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header>Transfer Id</th>
+              <td mat-cell *matCellDef="let element"> {{element.JobUniqueId}} </td>
+            </ng-container> 
 
-     <!-- SourceFilePath Column -->
-    <ng-container matColumnDef="SourceFilePath">
-      <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header> SourceFilePath </th>
-      <td mat-cell *matCellDef="let element"> {{element.SourceFilePath}} </td>
-    </ng-container> 
+            <!-- User ID Column -->
+            <ng-container matColumnDef="UserId">
+              <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header> User Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.UserId}} </td>
+            </ng-container>
+          
+            <!-- Supervisor Column -->
+            <ng-container matColumnDef="SupervisorName">
+              <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header>Supervisor</th>
+              <td mat-cell *matCellDef="let element"> {{element.SupervisorName}} </td>
+            </ng-container> 
 
-    <!-- DestinationFilePath Column -->
-    <ng-container matColumnDef="DestinationFilePath">
-      <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header> DestinationFilePath </th>
-      <td mat-cell *matCellDef="let element"> {{element.DestinationFilePath}} </td>
-    </ng-container>
+            <!-- TotalFileSize Column -->
+            <ng-container matColumnDef="TotalFileSize">
+              <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header> Size </th>
+              <td mat-cell *matCellDef="let element"> {{element.TotalFileSize}} </td>
+            </ng-container>
 
-    <!-- TotalFileSize Column -->
-    <ng-container matColumnDef="TotalFileSize">
-      <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header> TotalFileSize </th>
-      <td mat-cell *matCellDef="let element"> {{element.TotalFileSize}} </td>
-    </ng-container>
+            <!-- SourceFilePath Column -->
+          <ng-container matColumnDef="SourceFilePath">
+            <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header> SourceFilePath </th>
+            <td mat-cell *matCellDef="let element"> {{element.SourceFilePath}} </td>
+          </ng-container> 
 
-    <!-- Status Column -->
-    <ng-container matColumnDef="Status">
-      <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
-      <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
-    </ng-container>
+          <!-- Photo Column -->
+          <!-- <ng-container matColumnDef="Photo">
+            <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header> Photo</th>
+            <td mat-cell *matCellDef="let element" > {{element.Photos.Total}} / {{element.Photos.Completed}}</td>
+          </ng-container> -->
 
-    <!-- Reason Column -->
-    <ng-container matColumnDef="Reason">
-      <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header> Reason</th>
-      <td mat-cell *matCellDef="let element"> {{element.Reason} </td>
-    </ng-container>
+          <!-- Excel Column -->
+          <!-- <ng-container matColumnDef="Excel">
+            <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header> Excel</th>
+            <td mat-cell *matCellDef="let element"> {{element.Excel.Total}} / {{element.Excel.Completed}}</td>
+          </ng-container> -->
 
-    <!-- SyncType Column -->
-    <ng-container matColumnDef="SyncType">
-      <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header> SyncType </th>
-      <td mat-cell *matCellDef="let element"> {{element.SyncType}} </td>
-    </ng-container>
+            <!-- Status Column -->
+            <ng-container matColumnDef="Status">
+              <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header>Overall Status</th>
+              <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+            </ng-container>
 
-    <!-- Action Column -->
-    <ng-container matColumnDef="action">
-      <th class="tab-head" mat-header-cell *matHeaderCellDef>Action</th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-icon-button color="blue" [routerLink]="['/imagestatus']">
-            <mat-icon>visibility</mat-icon>
-        </button></td>
-    </ng-container>
-  
-     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-</div>
-<mat-paginator
-#TableOnePaginator="matPaginator"
-[pageSize]="10"
-[pageSizeOptions]="[5, 10, 25, 100]"
-></mat-paginator>
+            <!-- Action Column -->
+            <ng-container matColumnDef="action">
+              <th class="tab-head" mat-header-cell *matHeaderCellDef>Action</th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="blue" [routerLink]="['/imagestatus',element.Id]">
+                    <mat-icon>visibility</mat-icon>
+                </button></td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+      <mat-paginator #TableOnePaginator="matPaginator" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
 </div>
- 

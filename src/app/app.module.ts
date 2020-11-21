@@ -15,6 +15,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { MatInputModule } from '@angular/material/input';
 import { FooterComponent } from './footer/footer.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     RouterModule,
     AdminLayoutModule,
+    MatFormFieldModule,
     MatInputModule,
+    FlexLayoutModule,
     OAuthModule.forRoot(),
     
   ],

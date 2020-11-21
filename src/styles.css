@@ -21,3 +21,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 button[type=submit]{
     border-radius: 20px !important;
 }
+
+tr.mat-row{
+    height: 47px !important;
+}

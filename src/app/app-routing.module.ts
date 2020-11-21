@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'userlist',  component: UserListComponent },
   { path: 'usercreation',  component:UsercreationComponent  },
   { path: 'transferstatus',  component: TransferstatusComponent },
-  { path: 'imagestatus',  component: ImagestatusComponent },
+  { path: 'imagestatus/:Id',  component: ImagestatusComponent },
   
 ];
 

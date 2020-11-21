@@ -40,4 +40,10 @@ export class AutoSyncService {
       headers: this.headers
     }); 
   }
+
+  GetTransferHistoryDetails(id:string) {
+    return this.http.post<any>(environment.apiBaseURL + '/Transfer/Detail?jobId='+id,null,{
+      headers: this.headers
+    }); 
+  }
 }
