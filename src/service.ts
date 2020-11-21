@@ -8,7 +8,7 @@ export class AutoSyncService {
   private readonly headers;
   constructor(private http: HttpClient, private oauthService: OAuthService) {
     this.headers = new HttpHeaders({
-      "user-key": environment.authKey
+      "user-key" : environment.authKey
     });
   }
   
@@ -17,20 +17,19 @@ export class AutoSyncService {
   }
 
   GetUserList() {
-    return this.http.post<any>(environment.apiBaseURL + '/User/GetAll',{
+    return this.http.post<any>(environment.apiBaseURL + '/User/GetAll',null,{
       headers: this.headers
     }); 
   }
 
-  saveuser(user) {
-    return this.http.get<any>(environment.apiBaseURL + '/User/GetAll',{
+  SaveUser(user) {
+    return this.http.post<any>(environment.apiBaseURL + '/User/GetAll',user,{
       headers: this.headers
     }); 
   }
-
 
   GetTransferHistoryList() {
-    return this.http.post<any>(environment.apiBaseURL + '/Transfer/History',{
+    return this.http.post<any>(environment.apiBaseURL + '/Transfer/History',null,{
       headers: this.headers
     }); 
   }

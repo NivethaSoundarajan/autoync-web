@@ -15,7 +15,7 @@ import { AutoSyncService } from '../../service';
 })
 export class UserListComponent implements OnInit {
   constructor(public route:Router,private service: AutoSyncService){}
-  displayedColumns: string[] = ['sno','username','password','jobtitle','supervisor','folderpath','deviceid','action'];
+  displayedColumns: string[] = ['sno','username','password','action'];
   dataSource = new MatTableDataSource<viewValues>();  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -26,7 +26,7 @@ export class UserListComponent implements OnInit {
    this.dataSource.sort = this.sort;
    this.service.GetUserList()
       .subscribe((result) => { 
-        self.dataSource= result.data;
+        self.dataSource= result.Data;
       },
       (err) => {},
       () => { });

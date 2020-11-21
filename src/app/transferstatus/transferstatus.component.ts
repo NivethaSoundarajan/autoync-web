@@ -26,9 +26,9 @@ export class TransferstatusComponent implements AfterViewInit{
    var self=this;
    this.dataSource.paginator = this.paginator;
    this.dataSource.sort = this.sort;
-   this.service.GetUserList()
+   this.service.GetTransferHistoryList()
    .subscribe((result) => { 
-     self.dataSource= result.data;
+     self.dataSource= result.Data;
    },
    (err) => {},
    () => { });
