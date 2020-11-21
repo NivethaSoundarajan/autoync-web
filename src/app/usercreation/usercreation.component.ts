@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, Validators ,FormBuilder,FormGroup} from '@angular/forms';
+import { FormControl, Validators ,FormBuilder,FormGroup} from '@angular/forms';
 import { AutoSyncService } from '../../service';
 import { ActivatedRoute,Router } from '@angular/router';
 import { userCreation } from './modal';
@@ -13,14 +13,17 @@ type FormModel<T> = { [P in keyof T]: any };
 })
 
 export class UsercreationComponent implements OnInit {
+  Days= new FormControl();
+  AutoSyncDaysList: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday","Saturday"];
   selectedValue: string;
   autoDeleteTime:number;
   private formBuilder: FormBuilder;
   supervisorList:[];
   roleList:[];
   userForm:FormGroup;
+  
   constructor(public route:Router,private service: AutoSyncService ,private form: FormBuilder){}
-
+  
   ngOnInit(): void {
     this.userForm = this.inputCreation();
     this.getMasterData();
@@ -38,29 +41,29 @@ export class UsercreationComponent implements OnInit {
   }
 
   userSave(){
+    this.userForm.value.AutoSyncDays = this.userForm.value.AutoSyncDays.toString();
+    if(this.userForm.valid){
     this.service.SaveUser(this.userForm.value)
-    .subscribe((result) => { 
-     debugger;
-    },
-    (err) => {},
-    () => { });
-    // if(this.userForm.valid){
-    //   debugger;
-
-    // }
+      .subscribe((result) => { 
+      debugger;
+      },
+      (err) => {},
+      () => { });
+    }
   }
 
   inputCreation(){
     const userDetails: FormModel<userCreation> ={
       Id:[0],
       RoleId :[0,Validators.min(1)],
-      Username:['',Validators.required,Validators.maxLength(50)],
-      Password:['',Validators.required,Validators.maxLength(20),Validators.minLength(8)],
-      FolderFilePath:['',Validators.required,Validators.maxLength(150)],
+      name:['',[Validators.required,Validators.maxLength(50)]],
+      UserId:['',[Validators.required,Validators.maxLength(50)]],
+      Password:['',[Validators.required,Validators.maxLength(20),Validators.minLength(8)]],
+      FolderFilePath:['',[Validators.required,Validators.maxLength(150)]],
       AutoSyncTime:['',Validators.required],
       DeviceId:['',Validators.required],
       SupervisorId:[0,Validators.min(1)],
-      AutoSyncDays:[0,Validators.required],
+      AutoSyncDays:['',Validators.required],
       AutoDeleteInterval:[0,Validators.required]
 
     }
