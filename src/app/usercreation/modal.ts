@@ -1,7 +1,8 @@
 export class userCreation{
      Id:number;
      RoleId:number;
-     Username:string;
+     UserId:string;
+     name:string;
      Password:string;
      FolderFilePath:string;
      AutoSyncTime:string;
