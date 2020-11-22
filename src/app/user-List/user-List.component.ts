@@ -15,7 +15,7 @@ import * as XLSX from 'xlsx';
 })
 export class UserListComponent implements OnInit {
   constructor(public route:Router,private service: AutoSyncService){}
-  displayedColumns: string[] = ['sno','username','RoleName','SupervisorName','FolderFilePath','Deviceid','action'];
+  displayedColumns: string[] = ['sno','username','name','RoleName','SupervisorName','FolderFilePath','Deviceid','action'];
   dataSource = new MatTableDataSource<viewValues>();  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

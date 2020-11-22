@@ -84,14 +84,14 @@ export class UsercreationComponent implements OnInit {
   userSave(){
     debugger;
     this.userForm.value.AutoSyncDays = this.userForm.value.AutoSyncDays.toString();
-    // if(this.userForm.valid){
-    // this.service.SaveUser(this.userForm.value)
-    //   .subscribe((result) => { 
-    //   debugger;
-    //   },
-    //   (err) => {},
-    //   () => { });
-    // }
+    if(this.userForm.valid){
+    this.service.SaveUser(this.userForm.value)
+      .subscribe((result) => { 
+      debugger;
+      },
+      (err) => {},
+      () => { });
+    }
   }
 
   inputCreation(){
@@ -100,13 +100,13 @@ export class UsercreationComponent implements OnInit {
       RoleId :[0,Validators.min(1)],
       Name:['',[Validators.required,Validators.maxLength(50)]],
       Username:['',[Validators.required,Validators.maxLength(50)]],
-      Password:['',[Validators.required,Validators.maxLength(20),Validators.minLength(8)]],
+      Password:['',[Validators.required,Validators.maxLength(20),Validators.minLength(3)]],
       FolderFilePath:['',[Validators.required,Validators.maxLength(150)]],
       AutoSyncTime:['',Validators.required],
-      DeviceId:['',Validators.required],
+      DeviceId:[''],
       SupervisorId:[0,Validators.min(1)],
       AutoSyncDays:['',Validators.required],
-      AutoDeleteInterval:[0,Validators.required]
+      AutoDeleteInterval:[,Validators.required]
 
     }
     return this.form.group(userDetails);;

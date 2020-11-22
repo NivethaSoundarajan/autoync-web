@@ -1,6 +1,6 @@
 export interface transHistory {
     Id: number;
-    UserId:number,
+    Username:string;
     JobUniqueId: string,
     SourceFilePath: string,
     DestinationFilePath: string,
