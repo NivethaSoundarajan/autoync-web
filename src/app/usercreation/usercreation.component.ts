@@ -21,12 +21,30 @@ export class UsercreationComponent implements OnInit {
   supervisorList:[];
   roleList:[];
   userForm:FormGroup;
-  
-  constructor(public route:Router,private service: AutoSyncService ,private form: FormBuilder){}
+  isVisible:Boolean;
+  constructor(private router: Router, private route: ActivatedRoute,private service: AutoSyncService,private form: FormBuilder){}
   
   ngOnInit(): void {
+    var self = this;
     this.userForm = this.inputCreation();
     this.getMasterData();
+    this.route.paramMap.subscribe(params => {
+      if (params.get('Id') != '0') {
+        debugger;
+        self.getUserDetails(Number(params.get('Id')));
+        self.isVisible = Boolean(params.get('visibility'));
+      }});
+    this.userForm.get('RoleId').valueChanges.subscribe(val => {
+      this.userForm.setValue({
+        AutoDeleteInterval:0,
+        AutoSyncDays: "",
+        AutoSyncTime: "",
+        DeviceId: "",
+        FolderFilePath: "",
+        Name: "",
+        SupervisorId: 0
+     });
+    });
   }
 
   getMasterData(){
@@ -40,24 +58,48 @@ export class UsercreationComponent implements OnInit {
       () => { });
   }
 
-  userSave(){
-    this.userForm.value.AutoSyncDays = this.userForm.value.AutoSyncDays.toString();
-    if(this.userForm.valid){
-    this.service.SaveUser(this.userForm.value)
+  getUserDetails(id:Number){
+    var self =this;
+    this.service.GetUserDetails(id)
       .subscribe((result) => { 
-      debugger;
+        var data = result.Data;
+        this.userForm.setValue({
+          AutoDeleteInterval:data.AutoDeleteInterval,
+          AutoSyncDays: (data.AutoSyncDays).split(","),
+          AutoSyncTime: data.AutoSyncTime,
+          DeviceId: data.DeviceId,
+          FolderFilePath: data.FolderFilePath,
+          Id: data.Id,
+          Name: data.Name,
+          Password: data.Password,
+          RoleId: data.RoleId,
+          SupervisorId: data.SupervisorId,
+          Username: data.Username
+       });
       },
       (err) => {},
       () => { });
-    }
+  }
+
+  userSave(){
+    debugger;
+    this.userForm.value.AutoSyncDays = this.userForm.value.AutoSyncDays.toString();
+    // if(this.userForm.valid){
+    // this.service.SaveUser(this.userForm.value)
+    //   .subscribe((result) => { 
+    //   debugger;
+    //   },
+    //   (err) => {},
+    //   () => { });
+    // }
   }
 
   inputCreation(){
     const userDetails: FormModel<userCreation> ={
       Id:[0],
       RoleId :[0,Validators.min(1)],
-      name:['',[Validators.required,Validators.maxLength(50)]],
-      UserId:['',[Validators.required,Validators.maxLength(50)]],
+      Name:['',[Validators.required,Validators.maxLength(50)]],
+      Username:['',[Validators.required,Validators.maxLength(50)]],
       Password:['',[Validators.required,Validators.maxLength(20),Validators.minLength(8)]],
       FolderFilePath:['',[Validators.required,Validators.maxLength(150)]],
       AutoSyncTime:['',Validators.required],

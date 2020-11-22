@@ -19,9 +19,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 button[type=submit]{
-    border-radius: 20px !important;
+    background-color:  #0d7bb9 !important;
 }
 
 tr.mat-row{
     height: 47px !important;
+}
+
+button
+{
+    border-radius: 20px !important;
+    color: white;
+    font-weight: normal;
+}
+.back-btn{
+    background-color: #fd3131 !important;
 }

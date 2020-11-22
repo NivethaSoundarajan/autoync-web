@@ -46,4 +46,10 @@ export class AutoSyncService {
       headers: this.headers
     }); 
   }
+
+  GetUserDetails(id:Number) {
+    return this.http.post<any>(environment.apiBaseURL + '/User/GetUser?userId='+id,null,{
+      headers: this.headers
+    }); 
+  }
 }
