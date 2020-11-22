@@ -6,6 +6,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: whitesmoke !important;
 }
 
+.container-fluid {
+    padding-right: 0 !important; 
+    padding-left: 0  !important; 
+}
 .page-container{
     height: 650px;
     background: white;
@@ -26,7 +30,7 @@ button[type=submit], .btn-create{
 }
 
 tr.mat-row{
-    height: 47px !important;
+    height: 44px !important;
 }
 
 button

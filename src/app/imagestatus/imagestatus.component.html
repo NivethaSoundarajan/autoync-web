@@ -1,13 +1,25 @@
 <div class="main-content page-container">
   <div class="container-fluid">
     <div class="row">
-      <mat-form-field>
-        <input matInput (keyup)="applyFilterOne($event.target.value)" placeholder="Filter"/>
-      </mat-form-field>
+      <div class="col-md-3">  
+        <mat-form-field>
+          <input matInput (keyup)="applyFilterOne($event.target.value)" placeholder="Filter"/>
+        </mat-form-field>
+      </div>
+      <div class="col-md-8 row count pull-right">
+        <div class="col-md-5"></div>
+        <div class="col-md-3"> Image Size : {{imageCount}}</div>
+        <div class="col-md-2"> Bills : {{billCount}}</div>
+        <div class="col-md-2"> Reads : {{readCount}}</div>
+      </div>
+      <div class="col-md-1 pull-right" >
+        <button  mat-raised-button type="button" class="btn btn-action back-btn pull-right" color="warn" [routerLink]="['/transferstatus']">Back</button>
+        <div class="clearfix"></div>
+      </div>
       <table mat-table matSort [dataSource]="dataSourceOne"cx #TableOneSort="matSort" class="mat-elevation-z8 col-md-12" >
         <ng-container matColumnDef="sno">
           <th class="tab-head" mat-header-cell *matHeaderCellDef>S.No</th>
-          <td mat-cell *matCellDef="let i = index"> {{i + 1}} </td>
+          <td mat-cell *matCellDef="let i = index"> {{i + 1 +(TableOnePaginator.pageIndex * TableOnePaginator.pageSize)}}  </td>
         </ng-container>
         <ng-container matColumnDef="filename">
           <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header>File Name</th>
@@ -25,6 +37,6 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumnsOne"></tr>
       </table>
     </div>
-    <mat-paginator #TableOnePaginator="matPaginator" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <mat-paginator #TableOnePaginator="matPaginator" [pageSize]="10" [showFirstLastButtons]="true"></mat-paginator>
   </div>
 </div>

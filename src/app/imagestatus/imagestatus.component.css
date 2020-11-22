@@ -2,16 +2,16 @@
     text-align: center;
 }
 .row{
-    margin: 0;
-  }
-  .tab-head {
-
-    font-size: 14px;
-    color: white;
-    font-weight: normal;
-   
-  }
-  .mat-header-row{
-    background-color: #0d7bb9;
-    color: white;
-  }
+  margin: 0;
+}
+.tab-head {
+  font-size: 14px;
+  color: white;
+  font-weight: normal;
+}
+.mat-header-row{
+  background-color: #0d7bb9;
+  color: white;
+}
+.card {margin-top: 10px !important;}
+.count{padding-top: 18px;}

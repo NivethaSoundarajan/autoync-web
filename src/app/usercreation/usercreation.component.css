@@ -18,3 +18,12 @@
   small{
     color: red;
   }
+  .mat-select-disabled .mat-select-value{
+    color: black !important;
+  }
+  .mat-input-element:disabled{
+    color: black !important;
+  }
+  .card {
+    margin-top: 10px !important;
+}
