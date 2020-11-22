@@ -7,7 +7,7 @@
       <table mat-table matSort [dataSource]="dataSourceOne"cx #TableOneSort="matSort" class="mat-elevation-z8 col-md-12" >
         <ng-container matColumnDef="sno">
           <th class="tab-head" mat-header-cell *matHeaderCellDef>S.No</th>
-          <td mat-cell *matCellDef="let element">{{ element.Id }}</td>
+          <td mat-cell *matCellDef="let i = index"> {{i + 1}} </td>
         </ng-container>
         <ng-container matColumnDef="filename">
           <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header>File Name</th>
