@@ -1,5 +1,5 @@
 
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit,OnInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ActivatedRoute,Router } from '@angular/router';
@@ -15,38 +15,43 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./transferstatus.component.css'],
   providers:[AutoSyncService]
 })
-export class TransferstatusComponent implements AfterViewInit{
-  constructor(public route:Router,private service: AutoSyncService){}
-  // displayedColumns: string[] = ['Id', 'JobUniqueId','UserId','SupervisorName','TotalFileSize','SourceFilePath','Photo','Excel','Status','action'];
-  displayedColumns: string[] = ['Id', 'JobUniqueId','UserId','SupervisorName','TotalFileSize','SourceFilePath','Status','action'];
-  dataSource = new MatTableDataSource<transHistory>();
-  @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator; 
-  selectedDataSource = new MatTableDataSource<transHistory>();  
-  searchText = "";
+export class TransferstatusComponent implements OnInit {
+  dataSourceOne: MatTableDataSource<transHistory>;
+  displayedColumns: string[] = ['Id', 'JobUniqueId','Username','SupervisorName','TotalFileSize','SourceFilePath','Status','action'];
+  @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
+  @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
 
- @ViewChild(MatPaginator) paginator: MatPaginator;
- @ViewChild(MatSort) sort: MatSort;
-
- ngAfterViewInit() {
+  constructor(private router: Router, private route: ActivatedRoute,private service: AutoSyncService) {
+    this.dataSourceOne = new MatTableDataSource;
+  }
+  ngOnInit() {
    var self=this;
-   this.dataSource.paginator = this.paginator;
-   this.dataSource.sort = this.sort;
    this.service.GetTransferHistoryList()
    .subscribe((result) => {
      if(result != null && result.Status)
-        self.selectedDataSource = self.dataSource= result.Data;
+     this.dataSourceOne.data = result.Data;
    },
    (err) => {},
    () => { });
+   this.dataSourceOne.paginator = this.tableOnePaginator;
+   this.dataSourceOne.sort = this.tableOneSort;
+
  }
- search(){
-  // this.selectedDataSource = this.dataSource.filter(x=>x.id.contains(this.searchText));
+ applyFilterOne(filterValue: string) {
+   this.dataSourceOne.filter = filterValue.trim().toLowerCase();
  }
 
- public doFilter = (value: string) => {
-  this.dataSource.filter = value.trim().toLocaleLowerCase();
 }
+   
+ 
+//  search(){
+//   // this.selectedDataSource = this.dataSource.filter(x=>x.id.contains(this.searchText));
+//  }
 
-}
+//  public doFilter = (value: string) => {
+//   this.dataSource.filter = value.trim().toLocaleLowerCase();
+// }
+
+
 
   

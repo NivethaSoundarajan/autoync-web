@@ -29,6 +29,7 @@ import { UserListComponent } from '../../user-List/user-List.component';
 import { UsercreationComponent } from '../../usercreation/usercreation.component';
 import { TransferstatusComponent } from '../../transferstatus/transferstatus.component';
 import { ImagestatusComponent } from '../../imagestatus/imagestatus.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -55,11 +56,8 @@ import { ImagestatusComponent } from '../../imagestatus/imagestatus.component';
     MatIconModule,
     ChartsModule,
     FlexLayoutModule,
-MatDatepickerModule,
-MatNativeDateModule
-
-
-
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   declarations: [
     DashboardComponent,

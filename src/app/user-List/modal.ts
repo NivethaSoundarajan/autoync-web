@@ -8,6 +8,7 @@ export interface viewValues {
     folderpath:string;
     deviceid:number;
     action:string;
+    name:string;
 }
 
 
