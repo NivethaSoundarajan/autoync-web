@@ -78,7 +78,8 @@ export class UsercreationComponent implements OnInit {
         self.userForm.patchValue(data);
         self.userForm.patchValue({
           AutoSyncDays: (data.AutoSyncDays == null) ? null : (data.AutoSyncDays).split(","),
-          Username :data.Username,Name:data.Name,Password:data.Password
+          Username :data.Username,Name:data.Name,Password:data.Password,
+          SupervisorId:data.SupervisorId,
         });
 
       },
