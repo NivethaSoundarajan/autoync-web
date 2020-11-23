@@ -32,30 +32,28 @@ export class UsercreationComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       if (params.get('Id') != '0') {
         self.isVisible = params.get('visibility') == 'true' ? true : false ;
-        console.log(self.isVisible);
         self.getUserDetails(Number(params.get('Id')));
         self.id =Number(params.get('Id'));
       }
       else{
         self.isVisible = params.get('visibility') == 'true' ? true : false ;
-        console.log(self.isVisible);
       }
     });
     this.userForm = this.inputCreation();
     this.userForm.get('RoleId').valueChanges.subscribe(val => {
-    //   this.userForm.patchValue({
-    //     AutoDeleteInterval:0,
-    //     AutoSyncDays: "",
-    //     AutoSyncTime: "",
-    //     DeviceId: "",
-    //     FolderFilePath: "",
-    //     Name: "",
-    //     SupervisorId: 0,
-    //     Id:this.id,
-    //     // RoleId:val,
-    //     Username:"",
-    //     Password:""
-    //  });
+      this.userForm.patchValue({
+        AutoDeleteInterval:0,
+        AutoSyncDays: "",
+        AutoSyncTime: "",
+        DeviceId: "",
+        FolderFilePath: "",
+        Name: "",
+        SupervisorId: 0,
+        Id:this.id,
+        // RoleId:val,
+        Username:"",
+        Password:""
+     });
     });
   }
 
@@ -63,11 +61,11 @@ export class UsercreationComponent implements OnInit {
     var self =this;
     this.service.getMasterData()
       .subscribe((result) => { 
-        this.supervisorList = result.Data.Supervisors;
-        this.roleList = result.Data.Roles;
+        self.supervisorList = result.Data.Supervisors;
+        self.roleList = result.Data.Roles;
       },  
       (err) => {
-        this.toast.error('Error!', 'Something Went Wrong!', { opacity: 1 });
+        self.toast.error('Error!', 'Something Went Wrong!', { opacity: 1 });
       },
       () => { });
   }
@@ -77,22 +75,14 @@ export class UsercreationComponent implements OnInit {
     this.service.GetUserDetails(id)
       .subscribe((result) => { 
         var data = result.Data;
-        this.userForm.setValue({
-          AutoDeleteInterval:data.AutoDeleteInterval,
+        self.userForm.patchValue(data);
+        self.userForm.patchValue({
           AutoSyncDays: (data.AutoSyncDays == null) ? null : (data.AutoSyncDays).split(","),
-          AutoSyncTime: data.AutoSyncTime,
-          DeviceId: data.DeviceId,
-          FolderFilePath: data.FolderFilePath,
-          Id: data.Id,
-          Name: data.Name,
-          Password: data.Password,
-          RoleId: data.RoleId,
-          SupervisorId: data.SupervisorId,
-          Username: data.Username
-       });
+        });
+
       },
       (err) => {
-        this.toast.error('Error!', 'Something Went Wrong!', { opacity: 1 });
+        self.toast.error('Error!', 'Something Went Wrong!', { opacity: 1 });
       },
       () => { });
   }
@@ -127,7 +117,7 @@ export class UsercreationComponent implements OnInit {
       DeviceId:[''],
       SupervisorId:[,Validators.min(1)],
       AutoSyncDays:['',Validators.required],
-      AutoDeleteInterval:[,Validators.required]
+      AutoDeleteInterval:[0,Validators.required]
 
     }
     return this.form.group(userDetails);;
