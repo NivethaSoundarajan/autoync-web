@@ -27,3 +27,6 @@ table {
 {
   padding-right:0;
 }
+.card {
+  margin-top: 10px !important;
+}

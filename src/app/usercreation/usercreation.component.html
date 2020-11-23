@@ -1,13 +1,21 @@
 
 
 <div class="main-content page-container">
+  <div class="row">
+    <div class="col-md-9"></div>
+    <div class="col-md-3 pull-right" >
+      <button  mat-raised-button type="button" class="btn btn-action btn-create pull-right" (click)="userSave()" [hidden]="isVisible">Save</button>
+      <button  mat-raised-button type="button" class="btn btn-action back-btn pull-right" color="warn" [routerLink]="['/userlist']">Back</button>
+      <div class="clearfix"></div>
+      </div>
+  </div>
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">User Creation</h4>
             <p class="card-category"></p>
         </div>
         <div class="card-body">
-            <form [formGroup]="userForm" (ngSubmit)="userSave()">
+            <form [formGroup]="userForm" >
                 <div class="row">
                   <div class="col-md-3">
                     <mat-form-field >
@@ -18,79 +26,84 @@
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
-                    <!-- <small [hidden]="userForm.controls.UserRole.valid||(userForm.controls.UserRole.pristine)">Require a Valid Input</small> -->
                   </div>
                   <div class="col-md-3">
                     <mat-form-field class="example-full-width">
-                      <input matInput placeholder="User Id" formControlName="Username">
-                      <!-- <small [hidden]="userForm.controls.UserName.valid||(userForm.controls.UserName.pristine)">Require a Valid Input</small> -->
+                      <input matInput placeholder="User Id" formControlName="Username" >
                     </mat-form-field>
                   </div>
-                    <div class="col-md-3">
-                        <mat-form-field class="example-full-width">
-                          <input matInput placeholder="Name" formControlName="Name">
-                          <!-- <small [hidden]="userForm.controls.UserName.valid||(userForm.controls.UserName.pristine)">Require a Valid Input</small> -->
-                        </mat-form-field>
-                    </div>
+                  <div class="col-md-3" *ngIf="userForm.controls.RoleId.value == 5">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Name" formControlName="Name">
+                      </mat-form-field>
+                  </div>
                     
                     <div class="col-md-3">
                         <mat-form-field class="example-full-width">
                           <input matInput placeholder="Password" type="password" formControlName="Password">
-                          <!-- <small [hidden]="userForm.controls.Password.valid||(userForm.controls.Password.pristine)">Require a Valid Input</small> -->
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" *ngIf="userForm.controls.RoleId.value == 5">
                     <div class="col-md-6">
                       <mat-form-field class="example-full-width">
+<<<<<<< HEAD
                         <input matInput placeholder="Folder FilePath" type="text" formControlName="FolderPath">
                         <!-- <small [hidden]="userForm.controls.FolderFilePath.valid||(userForm.controls.FolderFilePath.pristine)">Require a Valid Input</small> -->
+=======
+                        <input matInput placeholder="Folder FilePath" type="text" formControlName="FolderFilePath">
+>>>>>>> b84c15f3aa1a24885a0371ca50a93dbce845e68d
                       </mat-form-field>
                     </div>
                     <div class="col-md-6">
                       <mat-form-field class="example-full-width">
+<<<<<<< HEAD
                         <input matInput placeholder="AutoSyncTime" type="time" formControlName="Auto Sync Time" value="13:00">
                         <!-- <small [hidden]="userForm.controls.DeviceId.valid||(userForm.controls.DeviceId.pristine)">Require a Valid Input</small> -->
+=======
+                        <input matInput placeholder="AutoSyncTime" type="time" formControlName="AutoSyncTime" value="13:00">
+>>>>>>> b84c15f3aa1a24885a0371ca50a93dbce845e68d
                       </mat-form-field>
                 </div>
                 </div>
-                <div class="row">
+                <div class="row" *ngIf="userForm.controls.RoleId.value == 5">
                     <div class="col-md-6">
                       <mat-form-field class="example-full-width">
                         <input matInput placeholder="Device Id" type="text" formControlName="DeviceId">
-                        <!-- <small [hidden]="userForm.controls.DeviceId.valid||(userForm.controls.DeviceId.pristine)">Require a Valid Input</small> -->
                       </mat-form-field>
                     </div>
                     <div class="col-md-6">
                       <mat-form-field class="example-full-width">
+<<<<<<< HEAD
                         <input matInput placeholder="Auto Delete Time" type="number" formControlName="Auto Delete Interval" >
                         <!-- <small [hidden]="userForm.controls.Supervisor.valid||(userForm.controls.Supervisor.pristine)">Require a Valid Input</small> -->
+=======
+                        <input matInput placeholder="Auto Delete Time" type="time" formControlName="AutoSyncTime" value="">
+>>>>>>> b84c15f3aa1a24885a0371ca50a93dbce845e68d
                       </mat-form-field>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" *ngIf="userForm.controls.RoleId.value == 5">
                     <div class="col-md-6">
                       <mat-form-field >
                         <mat-label>Supervisor</mat-label>
-                        <mat-select formControlName="SupervisorId" name="SupervisorId">
+                        <mat-select formControlName="SupervisorId" name="SupervisorId"> 
                           <mat-option *ngFor="let supervisor of supervisorList" [value]="supervisor.Key">
                             {{supervisor.Value}}
                           </mat-option>
                         </mat-select>
-                        <!-- <small [hidden]="userForm.controls.AutoSyncDay.valid||(userForm.controls.AutoSyncDay.pristine)">Require a Valid Input</small> -->
                       </mat-form-field>
                     </div>
                     <div class="col-md-6">
                       <mat-form-field appearance="fill">
                         <mat-label>AutoSyncDays</mat-label>
-                        <mat-select formControlName="AutoSyncDays" multiple>
+                        <mat-select formControlName="AutoSyncDays" multiple >
                           <mat-option *ngFor="let Days of AutoSyncDaysList" [value]="Days">{{Days}}</mat-option>
                         </mat-select>
                       </mat-form-field>
                     </div>
                 </div>
-                <button  mat-raised-button type="submit" class="btn btn-action pull-right">Save</button>
-                <div class="clearfix"></div>
+               
             </form>
         </div>
     </div>

@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'login',      component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent  },
   { path: 'userlist',  component: UserListComponent },
-  { path: 'usercreation',  component:UsercreationComponent  },
+  { path: 'usercreation/:Id/:visibility',  component:UsercreationComponent  },
   { path: 'transferstatus',  component: TransferstatusComponent },
   { path: 'imagestatus/:Id',  component: ImagestatusComponent },
   

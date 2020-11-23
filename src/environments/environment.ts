@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiBaseURL:'https://autosyncdev.azurewebsites.net/api',
-  authKey:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxIiwiUm9sZUlkIjoiMSIsIm5iZiI6MTYwNTYxNjIxNSwiZXhwIjoxNjA1NjE2NTE1LCJpc3MiOiJBdXRvU3luY1Rva2VuU2VydmVyIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo2MzgvIn0.iIwrs0DuFT41N1PKhUnTwWhS1IMsjgmniCNtav_FWBQ",
+  authKey:"",
 };
 
 /*

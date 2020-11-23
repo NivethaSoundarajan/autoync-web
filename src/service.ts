@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { environment } from './environments/environment';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { AuthService } from './app/authservice.service'
+
 @Injectable()
 export class AutoSyncService {
   private readonly headers;
-  constructor(private http: HttpClient, private oauthService: OAuthService) {
+  constructor(private http: HttpClient, public authService : AuthService) {
     this.headers = new HttpHeaders({
-      "user-key" : environment.authKey
+      "user-key" : this.authService.getToken()
     });
   }
   
@@ -43,6 +44,12 @@ export class AutoSyncService {
 
   GetTransferHistoryDetails(id:string) {
     return this.http.post<any>(environment.apiBaseURL + '/Transfer/Detail?jobId='+id,null,{
+      headers: this.headers
+    }); 
+  }
+
+  GetUserDetails(id:Number) {
+    return this.http.post<any>(environment.apiBaseURL + '/User/GetUser?userId='+id,null,{
       headers: this.headers
     }); 
   }

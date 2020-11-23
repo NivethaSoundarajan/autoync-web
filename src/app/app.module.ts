@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FooterComponent } from './footer/footer.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ToastModule } from 'ng-uikit-pro-standard';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatFormFieldModule,
     MatInputModule,
     FlexLayoutModule,
+    ToastModule.forRoot(),
     OAuthModule.forRoot(),
     
   ],

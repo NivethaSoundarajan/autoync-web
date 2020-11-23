@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
 import { AutoSyncService } from './../../service';
+import { AuthService } from '../authservice.service';
+
 import { environment } from './../../environments/environment';
 
 @Component({
@@ -12,7 +14,7 @@ import { environment } from './../../environments/environment';
   providers: [AutoSyncService]
 })
 export class LoginComponent  {
-  constructor(public route:Router,private service: AutoSyncService){}
+  constructor(public route:Router,private service: AutoSyncService, public authService : AuthService){}
   loginForm: FormGroup;
   submitted = false;
   loading = false;
@@ -24,14 +26,16 @@ export class LoginComponent  {
   onSubmit(form : NgForm){
     var self= this;
     if(form.valid){
+      this.loading = true;
       let object ={Username:this.email.value,Password:this.password.value}
       this.service.Login(object)
       .subscribe((result) => { 
-        environment.authKey = result.headers.get('user-key');
-        this.route.navigate(["/dashboard"]);
+        this.authService.setToken(result.headers.get('user-key'));
+        self.loading = false;
+        self.route.navigate(["/dashboard"]);
       },
-      (err) => {self.isValid = false; },
-      () => { });
+      (err) => {self.isValid = false; self.loading = false},
+      () => {self.loading = false});
     }
     else
       this.isValid = false;
