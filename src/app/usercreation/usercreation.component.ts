@@ -78,6 +78,7 @@ export class UsercreationComponent implements OnInit {
         self.userForm.patchValue(data);
         self.userForm.patchValue({
           AutoSyncDays: (data.AutoSyncDays == null) ? null : (data.AutoSyncDays).split(","),
+          Username :data.Username,Name:data.Name,Password:data.Password
         });
 
       },
@@ -94,7 +95,6 @@ export class UsercreationComponent implements OnInit {
     if(this.userForm.valid){
     this.service.SaveUser(this.userForm.value)
       .subscribe((result) => { 
-        debugger;
         if(result.Status){
         self.toast.success('Success!', 'Saved Successfully!', { opacity: 1 });
         self.router.navigate(["/user-list"]);
