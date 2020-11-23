@@ -17,7 +17,7 @@ import { FormControl } from '@angular/forms';
 })
 export class TransferstatusComponent implements OnInit {
   dataSourceOne: MatTableDataSource<transHistory>;
-  displayedColumns: string[] = ['Id', 'JobUniqueId','Username','SupervisorName','TotalFileSize','SourceFilePath','Photo','Excel','Status','action'];
+  displayedColumns: string[] = ['Sno', 'JobUniqueId','Username','SupervisorName','TotalFileSize','SourceFilePath','Photo','Excel','Status','action'];
   @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
 
