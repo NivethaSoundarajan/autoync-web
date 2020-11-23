@@ -13,7 +13,7 @@ import { environment } from './../../environments/environment';
   styleUrls: ['./login.component.css'],
   providers: [AutoSyncService]
 })
-export class LoginComponent  {
+export class LoginComponent implements OnInit {
   constructor(public route:Router,private service: AutoSyncService, public authService : AuthService){}
   loginForm: FormGroup;
   submitted = false;
@@ -22,6 +22,11 @@ export class LoginComponent  {
 
   email = new FormControl('', [Validators.required, Validators.maxLength(20),Validators.minLength(10)]);
   password = new FormControl('', [Validators.required,Validators.maxLength(15),Validators.minLength(8)]);
+
+  ngOnInit(){
+  this.authService.setToken('');
+
+}
 
   onSubmit(form : NgForm){
     var self= this;

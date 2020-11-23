@@ -4,9 +4,9 @@
       <div class="col-md-9"></div>
       <div class="col-md-3 pull-right" >
         <button class="btn btn-action pull-right btn-create" mat-raised-button [routerLink]="['/usercreation',0,false]">Create User</button>
-        <div class="col-md-3">
-        <button mat-raised-button class="btn btn-action btn-export"  (click)="exportAsExcel()">Excel</button>
-      </div>
+        
+        <button mat-raised-button class="btn btn-action pull-right btn-export"  (click)="exportAsExcel()">Excel</button>
+     
       </div>
     </div>
     <div class="row" #TABLE>
@@ -83,5 +83,8 @@
       [pageSize]="10"
       [pageSizeOptions]="[5, 10, 25, 100]"
       ></mat-paginator>
+      <!-- <mat-progress-spinner value="100" mode="determinate">
+      </mat-progress-spinner>
+      <mat-progress-spinner mode="indeterminate"></mat-progress-spinner> -->
   </div>
 </div>

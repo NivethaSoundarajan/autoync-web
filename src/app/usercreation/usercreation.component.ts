@@ -95,11 +95,15 @@ export class UsercreationComponent implements OnInit {
     this.service.SaveUser(this.userForm.value)
       .subscribe((result) => { 
         debugger;
+        if(result.Status){
         self.toast.success('Success!', 'Saved Successfully!', { opacity: 1 });
         self.router.navigate(["/user-list"]);
+        }
+        else
+        this.toast.error('Error!',result.Message, { opacity: 1 })
       },
       (err) => {
-        this.toast.error('Error!', 'Something Went Wrong!', { opacity: 1 })
+        this.toast.error('Error!',err.error.Message, { opacity: 1 })
       },
       () => { });
     }
@@ -109,15 +113,15 @@ export class UsercreationComponent implements OnInit {
     const userDetails: FormModel<userCreation> ={
       Id:[0],
       RoleId :[0,Validators.min(1)],
-      Name:['',[Validators.required,Validators.maxLength(50)]],
+      Name:['',[Validators.maxLength(50)]],
       Username:['',[Validators.required,Validators.maxLength(50)]],
       Password:['',[Validators.required,Validators.maxLength(20),Validators.minLength(3)]],
-      FolderFilePath:['',[Validators.required,Validators.maxLength(150)]],
-      AutoSyncTime:['',Validators.required],
+      FolderFilePath:['',[Validators.maxLength(150)]],
+      AutoSyncTime:[''],
       DeviceId:[''],
-      SupervisorId:[,Validators.min(1)],
-      AutoSyncDays:['',Validators.required],
-      AutoDeleteInterval:[0,Validators.required]
+      SupervisorId:[0],
+      AutoSyncDays:[''],
+      AutoDeleteInterval:[0]
 
     }
     return this.form.group(userDetails);;
