@@ -4,9 +4,9 @@
         <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
             <div> 
                 <mat-form-field appearance="fill" class="input-field">
-                  <mat-label>UserName</mat-label>
-                  <input matInput [formControl]="email"  placeholder="User Name"  required>
-                  <mat-error class="error" *ngIf="email.invalid && email.dirty">Enter Valid EmailId</mat-error>
+                  <mat-label>User ID</mat-label>
+                  <input matInput [formControl]="email"  placeholder="User ID"  required>
+                  <mat-error class="error" *ngIf="email.invalid && email.dirty">Enter Valid UserId</mat-error>
                 </mat-form-field>
               </div>
               <div >

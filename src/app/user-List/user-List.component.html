@@ -4,12 +4,14 @@
       <div class="col-md-9"></div>
       <div class="col-md-3 pull-right" >
         <button class="btn btn-action pull-right btn-create" mat-raised-button [routerLink]="['/usercreation',0,false]">Create User</button>
-        <button mat-raised-button class="btn btn-action pull-right btn-export"  (click)="exportAsExcel()">Excel</button>
+        <div class="col-md-3">
+        <button mat-raised-button class="btn btn-action btn-export"  (click)="exportAsExcel()">Excel</button>
+      </div>
       </div>
     </div>
     <div class="row" #TABLE>
       <table mat-table [dataSource]="dataSource" #table matSort class="col-md-12">
-
+        
           <!-- S.No Column -->
               <ng-container matColumnDef="sno">
                 <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header>S No </th>
