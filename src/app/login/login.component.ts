@@ -40,11 +40,9 @@ export class LoginComponent implements OnInit {
         self.route.navigate(["/dashboard"]);
       },
       (err) => {self.isValid = false; self.loading = false},
-      () => {self.loading = false});
+      () => {self.loading = false});  
     }
     else
       this.isValid = false;
   }
 }
-
-    

@@ -14,6 +14,7 @@ import { AutoSyncService } from '../../service';
 export class ImagestatusComponent implements OnInit {
   dataSourceOne: MatTableDataSource<PeriodicElement>;
   displayedColumnsOne: string[] = ['sno', 'filename', 'size','status'];
+  Username:string;
   imageCount : Number;
   readCount: number;
   billCount:number;
@@ -31,7 +32,9 @@ export class ImagestatusComponent implements OnInit {
       if (params.get('Id')) {
         this.service.GetTransferHistoryDetails(params.get('Id'))
         .subscribe((result) => {
+          //console.log(result);
           this.dataSourceOne.data = result.Data;
+          this.Username= result.Data.Username;
           this.readCount =  result.Data.filter(x => x.FileName.toLowerCase().includes('reads')).length;
           this.imageCount =  result.Data.filter(x => x.FileName.toLowerCase().includes('.jpg')).length;
           this.billCount =  result.Data.filter(x => x.FileName.toLowerCase().includes('bills')).length;

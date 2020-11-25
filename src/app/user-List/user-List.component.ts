@@ -15,9 +15,16 @@ import {ToastService} from 'ng-uikit-pro-standard'
   providers: [AutoSyncService]
 })
 export class UserListComponent implements OnInit {
+  
+  @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
+  @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
+
+  
   constructor(public route:Router,private service: AutoSyncService,private toast: ToastService){}
   displayedColumns: string[] = ['sno','username','name','RoleName','SupervisorName','FolderFilePath','Deviceid','action'];
-  dataSource = new MatTableDataSource<viewValues>();  
+  dataSource = new MatTableDataSource<viewValues>();
+  jobidList:[]; 
+  userList = []; 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('TABLE') table: ElementRef;
@@ -28,15 +35,18 @@ export class UserListComponent implements OnInit {
    this.dataSource.sort = this.sort;
    this.service.GetUserList()
       .subscribe((result) => { 
-        self.dataSource= result.Data;
+        self.dataSource= self.userList = result.Data;
       },
       (err) => {
         this.toast.error('Error!', 'Something Went Wrong!', { opacity: 1 });
       },
       () => { });
  }
+      
 
- deleteUser(data){
+
+ deleteUser(id){
+   var data = this.userList.find(x => x.Id == id)
    data.IsActive = false;
   this.service.SaveUser(data)
       .subscribe((result) => { 

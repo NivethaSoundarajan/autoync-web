@@ -1,6 +1,7 @@
 export interface transHistory {
     Id: number;
     Username:string;
+    UserId: number;
     JobUniqueId: string,
     SourceFilePath: string,
     DestinationFilePath: string,
@@ -8,16 +9,17 @@ export interface transHistory {
     Status: string,
     Reason: string,
     SyncType: string,
+    CreatedDate: number,
     Excel: {
       Total: number,
       InProgress: number,
       Completed: number
     },
-    // Images: {
-    //   Total: number,
-    //   InProgress: number,
-    //   Completed: number
-    // }
+    Images: {
+      Total: number,
+      InProgress: number,
+      Completed: number
+    }
 
    }
    
