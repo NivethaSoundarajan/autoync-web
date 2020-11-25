@@ -24,6 +24,7 @@ export class UsercreationComponent implements OnInit {
   userForm:FormGroup;
   isVisible:Boolean = true;
   id:number;
+
   constructor(private router: Router, private route: ActivatedRoute,private service: AutoSyncService,private form: FormBuilder,private toast: ToastService){}
   
   ngOnInit(): void {
@@ -122,7 +123,7 @@ export class UsercreationComponent implements OnInit {
       DeviceId:[''],
       SupervisorId:[0],
       AutoSyncDays:[''],
-      AutoDeleteInterval:[0]
+      AutoDeleteInterval:[0,[Validators.required,Validators.maxLength(20),Validators.minLength(1)]]
 
     }
     return this.form.group(userDetails);;

@@ -19,6 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ToastModule } from 'ng-uikit-pro-standard';
 // import {MatProgressSpinnerModule} from '@angular/material'
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { ToastModule } from 'ng-uikit-pro-standard';
     FlexLayoutModule,
     ToastModule.forRoot(),
     OAuthModule.forRoot(),
-    // MatProgressSpinnerModule
+    NgxMaterialTimepickerModule,
+    MatProgressSpinnerModule
     
   ],
   providers: [],

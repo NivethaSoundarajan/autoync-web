@@ -6,7 +6,9 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { viewValues } from './modal';
 import { AutoSyncService } from '../../service';
 import * as XLSX from 'xlsx';
-import {ToastService} from 'ng-uikit-pro-standard'
+import {ToastService} from 'ng-uikit-pro-standard';
+
+
 
 @Component({
   selector: 'app-user-List',
@@ -18,7 +20,7 @@ export class UserListComponent implements OnInit {
   
   @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
-
+  isLoading:boolean=false;
   
   constructor(public route:Router,private service: AutoSyncService,private toast: ToastService){}
   displayedColumns: string[] = ['sno','username','name','RoleName','SupervisorName','FolderFilePath','Deviceid','action'];
@@ -33,12 +35,15 @@ export class UserListComponent implements OnInit {
    var self = this;
    this.dataSource.paginator = this.paginator;
    this.dataSource.sort = this.sort;
+   this.isLoading=true;
    this.service.GetUserList()
       .subscribe((result) => { 
         self.dataSource= self.userList = result.Data;
+        this.isLoading=false;
       },
       (err) => {
         this.toast.error('Error!', 'Something Went Wrong!', { opacity: 1 });
+        this.isLoading=false;
       },
       () => { });
  }

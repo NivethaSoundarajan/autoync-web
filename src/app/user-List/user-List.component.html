@@ -87,9 +87,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </div>
-    <mat-paginator #TableOnePaginator="matPaginator" [pageSize]="10" ></mat-paginator>
-      <!-- <mat-progress-spinner value="100" mode="determinate">
-      </mat-progress-spinner>
-      <mat-progress-spinner mode="indeterminate"></mat-progress-spinner> -->
+    <mat-paginator #TableOnePaginator="matPaginator" [pageSize]="10" ></mat-paginator>    
+      <mat-spinner *ngIf="isLoading" layout-align="center center" color="accent"></mat-spinner>    
   </div>
 </div>

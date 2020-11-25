@@ -12,8 +12,8 @@ import { AutoSyncService } from '../../service';
   providers:[AutoSyncService]
 })
 export class ImagestatusComponent implements OnInit {
-  dataSourceOne: MatTableDataSource<PeriodicElement>;
-  displayedColumnsOne: string[] = ['sno', 'filename', 'size','status'];
+  dataSourceOne: MatTableDataSource<transHistory>;
+  displayedColumnsOne: string[] = ['sno', 'FileName', 'FileSize','Status'];
   Username:string;
   imageCount : Number;
   readCount: number;
@@ -32,7 +32,6 @@ export class ImagestatusComponent implements OnInit {
       if (params.get('Id')) {
         this.service.GetTransferHistoryDetails(params.get('Id'))
         .subscribe((result) => {
-          //console.log(result);
           this.dataSourceOne.data = result.Data;
           this.Username= result.Data.Username;
           this.readCount =  result.Data.filter(x => x.FileName.toLowerCase().includes('reads')).length;
@@ -52,11 +51,11 @@ export class ImagestatusComponent implements OnInit {
 
 }
 
-interface PeriodicElement {
+interface transHistory {
   sno: string;
-  filename: string;
-  size: string;
-  status:string;
+  FileName: string;
+  FileSize: string;
+  Status:string;
   
 }
 

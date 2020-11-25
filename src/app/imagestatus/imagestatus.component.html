@@ -22,15 +22,15 @@
           <th class="tab-head" mat-header-cell *matHeaderCellDef>S.No</th>
           <td mat-cell *matCellDef="let i = index"> {{i + 1 +(TableOnePaginator.pageIndex * TableOnePaginator.pageSize)}}  </td>
         </ng-container>
-        <ng-container matColumnDef="filename">
+        <ng-container matColumnDef="FileName">
           <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header>File Name</th>
           <td mat-cell *matCellDef="let element">{{ element.FileName}}</td>
         </ng-container>
-        <ng-container matColumnDef="size">
+        <ng-container matColumnDef="FileSize">
           <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header>File Size</th>
           <td mat-cell *matCellDef="let element">{{ element.FileSize }}</td>
         </ng-container>
-        <ng-container matColumnDef="status">
+        <ng-container matColumnDef="Status">
           <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
           <td mat-cell *matCellDef="let element">{{ element.Status}}</td>
         </ng-container>
