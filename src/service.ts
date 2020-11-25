@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { environment } from './environments/environment';
-import { AuthService } from './app/authservice.service'
+import { AuthService } from './app/services/authservice.service'
 
 @Injectable()
 export class AutoSyncService {

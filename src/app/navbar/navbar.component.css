@@ -41,3 +41,17 @@
     font-size: 1.400rem !important;
     font-weight: 400 !important;
 }
+.dropdown{
+  cursor: pointer;
+}
+.dropdown-menu-right{
+  border-radius: 15px;
+  margin-top: -7px;
+}
+.dropdown ul:hover, .dropdown-menu a:active{
+  background-color:#0e7bb9 !important;
+  color: white;
+}
+.dropdown ul{
+  padding: 2px!important;
+}
