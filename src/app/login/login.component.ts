@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
 import { AutoSyncService } from './../../service';
-import { AuthService } from '../authservice.service';
+import { AuthService } from '../services/authservice.service';
 
 import { environment } from './../../environments/environment';
 
@@ -24,8 +24,7 @@ export class LoginComponent implements OnInit {
   password = new FormControl('', [Validators.required,Validators.maxLength(15),Validators.minLength(8)]);
 
   ngOnInit(){
-  this.authService.setToken('');
-
+    this.authService.logout();
 }
 
   onSubmit(form : NgForm){
