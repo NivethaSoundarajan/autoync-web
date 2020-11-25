@@ -2,11 +2,20 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-9"></div>
+      <div class="col-md-4 pull-right">
+        <mat-form-field >
+          <mat-label>Job Title</mat-label>
+          <mat-select formControlName=" jobid" name=" jobid"> 
+            <mat-option *ngFor="let  jobid of  jobidList" [value]=" jobid.Key">
+              {{ jobid.Value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
       <div class="col-md-3.5 pull-right" >
         <button class="btn btn-action pull-right btn-create" mat-raised-button [routerLink]="['/usercreation',0,false]">Create User</button>
-        
         <button mat-raised-button class="btn btn-action pull-right btn-export"  (click)="exportAsExcel()">Excel</button>
-     
+        
       </div>
     </div>
     <div class="row" #TABLE>
@@ -77,9 +86,9 @@
                     <button mat-icon-button color="blue" [routerLink]="['/usercreation',element.Id,false]">
                             <mat-icon>edit</mat-icon>
                     </button>
-                      <button mat-icon-button color="blue" (click)="deleteUser(element)">
+                      <!-- <button mat-icon-button color="blue" (click)="deleteUser(element.Id)">
                         <mat-icon>delete</mat-icon>
-                    </button>
+                    </button> -->
                     <!-- <button mat-icon-button color="blue" [routerLink]="['/usercreation']">
                       <mat-icon>person</mat-icon>
                     </button> -->
@@ -90,11 +99,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </div>
-    <mat-paginator
-      #TableOnePaginator="matPaginator"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      ></mat-paginator>
+    <mat-paginator #TableOnePaginator="matPaginator" [pageSize]="10" ></mat-paginator>
       <!-- <mat-progress-spinner value="100" mode="determinate">
       </mat-progress-spinner>
       <mat-progress-spinner mode="indeterminate"></mat-progress-spinner> -->

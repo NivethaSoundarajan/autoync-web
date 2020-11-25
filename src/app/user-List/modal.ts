@@ -9,6 +9,7 @@ export interface viewValues {
     deviceid:number;
     action:string;
     name:string;
+    SupervisorId:number;
 }
 
 

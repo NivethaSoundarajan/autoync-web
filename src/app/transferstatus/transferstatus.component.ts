@@ -1,4 +1,3 @@
-
 import {AfterViewInit,OnInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
@@ -17,7 +16,7 @@ import { FormControl } from '@angular/forms';
 })
 export class TransferstatusComponent implements OnInit {
   dataSourceOne: MatTableDataSource<transHistory>;
-  displayedColumns: string[] = ['Sno', 'JobUniqueId','Username','SupervisorName','TotalFileSize','SourceFilePath','Photo','Excel','Status','action'];
+  displayedColumns: string[] = ['Sno','CreatedDate','SyncType','JobUniqueId','Username','SupervisorName','TotalFileSize','SourceFilePath','Photo','Excel','Status','action'];
   @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
 
@@ -28,6 +27,7 @@ export class TransferstatusComponent implements OnInit {
    var self=this;
    this.service.GetTransferHistoryList()
    .subscribe((result) => {
+    console.log(result);
      if(result != null && result.Status)
      this.dataSourceOne.data = result.Data;
    },
