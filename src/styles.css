@@ -11,7 +11,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding-left: 0  !important; 
 }
 .page-container{
-    height: 650px;
+    height: 580px;
     background: white;
     margin-left: 13px;
     margin-top: 68px;
@@ -30,7 +30,7 @@ button[type=submit], .btn-create{
 }
 
 tr.mat-row{
-    height: 44px !important;
+    height: 40px !important;
 }
 
 button
@@ -41,4 +41,20 @@ button
 }
 .back-btn{
     background-color: #fd3131 !important;
+}
+.list-filter{
+    height:60px;
+}
+.mat-paginator{
+    height: 17px;
+}
+.p-10{
+    padding-left: 10px !important;
+}
+tr.mat-header-row {
+    height: 46px !important;
+}
+
+button, .pointer{
+    cursor: pointer !important;
 }

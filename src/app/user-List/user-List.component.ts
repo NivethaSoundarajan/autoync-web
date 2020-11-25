@@ -3,7 +3,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import { ActivatedRoute,Router } from '@angular/router';
-import { viewValues } from './modal';
+import { userCreation } from './../usercreation/modal';
 import { AutoSyncService } from '../../service';
 import * as XLSX from 'xlsx';
 import {ToastService} from 'ng-uikit-pro-standard'
@@ -15,50 +15,59 @@ import {ToastService} from 'ng-uikit-pro-standard'
   providers: [AutoSyncService]
 })
 export class UserListComponent implements OnInit {
-  
   @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
-
-  
   constructor(public route:Router,private service: AutoSyncService,private toast: ToastService){}
   displayedColumns: string[] = ['sno','username','name','RoleName','SupervisorName','FolderFilePath','Deviceid','Status','action'];
-  dataSource = new MatTableDataSource<viewValues>();
-  jobidList:[]; 
-  userList = []; 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  selectDataSource = new MatTableDataSource<userCreation>();
+  dataSource = new MatTableDataSource<userCreation>();
+  roleList:any;
+  roleId:number;
+
   @ViewChild('TABLE') table: ElementRef;
 
  ngOnInit():void {
    var self = this;
-   this.dataSource.paginator = this.paginator;
-   this.dataSource.sort = this.sort;
-   this.service.GetUserList()
-      .subscribe((result) => { 
-        self.dataSource= self.userList = result.Data;
-      },
-      (err) => {
-        this.toast.error('Error!', 'Something Went Wrong!', { opacity: 1 });
-      },
-      () => { });
+   this.getMasterData();
+    this.service.GetUserList()
+        .subscribe((result) => { 
+          self.dataSource.data= self.selectDataSource.data= result.Data;
+        },
+        (err) => {
+           self.toast.error('Something Went Wrong...!', 'Error!', { opacity: 1 });
+        },
+        () => { });
+      this.selectDataSource.paginator = this.tableOnePaginator;
+      this.selectDataSource.sort = this.tableOneSort;
  }
       
-
-
- deleteUser(id){
-   var data = this.userList.find(x => x.Id == id)
+ deleteUser(data){
+   var self = this;
    data.IsActive = false;
   this.service.SaveUser(data)
       .subscribe((result) => { 
-        this.toast.success('Success!', 'Deleted Successfully!', { opacity: 1 });
+        self.toast.success( 'Deleted Successfully!','Success!', { opacity: 1 });
       },
       (err) => {
-        this.toast.error('Error!', 'Something Went Wrong!', { opacity: 1 });
+         self.toast.error('Something Went Wrong...!', 'Error!', { opacity: 1 });
       },
       () => { });
  }
- exportAsExcel()
- {
+
+ getMasterData(){
+  var self =this;
+  this.service.getMasterData()
+    .subscribe((result) => { 
+      self.roleList = result.Data.Roles;
+      self.roleList[0].Value = 'All';
+    },  
+    (err) => {
+       self.toast.error('Something Went Wrong...!', 'Error!', { opacity: 1 });
+    },
+    () => { });
+}
+
+ exportAsExcel(){
    const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);//converts a DOM TABLE element to a worksheet
    ws['!cols'][7] = { hidden: true };
    const wb: XLSX.WorkBook = XLSX.utils.book_new();
@@ -67,7 +76,12 @@ export class UserListComponent implements OnInit {
    XLSX.writeFile(wb, 'UserList_'+new Date()+'.xlsx');
 
  }
+
+ applyFilterOne(filterValue: string) {
+  this.selectDataSource.filter = filterValue.trim().toLowerCase();
+ }
+ 
+ roleChange(){
+    this.selectDataSource.data = (this.roleId == 0)? this.dataSource.data : this.dataSource.data.filter(x => (x.RoleId == this.roleId));
+ }
 }
-
-  
-

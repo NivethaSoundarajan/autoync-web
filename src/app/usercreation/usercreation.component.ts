@@ -24,6 +24,7 @@ export class UsercreationComponent implements OnInit {
   userForm:FormGroup;
   isVisible:Boolean = true;
   id:number;
+  label:string;
   constructor(private router: Router, private route: ActivatedRoute,private service: AutoSyncService,private form: FormBuilder,private toast: ToastService){}
   
   ngOnInit(): void {
@@ -34,9 +35,12 @@ export class UsercreationComponent implements OnInit {
         self.isVisible = params.get('visibility') == 'true' ? true : false ;
         self.getUserDetails(Number(params.get('Id')));
         self.id =Number(params.get('Id'));
+        self.label = 'Update';
       }
       else{
         self.isVisible = params.get('visibility') == 'true' ? true : false ;
+        self.label = 'Save';
+        
       }
     });
     this.userForm = this.inputCreation();
@@ -65,7 +69,7 @@ export class UsercreationComponent implements OnInit {
         self.roleList = result.Data.Roles;
       },  
       (err) => {
-        self.toast.error('Error!', 'Something Went Wrong!', { opacity: 1 });
+         self.toast.error('Something Went Wrong...!', 'Error!', { opacity: 1 });
       },
       () => { });
   }
@@ -84,7 +88,7 @@ export class UsercreationComponent implements OnInit {
 
       },
       (err) => {
-        self.toast.error('Error!', 'Something Went Wrong!', { opacity: 1 });
+         self.toast.error('Something Went Wrong...!', 'Error!', { opacity: 1 });
       },
       () => { });
   }
@@ -92,12 +96,11 @@ export class UsercreationComponent implements OnInit {
   userSave(){
     var self = this;
     this.userForm.value.AutoSyncDays = this.userForm.value.AutoSyncDays.toString();
-    console.log(this.userForm);
     if(this.userForm.valid){
     this.service.SaveUser(this.userForm.value)
       .subscribe((result) => { 
         if(result.Status){
-        self.toast.success('Success!', 'Saved Successfully!', { opacity: 1 });
+        self.toast.success( 'Saved Successfully!','Success!', { opacity: 1 });
         self.router.navigate(["/user-list"]);
         }
         else
@@ -122,12 +125,10 @@ export class UsercreationComponent implements OnInit {
       DeviceId:[''],
       SupervisorId:[0],
       AutoSyncDays:[''],
-      AutoDeleteInterval:[0]
-
+      AutoDeleteInterval:[0],
+      IsActive:[]
     }
     return this.form.group(userDetails);;
   }
   
-
-
 }

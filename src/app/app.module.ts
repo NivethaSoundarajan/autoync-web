@@ -18,6 +18,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ToastModule } from 'ng-uikit-pro-standard';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 // import {MatProgressSpinnerModule} from '@angular/material'
 
 @NgModule({
@@ -48,6 +49,7 @@ import { ToastModule } from 'ng-uikit-pro-standard';
     FlexLayoutModule,
     ToastModule.forRoot(),
     OAuthModule.forRoot(),
+    NgxMaterialTimepickerModule
     // MatProgressSpinnerModule
     
   ],

@@ -1,8 +1,8 @@
 
 export interface viewValues {
-    sno:number;
-    username:string;
-    password:string;
+    Id:number;
+    Username:string;
+    Name:string;
     jobid:number;
     supervisor:string;
     folderpath:string;

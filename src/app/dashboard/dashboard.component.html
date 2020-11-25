@@ -24,59 +24,45 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header card-header card-header-icon ">
+                    <div class="card-header card-header card-header-icon pointer" (click)=navigateToList()>
                         <div class="card-icon lightcoral">
                             <i class="material-icons">people_outline</i>
                         </div>
                         <p class="card-category"><b>Technicians</b></p>
-                        <h3 class="card-title">1540
+                        <h3 class="card-title">{{techniciansCount}}
                            
                         </h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">local_offer</i> Hint goes here
-                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header card-header card-header-icon">
+                <div class="card-header card-header card-header-icon pointer" (click)=navigateToList()>
                         <div class="card-icon lightcoral">
                             <i class="material-icons">store</i>
                         </div>
                         <p class="card-category"><b>Quality Check Users</b></p>
-                        <h3 class="card-title">245</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">info</i> Hint goes here
-                        </div>
+                        <h3 class="card-title">{{qualityCheckCount}}</h3>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header card-header card-header-icon">
+                    <div class="card-header card-header card-header-icon pointer" (click)=navigateToList()> 
                         <div class="card-icon lightcoral">
                             <i class="material-icons">people</i>
                         </div>
                         <p class="card-category"><b>Admins</b></p>
-                        <h3 class="card-title">3</h3>
+                        <h3 class="card-title">{{adminCount}}</h3>
                     </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">local_offer</i> Hint goes here
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
          
             </div>
         </div>
         
-        <div class="chart">
+        <!-- <div class="chart">
             <canvas baseChart
                     [data]="pieChartData"
                     [labels]="pieChartLabels"
@@ -84,5 +70,5 @@
                     (chartHover)="chartHovered($event)"
                     (chartClick)="chartClicked($event)">
                 </canvas>
-          </div>
+          </div> -->
 </div>
