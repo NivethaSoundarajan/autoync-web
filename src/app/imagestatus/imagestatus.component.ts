@@ -31,10 +31,10 @@ export class ImagestatusComponent implements OnInit {
       if (params.get('Id')) {
         this.service.GetTransferHistoryDetails(params.get('Id'))
         .subscribe((result) => {
-          this.dataSourceOne.data = result.Data;
-          this.readCount =  result.Data.filter(x => x.FileName.toLowerCase().includes('reads')).length;
-          this.imageCount =  result.Data.filter(x => x.FileName.toLowerCase().includes('.jpg')).length;
-          this.billCount =  result.Data.filter(x => x.FileName.toLowerCase().includes('bills')).length;
+          this.dataSourceOne.data = result.Data.JobDetails;
+          this.readCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('reads')).length;
+          this.imageCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('.jpg')).length;
+          this.billCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('bills')).length;
         },
    (err) => {},
    () => { });

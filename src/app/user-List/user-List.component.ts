@@ -16,7 +16,7 @@ import {ToastService} from 'ng-uikit-pro-standard'
 })
 export class UserListComponent implements OnInit {
   constructor(public route:Router,private service: AutoSyncService,private toast: ToastService){}
-  displayedColumns: string[] = ['sno','username','name','RoleName','SupervisorName','FolderFilePath','Deviceid','action'];
+  displayedColumns: string[] = ['sno','username','name','RoleName','SupervisorName','FolderFilePath','Deviceid','Status','action'];
   dataSource = new MatTableDataSource<viewValues>();  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
