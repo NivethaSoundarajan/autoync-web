@@ -11,4 +11,6 @@ export class userCreation{
      AutoSyncDays:string;
      AutoDeleteInterval:number;
      IsActive:Boolean;
+     SupervisorName:String;
+     RoleName:String;
 }

@@ -18,11 +18,11 @@
       </div>
       <div class="col-md-4"></div>
       <div class="col-md-4 float-right" >
-        <button mat-raised-button type="button" class="btn btn-action pull-right btn-create"  [routerLink]="['/usercreation',0,false]">Create User</button>
+        <button mat-raised-button type="button" class="btn btn-action pull-right  btn-create"  [routerLink]="['/usercreation',0,false]">Create User</button>
         <button mat-raised-button class="btn btn-action pull-right btn-export"  (click)="exportAsExcel()">Excel</button>
       </div>
     </div>
-    <div class="row" #TABLE>
+    <div class="row" style="background-color: #fbfbfb" #TABLE>
       <table  *ngIf="!isLoading" mat-table [dataSource]="selectDataSource" #table matSort class="col-md-12">
         
           <!-- S.No Column -->
@@ -74,7 +74,7 @@
                     <mat-icon>person</mat-icon>
                 </button>
                 <button mat-icon-button color="blue" [hidden]="element.IsActive">
-                        <mat-icon>person_off</mat-icon>
+                        <mat-icon>person_add_disabled</mat-icon>
                 </button>
               </td>
             </ng-container>

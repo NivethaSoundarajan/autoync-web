@@ -58,7 +58,6 @@ export class UsercreationComponent implements OnInit {
         Username:"",
         Password:""
      });
-     debugger;
     });
   }
 
@@ -128,7 +127,9 @@ export class UsercreationComponent implements OnInit {
       SupervisorId:[0],
       AutoSyncDays:[''],
       AutoDeleteInterval:[0],
-      IsActive:[true]
+      IsActive:[true],
+      SupervisorName:[''],
+      RoleName:['']
     }
     return this.form.group(userDetails);;
   }
