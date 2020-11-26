@@ -23,11 +23,12 @@ export class NavbarComponent implements OnInit {
 
     ngOnInit(){
       this.listTitles = [
+        {route:'login',title:''},
           {route:'dashboard',title:'Dashboard'},
           {route:'userlist',title:'User List'},
           {route:'usercreation',title:'Create User',updateTitle:'Update User'},
           {route:'transferstatus',title:'Transfer Status'},
-          {route:'imagestatus',title:'Image Statua',updateTitle:'Image Stauts'},
+          {route:'imagestatus',title:'Image Status',updateTitle:'Image Status'},
 
       ];
       const navbar: HTMLElement = this.element.nativeElement;

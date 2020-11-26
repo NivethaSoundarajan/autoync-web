@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
   
 })
 export class AppComponent {
-  title = 'newauto-sync';
+  title = 'Auto Sync';
   public isAuth: boolean = false;
   public isAuth1: boolean = true;
 
