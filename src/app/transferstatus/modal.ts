@@ -10,12 +10,13 @@ export interface transHistory {
     Reason: string,
     SyncType: string,
     CreatedDate: Date,
+    SupervisorName:String,
     Excel: {
       Total: number,
       InProgress: number,
       Completed: number
     },
-    Images: {
+    Photos: {
       Total: number,
       InProgress: number,
       Completed: number
