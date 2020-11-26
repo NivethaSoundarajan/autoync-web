@@ -22,7 +22,8 @@ export class DashboardComponent implements OnInit  {
   techniciansCount : Number;
   qualityCheckCount:Number;
   adminCount:Number;
-
+  supervisorCount:Number;
+  isLoading:boolean=false;
   // events
   public chartClicked(e:any):void {
     
@@ -35,14 +36,18 @@ export class DashboardComponent implements OnInit  {
   ngOnInit()
   {
     var self = this;
+    this.isLoading=true;
     this.service.GetUserList()
     .subscribe((result) => { 
       var data = result.Data;
       this.techniciansCount = data.filter(x => x.RoleId == 5).length;
       this.qualityCheckCount = data.filter(x => x.RoleId == 4).length;
       this.adminCount = data.filter(x => x.RoleId == 1 || x.RoleId == 2).length;
+      this.supervisorCount=data.filter(x => x.RoleId == 3).length;
+      this.isLoading=false;
     },
     (err) => {
+      this.isLoading=false;
       self.toast.error('Something Went Wrong...!', 'Error!', { opacity: 1 });
     },
     () => { });

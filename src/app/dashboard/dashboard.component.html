@@ -1,26 +1,6 @@
-<div class="main-content page-container">
+<div class="main-content page-container" style="background-color: #fbfbfb;">
     <div class="container-fluid">
-        <div class="row"><div class="col-lg-6"></div>
-        <!-- <div class="col-lg-3">          
-            <mat-form-field appearance="fill">
-                <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field></div> -->
-        <!-- <div class="col-lg-3"> <div class="navbar-collapse justify-content-end" id="navigation">
-            <form class="navbar-form">
-                <div class="input-group no-border form-bg-color">
-                    <input style="height:52px; padding-left:10px" type="text" value="" class="form-control" placeholder="Search...">
-                    <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
-                        <i class="material-icons">search</i>
-                        <div class="ripple-container"></div>
-                    </button>
-                </div>
-            </form>        
-        </div> -->
-    <!-- </div> -->
-    </div>       
+        <div *ngIf="!isLoading">
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
@@ -28,20 +8,20 @@
                         <div class="card-icon lightcoral">
                             <i class="material-icons">people_outline</i>
                         </div>
-                        <p class="card-category"><b>Technicians</b></p>
+                        <p class="card-category">Technicians</p>
                         <h3 class="card-title">{{techniciansCount}}
                            
                         </h3>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="card card-stats">
                 <div class="card-header card-header card-header-icon pointer" (click)=navigateToList()>
                         <div class="card-icon lightcoral">
                             <i class="material-icons">store</i>
                         </div>
-                        <p class="card-category"><b>Quality Check Users</b></p>
+                        <p class="card-category">Quality Check Users</p>
                         <h3 class="card-title">{{qualityCheckCount}}</h3>
                     </div>
                 </div>
@@ -52,15 +32,58 @@
                         <div class="card-icon lightcoral">
                             <i class="material-icons">people</i>
                         </div>
-                        <p class="card-category"><b>Admins</b></p>
+                        <p class="card-category">Admins</p>
                         <h3 class="card-title">{{adminCount}}</h3>
-                    </div>
-                   
+                    </div>                   
                 </div>
             </div>
-         
+        </div>
+        <div class="row">
+       
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                <div class="card-header card-header card-header-icon pointer" (click)=navigateToList()>
+                        <div class="card-icon lightcoral">
+                            <i class="material-icons">people</i>
+                        </div>
+                        <p class="card-category">Supervisors</p>
+                        <h3 class="card-title">{{supervisorCount}}</h3>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
+            
+        
+        <div style="width:450px;margin:8% auto;" *ngIf="isLoading">
+                <img src="../../assets//img//temp-loader.gif" alt="Please wait..." />
+            </div>
+        <!-- <div class="row"><div class="col-lg-6"></div>
+
+        <div class="col-lg-3">          
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field></div>
+        <div class="col-lg-3"> <div class="navbar-collapse justify-content-end" id="navigation">
+            <form class="navbar-form">
+                <div class="input-group no-border form-bg-color">
+                    <input style="height:52px; padding-left:10px" type="text" value="" class="form-control" placeholder="Search...">
+                    <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+                        <i class="material-icons">search</i>
+                        <div class="ripple-container"></div>
+                    </button>
+                </div>
+            </form>        
+        </div>
+    </div> -->
+    </div>       
+    
+
+
+    
         
         <!-- <div class="chart">
             <canvas baseChart
@@ -71,4 +94,3 @@
                     (chartClick)="chartClicked($event)">
                 </canvas>
           </div> -->
-</div>
