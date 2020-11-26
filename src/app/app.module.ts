@@ -20,6 +20,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ToastModule } from 'ng-uikit-pro-standard';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 // import {MatProgressSpinnerModule} from '@angular/material'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -49,8 +50,8 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     FlexLayoutModule,
     ToastModule.forRoot(),
     OAuthModule.forRoot(),
-    NgxMaterialTimepickerModule
-    // MatProgressSpinnerModule
+    NgxMaterialTimepickerModule,
+    MatProgressSpinnerModule
     
   ],
   providers: [],

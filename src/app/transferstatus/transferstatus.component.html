@@ -23,8 +23,8 @@
           <button mat-raised-button class="btn btn-action pull-right btn-export"  (click)="exportAsExcel()">Excel</button>
         </div>
     </div>       
-    <div class="row">
-      <table mat-table matSort [dataSource]="selectedDataSource"cx #TableOneSort="matSort" class="col-md-12" >
+    <div class="row" style="background-color: #fbfbfb">
+      <table  *ngIf="!isLoading" mat-table matSort [dataSource]="selectedDataSource"cx #TableOneSort="matSort" class="col-md-12" >
           <!-- S.No Column -->
           <ng-container matColumnDef="Sno">
             <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header>S.No </th>
@@ -103,6 +103,9 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+      <div style="width:450px;margin:8% auto;" *ngIf="isLoading">
+        <img src="../../assets//img//temp-loader.gif" alt="Please wait..." />
+    </div>
     </div>
     <mat-paginator #TableOnePaginator="matPaginator" [pageSize]="10" ></mat-paginator>
   </div>

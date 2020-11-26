@@ -84,6 +84,7 @@ export class UsercreationComponent implements OnInit {
           AutoSyncDays: (data.AutoSyncDays == null) ? null : (data.AutoSyncDays).split(","),
           Username :data.Username,Name:data.Name,Password:data.Password,
           SupervisorId:data.SupervisorId,
+          DeviceId:data.DeviceId
         });
 
       },

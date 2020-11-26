@@ -6,7 +6,9 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { userCreation } from './../usercreation/modal';
 import { AutoSyncService } from '../../service';
 import * as XLSX from 'xlsx';
-import {ToastService} from 'ng-uikit-pro-standard'
+import {ToastService} from 'ng-uikit-pro-standard';
+
+
 
 @Component({
   selector: 'app-user-List',
@@ -23,17 +25,21 @@ export class UserListComponent implements OnInit {
   dataSource = new MatTableDataSource<userCreation>();
   roleList:any;
   roleId:number;
+  isLoading:boolean=false;
 
   @ViewChild('TABLE') table: ElementRef;
 
  ngOnInit():void {
    var self = this;
+   this.isLoading=true;
    this.getMasterData();
     this.service.GetUserList()
         .subscribe((result) => { 
-          self.dataSource.data= self.selectDataSource.data = result.Data;
+          self.dataSource.data= self.selectDataSource.data= result.Data;
+          this.isLoading=false;
         },
         (err) => {
+          this.isLoading=false;
            self.toast.error('Something Went Wrong...!', 'Error!', { opacity: 1 });
         },
         () => { });

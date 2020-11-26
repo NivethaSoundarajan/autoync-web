@@ -6,8 +6,8 @@ import {MatSort} from '@angular/material/sort';
 import { transHistory } from './modal';
 import { AutoSyncService } from '../../service';
 import { FormControl } from '@angular/forms';
+import {ToastService} from 'ng-uikit-pro-standard';
 import * as XLSX from 'xlsx';
-
 
 @Component({
   selector: 'app-transferstatus',
@@ -22,6 +22,7 @@ export class TransferstatusComponent implements OnInit {
   @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
   datepicker = new Date();
+  isLoading:boolean=false;
 
   constructor(private router: Router, private route: ActivatedRoute,private service: AutoSyncService) {
     this.dataSourceOne=new MatTableDataSource; 
@@ -29,13 +30,15 @@ export class TransferstatusComponent implements OnInit {
   }
   ngOnInit() {
    var self=this;
+   this.isLoading=true;
    this.service.GetTransferHistoryList()
    .subscribe((result) => {
      if(result != null && result.Status)
       self.dataSourceOne.data = result.Data;
       self.selectedDataSource.data = result.Data;
+      this.isLoading=false;
    },
-   (err) => {},
+   (err) => {this.isLoading=false;},
    () => { });
    this.selectedDataSource.paginator = this.tableOnePaginator;
    this.selectedDataSource.sort = this.tableOneSort;

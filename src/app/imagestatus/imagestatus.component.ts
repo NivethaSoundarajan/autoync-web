@@ -12,9 +12,9 @@ import { AutoSyncService } from '../../service';
   providers:[AutoSyncService]
 })
 export class ImagestatusComponent implements OnInit {
-  dataSourceOne: MatTableDataSource<PeriodicElement>;
-  displayedColumnsOne: string[] = ['sno', 'filename', 'size','status'];
-  Username:string;
+  dataSourceOne: MatTableDataSource<transHistory>;
+  displayedColumnsOne: string[] = ['sno', 'FileName', 'FileSize','Status'];
+  trnasferId:String;
   imageCount : Number;
   readCount: number;
   billCount:number;
@@ -33,7 +33,7 @@ export class ImagestatusComponent implements OnInit {
         this.service.GetTransferHistoryDetails(params.get('Id'))
         .subscribe((result) => {
           this.dataSourceOne.data = result.Data.JobDetails;
-          this.Username= result.Data.Username;
+          this.trnasferId= result.Data.JobId;
           this.readCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('reads')).length;
           this.imageCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('.jpg')).length;
           this.billCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('bills')).length;
@@ -51,21 +51,15 @@ export class ImagestatusComponent implements OnInit {
 
 }
 
-interface PeriodicElement {
+interface transHistory {
   sno: string;
-  filename: string;
-  size: string;
-  status:string;
+  FileName: string;
+  FileSize: string;
+  Status:string;
   
 }
 
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {sno: '1', filename: 'Image1', size:'2MB',status:'completed'},
-//   {sno: '2', filename: 'Image2', size:'2MB',status:'completed'},
-//   {sno: '3', filename: 'Image3', size:'2MB',status:'completed'},
-//   {sno: '4', filename: 'Image4', size:'2MB',status:'completed'},
-//   {sno: '5', filename: 'Image5', size:'2MB',status:'completed'},
-// ];
+
 
 
 

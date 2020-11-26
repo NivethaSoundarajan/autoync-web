@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
   loading = false;
   isValid = true;
 
-  email = new FormControl('', [Validators.required, Validators.maxLength(20),Validators.minLength(10)]);
-  password = new FormControl('', [Validators.required,Validators.maxLength(15),Validators.minLength(8)]);
+  email = new FormControl('', [Validators.required, Validators.maxLength(20),Validators.minLength(5)]);
+  password = new FormControl('', [Validators.required,Validators.maxLength(15),Validators.minLength(3)]);
 
   ngOnInit(){
     this.authService.logout();
