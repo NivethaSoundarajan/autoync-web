@@ -1,37 +1,28 @@
 table {
-    width: 100%;  
-  }
-
-  .row{
-    margin: 0;
-  }
-
-  .example-label{
-    margin-top: 90px;
-    padding-left: 20px;
-    margin-left: 4%;
-    color: #0d7bb9;
-  }
-
-   .mat-header-row{
-    background-color: #0d7bb9;
-    color: white;
-  }
-  .col-md-12{
-    margin-top: 2%;
-  }
-  .align-right
-  {
-    text-align: right;
-  }
-  .tab-head {
-  
-    color: white;
-    font-weight: normal;
-    font-size: 14px;
-   
+  width: 100%;  
 }
-
+.row{
+  margin: 0;
+}
+.example-label{
+  margin-top: 90px;
+  padding-left: 20px;
+  margin-left: 4%;
+  color: #0d7bb9;
+}
+.mat-header-row{
+  background-color: #0d7bb9;
+  color: white;
+}
+.align-right
+{
+  text-align: right;
+}
+.tab-head {
+  color: white;
+  font-weight: normal;
+  font-size: 14px;
+}
 .zero-padding-right
 {
   padding-right:0;

@@ -1,6 +1,6 @@
 <div class="main-content page-container">
   <div class="container-fluid">
-    <div class="row">
+    <div class="row list-filter">
       <div class="col-md-3">  
         <mat-form-field>
           <input matInput (keyup)="applyFilterOne($event.target.value)" placeholder="Search"/>
@@ -8,15 +8,17 @@
       </div>
       <div class="col-md-8 row count pull-right">
         <div class="col-md-1"></div>
-        <div class="col-md-2"> Username  : {{Username}}</div>
-        <div class="col-md-3"> Total No. Of Images  : {{imageCount}}</div>
-        <div class="col-md-4"> Bills : {{billCount}}</div>
-        <div class="col-md-4.2"> Reads : {{readCount}}</div>
+        <div class="col-md-3" > <b>Username  : </b> {{Username}}</div>
+        <div class="col-md-4 "> <b>Total No. Of Images  :</b> {{imageCount}}</div>
+        <div class="col-md-2 float-right"> <b>Bills : </b>{{billCount}}</div>
+        <div class="col-md-2 float-right"> <b>Reads :</b> {{readCount}}</div>
       </div>
       <div class="col-md-1 pull-right" >
         <button  mat-raised-button type="button" class="btn btn-action back-btn pull-right" color="warn" [routerLink]="['/transferstatus']">Back</button>
         <div class="clearfix"></div>
       </div>
+    </div>
+    <div class="row">
       <table mat-table matSort [dataSource]="dataSourceOne"cx #TableOneSort="matSort" class="mat-elevation-z8 col-md-12" >
         <ng-container matColumnDef="sno">
           <th class="tab-head" mat-header-cell *matHeaderCellDef>S.No</th>

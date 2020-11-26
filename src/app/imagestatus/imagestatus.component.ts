@@ -32,11 +32,11 @@ export class ImagestatusComponent implements OnInit {
       if (params.get('Id')) {
         this.service.GetTransferHistoryDetails(params.get('Id'))
         .subscribe((result) => {
-          this.dataSourceOne.data = result.Data;
+          this.dataSourceOne.data = result.Data.JobDetails;
           this.Username= result.Data.Username;
-          this.readCount =  result.Data.filter(x => x.FileName.toLowerCase().includes('reads')).length;
-          this.imageCount =  result.Data.filter(x => x.FileName.toLowerCase().includes('.jpg')).length;
-          this.billCount =  result.Data.filter(x => x.FileName.toLowerCase().includes('bills')).length;
+          this.readCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('reads')).length;
+          this.imageCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('.jpg')).length;
+          this.billCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('bills')).length;
         },
    (err) => {},
    () => { });
@@ -59,13 +59,7 @@ interface transHistory {
   
 }
 
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {sno: '1', filename: 'Image1', size:'2MB',status:'completed'},
-//   {sno: '2', filename: 'Image2', size:'2MB',status:'completed'},
-//   {sno: '3', filename: 'Image3', size:'2MB',status:'completed'},
-//   {sno: '4', filename: 'Image4', size:'2MB',status:'completed'},
-//   {sno: '5', filename: 'Image5', size:'2MB',status:'completed'},
-// ];
+
 
 
 

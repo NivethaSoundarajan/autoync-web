@@ -9,8 +9,7 @@ export interface transHistory {
     Status: string,
     Reason: string,
     SyncType: string,
-    CreatedDate: number,
-    FileName:String,
+    CreatedDate: Date,
     Excel: {
       Total: number,
       InProgress: number,

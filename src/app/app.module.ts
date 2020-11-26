@@ -18,8 +18,8 @@ import { FooterComponent } from './footer/footer.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ToastModule } from 'ng-uikit-pro-standard';
-// import {MatProgressSpinnerModule} from '@angular/material'
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+// import {MatProgressSpinnerModule} from '@angular/material'
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({

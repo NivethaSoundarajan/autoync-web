@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
+import { title } from 'process';
 
 @Component({
   selector: 'app-navbar',
@@ -21,7 +22,14 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit(){
-      this.listTitles = ROUTES.filter(listTitle => listTitle);
+      this.listTitles = [
+          {route:'dashboard',title:'Dashboard'},
+          {route:'userlist',title:'User List'},
+          {route:'usercreation',title:'Create User',updateTitle:'Update User'},
+          {route:'transferstatus',title:'Transfer Status'},
+          {route:'imagestatus',title:'Image Statua',updateTitle:'Image Stauts'},
+
+      ];
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
       this.router.events.subscribe((event) => {
@@ -110,16 +118,17 @@ export class NavbarComponent implements OnInit {
     };
 
     getTitle(){
+      var list = [];
       var titlee = this.location.prepareExternalUrl(this.location.path());
       if(titlee.charAt(0) === '#'){
-          titlee = titlee.slice( 1 );
+          titlee = titlee.slice( 2 );
+          list = titlee.split('/')
       }
-
-      for(var item = 0; item < this.listTitles.length; item++){
-          if(this.listTitles[item].path === titlee){
-              return this.listTitles[item].title;
-          }
-      }
-      return '';
+      var title =this.listTitles.find(x => x.route == list[0]);
+      if(list[1] == undefined) 
+        return title.title;
+      if(list[1] != undefined && list[1] == '0')
+        return title.title;
+      return title.updateTitle;
     }
 }

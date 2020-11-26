@@ -11,6 +11,9 @@
 }
 .card-title{
     text-align: center;  
+    font-size: 50px;
+    padding-top: 34px;
+    padding-left: 187px;
 
 }
 .border-top-0
@@ -34,4 +37,14 @@
   .form-bg-color
   {
       background-color:#e5e5e5;
+  }
+  .card-stats:hover{
+      background-color: whitesmoke;
+  }
+  .card{
+      height:150px;
+  }
+
+  .card-category{
+    font-size: 25px !important;
   }
