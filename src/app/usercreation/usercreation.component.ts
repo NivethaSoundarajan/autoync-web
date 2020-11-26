@@ -126,7 +126,9 @@ export class UsercreationComponent implements OnInit {
       SupervisorId:[0],
       AutoSyncDays:[''],
       AutoDeleteInterval:[0],
-      IsActive:[]
+      IsActive:[true],
+      SupervisorName:[''],
+      RoleName:['']
     }
     return this.form.group(userDetails);;
   }

@@ -31,7 +31,7 @@ export class UserListComponent implements OnInit {
    this.getMasterData();
     this.service.GetUserList()
         .subscribe((result) => { 
-          self.dataSource.data= self.selectDataSource.data= result.Data;
+          self.dataSource.data= self.selectDataSource.data = result.Data;
         },
         (err) => {
            self.toast.error('Something Went Wrong...!', 'Error!', { opacity: 1 });
@@ -68,13 +68,17 @@ export class UserListComponent implements OnInit {
 }
 
  exportAsExcel(){
-   const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);//converts a DOM TABLE element to a worksheet
-   ws['!cols'][7] = { hidden: true };
+   /* table id is passed over here */   
+   let data = [];
+   var id = 1;
+   this.selectDataSource.data.forEach(function(x){
+      data.push({'sno' : id,'username' : x.Username,'name':x.Name,'RoleName':x.RoleName,'SupervisorName':x.SupervisorName,'FolderFilePath':x.FolderFilePath,'Deviceid':x.DeviceId,'Status':(x.IsActive) ? 'Active': 'In Active'})
+      id++;
+    });
+    const ws: XLSX.WorkSheet=XLSX.utils.json_to_sheet(data);
    const wb: XLSX.WorkBook = XLSX.utils.book_new();
    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-   /* save to file */
    XLSX.writeFile(wb, 'UserList_'+new Date()+'.xlsx');
-
  }
 
  applyFilterOne(filterValue: string) {
