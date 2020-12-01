@@ -10,6 +10,7 @@ export interface viewValues {
     action:string;
     name:string;
     SupervisorId:number;
+    IsActive:boolean;
 }
 
 

@@ -21,6 +21,9 @@ import { ToastModule } from 'ng-uikit-pro-standard';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 // import {MatProgressSpinnerModule} from '@angular/material'
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -29,9 +32,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     NavbarComponent,
     SidebarComponent,
     LoginComponent,
-    FooterComponent
-    
+    FooterComponent,
+    AlertDialogComponent
   ],
+
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,10 +56,13 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ToastModule.forRoot(),
     OAuthModule.forRoot(),
     NgxMaterialTimepickerModule,
-    MatProgressSpinnerModule
-    
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatTooltipModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

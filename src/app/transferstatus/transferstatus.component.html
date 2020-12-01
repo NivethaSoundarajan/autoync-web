@@ -1,7 +1,9 @@
 <div class="main-content page-container">
   <div class="container-fluid">
     <div class="row list-filter">
-        <div class="col-lg-6"></div>
+        <div class="col-lg-6">
+          <button mat-raised-button class="btn btn-action pull-right btn-export"  (click)="exportAsExcel()">Excel</button>
+        </div>
         <div class="col-lg-3">          
           <mat-form-field >
               <mat-label>Choose a date</mat-label>

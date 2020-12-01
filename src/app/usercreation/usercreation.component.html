@@ -1,11 +1,9 @@
-
-
 <div class="main-content page-container">
   <div class="row">
     <div class="col-md-9"></div>
     <div class="col-md-3 pull-right" >
-      <button  mat-raised-button type="button" class="btn btn-action btn-create pull-right" (click)="userSave()" [hidden]="isVisible">{{label}}</button>
-      <button  mat-raised-button type="button" class="btn btn-action back-btn pull-right" color="warn" [routerLink]="['/userlist']">Back</button>
+      <button  mat-raised-button  matTooltip="Click here to Save the NewUser" type="button" class="btn btn-action btn-create pull-right" (click)="userSave()" [hidden]="isVisible">{{label}}</button>
+      <button  mat-raised-button  matTooltip="Click here to go back to User Management Page"  type="button" class="btn btn-action back-btn pull-right" color="warn" [routerLink]="['/userlist']">Back</button>
       <div class="clearfix"></div>
       </div>
   </div>
@@ -20,7 +18,7 @@
                   <div class="col-md-3">
                     <mat-form-field >
                       <mat-label>User Role</mat-label>
-                      <mat-select formControlName="RoleId" name="RoleId">
+                      <mat-select matTooltip="Select the User from DropDown to edit" formControlName="RoleId" name="RoleId">
                         <mat-option *ngFor="let role of roleList" [value]="role.Key">
                           {{role.Value}}
                         </mat-option>
@@ -88,7 +86,6 @@
                       </mat-form-field>
                     </div>
                 </div>
-               
             </form>
         </div>
     </div>

@@ -23,6 +23,7 @@ export class TransferstatusComponent implements OnInit {
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
   datepicker = new Date();
   isLoading:boolean=false;
+  selectDataSource = new MatTableDataSource<transHistory>();
 
   constructor(private router: Router, private route: ActivatedRoute,private service: AutoSyncService) {
     this.dataSourceOne=new MatTableDataSource; 
@@ -43,6 +44,21 @@ export class TransferstatusComponent implements OnInit {
    this.selectedDataSource.paginator = this.tableOnePaginator;
    this.selectedDataSource.sort = this.tableOneSort;
  }
+
+ exportAsExcel(){
+  /* table id is passed over here */   
+  let data = [];
+  var id = 1;
+  this.selectDataSource.data.forEach(function(x){
+     data.push({'sno' : id,'Date' : x.CreatedDate,'SyncType':x.SyncType,'UserName':x.Username,
+     'TotalFileSize':x.TotalFileSize,'SourceFilePath':x.SourceFilePath,'Excel':x.Excel,'Status':x.Status}) 
+     id++;
+   });
+   const ws: XLSX.WorkSheet=XLSX.utils.json_to_sheet(data);
+  const wb: XLSX.WorkBook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+  XLSX.writeFile(wb, 'transHistory_'+new Date()+'.xlsx');
+}
 
  applyFilterOne(filterValue: string) {
    this.selectedDataSource.filter = filterValue.trim().toLowerCase();

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseURL:'https://autosynctest.azurewebsites.net/api',
+  apiBaseURL:'https://autosyncdev.azurewebsites.net/api',
   authKey:"",
 };
 
