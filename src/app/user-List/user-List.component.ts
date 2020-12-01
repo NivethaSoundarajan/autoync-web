@@ -35,12 +35,13 @@ export class UserListComponent implements OnInit {
    this.getMasterData();
     this.service.GetUserList()
         .subscribe((result) => { 
-          self.dataSource.data= self.selectDataSource.data= result.Data;
-          this.isLoading=false;
+          if(result != null)
+            self.dataSource.data= self.selectDataSource.data= result.Data;
+            self.isLoading=false;
         },
         (err) => {
-          this.isLoading=false;
-           self.toast.error('Something Went Wrong...!', 'Error!', { opacity: 1 });
+          self.isLoading=false;
+          self.toast.error('Something Went Wrong...!', 'Error!', { opacity: 1 });
         },
         () => { });
       this.selectDataSource.paginator = this.tableOnePaginator;
@@ -82,9 +83,9 @@ export class UserListComponent implements OnInit {
       id++;
     });
     const ws: XLSX.WorkSheet=XLSX.utils.json_to_sheet(data);
-   const wb: XLSX.WorkBook = XLSX.utils.book_new();
-   XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-   XLSX.writeFile(wb, 'UserList_'+new Date()+'.xlsx');
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    XLSX.writeFile(wb, 'UserList_'+new Date()+'.xlsx');
  }
 
  applyFilterOne(filterValue: string) {
