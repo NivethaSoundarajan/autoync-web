@@ -20,7 +20,7 @@ export class UserListComponent implements OnInit {
   @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
   constructor(public route:Router,private service: AutoSyncService,private toast: ToastService){}
-  displayedColumns: string[] = ['sno','username','name','RoleName','SupervisorName','FolderFilePath','Deviceid','Status','action'];
+  displayedColumns: string[] = ['sno','username','name','RoleName','SupervisorName','FolderFilePath','Deviceid','IsActive','action'];
   selectDataSource = new MatTableDataSource<userCreation>();
   dataSource = new MatTableDataSource<userCreation>();
   roleList:any;
@@ -48,12 +48,12 @@ export class UserListComponent implements OnInit {
       this.selectDataSource.sort = this.tableOneSort;
  }
       
- deleteUser(data){
+ changeActiveStatus(data){
    var self = this;
-   data.IsActive = false;
+   data.IsActive = !data.IsActive;
   this.service.SaveUser(data)
       .subscribe((result) => { 
-        self.toast.success( 'Deleted Successfully!','Success!', { opacity: 1 });
+        self.toast.success(((data.IsActive) ? 'Activated' : 'DeActivated' )+ '   Successfully..!!','Success!', { opacity: 1 });
       },
       (err) => {
          self.toast.error('Something Went Wrong...!', 'Error!', { opacity: 1 });
