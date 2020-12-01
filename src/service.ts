@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { environment } from './environments/environment';
-import { AuthService } from './app/services/authservice.service'
+import { AuthService } from './app/services/authservice.service';
+import { transHistoryFilter } from './../src/app/transferstatus/modal';
 
 @Injectable()
 export class AutoSyncService {
@@ -36,8 +37,8 @@ export class AutoSyncService {
   }
 
 
-  GetTransferHistoryList() {
-    return this.http.post<any>(environment.apiBaseURL + '/Transfer/History',null,{
+  GetTransferHistoryList(model:transHistoryFilter) {
+    return this.http.post<any>(environment.apiBaseURL + '/Transfer/History',model,{
       headers: this.headers
     }); 
   }

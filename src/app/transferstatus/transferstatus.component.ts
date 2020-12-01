@@ -3,7 +3,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ActivatedRoute,Router } from '@angular/router';
 import {MatSort} from '@angular/material/sort';
-import { transHistory } from './modal';
+import { transHistory,transHistoryFilter } from './modal';
 import { AutoSyncService } from '../../service';
 import { FormControl } from '@angular/forms';
 import {ToastService} from 'ng-uikit-pro-standard';
@@ -18,12 +18,13 @@ import * as XLSX from 'xlsx';
 export class TransferstatusComponent implements OnInit {
   dataSourceOne: MatTableDataSource<transHistory>;
   selectedDataSource : MatTableDataSource<transHistory>;
+  transHistoryFilter= new transHistoryFilter();
   displayedColumns: string[] = ['Sno','CreatedDate','SyncType','JobUniqueId','Username','SupervisorName','TotalFileSize','SourceFilePath','Photo','Excel','Status','action'];
   @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
   datepicker = new Date();
   isLoading:boolean=false;
-
+  
   constructor(private router: Router, private route: ActivatedRoute,private service: AutoSyncService) {
     this.dataSourceOne=new MatTableDataSource; 
     this.selectedDataSource =new MatTableDataSource;
@@ -31,18 +32,26 @@ export class TransferstatusComponent implements OnInit {
   ngOnInit() {
    var self=this;
    this.isLoading=true;
-   this.service.GetTransferHistoryList()
-   .subscribe((result) => {
-     if(result != null && result.Status){
-      self.dataSourceOne.data = result.Data;
-      self.selectedDataSource.data = result.Data;
-     }
-     self.isLoading=false;
-   },
-   (err) => {self.isLoading=false;},
-   () => { });
+   debugger;
+   this.getTransferGistoryList();
    this.selectedDataSource.paginator = this.tableOnePaginator;
    this.selectedDataSource.sort = this.tableOneSort;
+ }
+
+ getTransferGistoryList(){
+    var self = this;
+    this.transHistoryFilter.EndDate = null;
+    this.transHistoryFilter.Page = this.transHistoryFilter.Page + 1;
+    this.service.GetTransferHistoryList(this.transHistoryFilter)
+    .subscribe((result) => {
+      if(result != null && result.Status){
+        self.dataSourceOne.data = result.Data;
+        self.selectedDataSource.data = result.Data;
+      }
+      self.isLoading=false;
+    },
+    (err) => {self.isLoading=false;},
+    () => { });
  }
 
  applyFilterOne(filterValue: string) {

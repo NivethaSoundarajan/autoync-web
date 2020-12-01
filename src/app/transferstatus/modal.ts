@@ -21,6 +21,15 @@ export interface transHistory {
       InProgress: number,
       Completed: number
     }
-
    }
+  
+export class transHistoryFilter{
+  StartDate:Date;
+  EndDate:Date;
+  Search:String;
+  Page:number = 0;
+  PageSize:number = 10;
+}
+
+
    
