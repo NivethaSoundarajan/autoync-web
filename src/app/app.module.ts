@@ -24,6 +24,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
+// import { ConfirmationDialog } from './confirm-dialog/confirmation-dialog';
 
 @NgModule({
   declarations: [

@@ -7,6 +7,7 @@ import { userCreation } from './../usercreation/modal';
 import { AutoSyncService } from '../../service';
 import * as XLSX from 'xlsx';
 import {ToastService} from 'ng-uikit-pro-standard';
+import {MatDialog} from '@angular/material/dialog';
 
 
 
@@ -19,13 +20,16 @@ import {ToastService} from 'ng-uikit-pro-standard';
 export class UserListComponent implements OnInit {
   @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
-  constructor(public route:Router,private service: AutoSyncService,private toast: ToastService){}
-  displayedColumns: string[] = ['sno','username','name','RoleName','SupervisorName','FolderFilePath','Deviceid','IsActive','action'];
+  constructor(public route:Router,private service: AutoSyncService,private toast: ToastService,public dialog: MatDialog){}
+  
+
+  displayedColumns: string[] = ['sno','username','name','RoleName','SupervisorName','FolderFilePath','Deviceid','action'];
   selectDataSource = new MatTableDataSource<userCreation>();
   dataSource = new MatTableDataSource<userCreation>();
   roleList:any;
   roleId:number;
   isLoading:boolean=false;
+  
 
   @ViewChild('TABLE') table: ElementRef;
 

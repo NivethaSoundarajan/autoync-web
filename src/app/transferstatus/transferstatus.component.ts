@@ -3,7 +3,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ActivatedRoute,Router } from '@angular/router';
 import {MatSort} from '@angular/material/sort';
-import { transHistory } from './modal';
+import { transHistory,transHistoryFilter } from './modal';
 import { AutoSyncService } from '../../service';
 import { FormControl } from '@angular/forms';
 import {ToastService} from 'ng-uikit-pro-standard';
@@ -18,13 +18,13 @@ import * as XLSX from 'xlsx';
 export class TransferstatusComponent implements OnInit {
   dataSourceOne: MatTableDataSource<transHistory>;
   selectedDataSource : MatTableDataSource<transHistory>;
+  transHistoryFilter= new transHistoryFilter();
   displayedColumns: string[] = ['Sno','CreatedDate','SyncType','JobUniqueId','Username','SupervisorName','TotalFileSize','SourceFilePath','Photo','Excel','Status','action'];
   @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
   datepicker = new Date();
   isLoading:boolean=false;
-  selectDataSource = new MatTableDataSource<transHistory>();
-
+  
   constructor(private router: Router, private route: ActivatedRoute,private service: AutoSyncService) {
     this.dataSourceOne=new MatTableDataSource; 
     this.selectedDataSource =new MatTableDataSource;
@@ -32,34 +32,27 @@ export class TransferstatusComponent implements OnInit {
   ngOnInit() {
    var self=this;
    this.isLoading=true;
-   this.service.GetTransferHistoryList()
-   .subscribe((result) => {
-     if(result != null && result.Status){
-      self.dataSourceOne.data = result.Data;
-      self.selectedDataSource.data = result.Data;
-     }
-     self.isLoading=false;
-   },
-   (err) => {self.isLoading=false;},
-   () => { });
+   debugger;
+   this.getTransferHistoryList();
    this.selectedDataSource.paginator = this.tableOnePaginator;
    this.selectedDataSource.sort = this.tableOneSort;
  }
 
- exportAsExcel(){
-  /* table id is passed over here */   
-  let data = [];
-  var id = 1;
-  this.selectDataSource.data.forEach(function(x){
-     data.push({'sno' : id,'Date' : x.CreatedDate,'SyncType':x.SyncType,'UserName':x.Username,
-     'TotalFileSize':x.TotalFileSize,'SourceFilePath':x.SourceFilePath,'Excel':x.Excel,'Status':x.Status}) 
-     id++;
-   });
-   const ws: XLSX.WorkSheet=XLSX.utils.json_to_sheet(data);
-  const wb: XLSX.WorkBook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-  XLSX.writeFile(wb, 'transHistory_'+new Date()+'.xlsx');
-}
+ getTransferHistoryList(){
+    var self = this;
+    this.transHistoryFilter.EndDate = null;
+    this.transHistoryFilter.Page = this.transHistoryFilter.Page + 1;
+    this.service.GetTransferHistoryList(this.transHistoryFilter)
+    .subscribe((result) => {
+      if(result != null && result.Status){
+        self.dataSourceOne.data = result.Data;
+        self.selectedDataSource.data = result.Data;
+      }
+      self.isLoading=false;
+    },
+    (err) => {self.isLoading=false;},
+    () => { });
+ }
 
  applyFilterOne(filterValue: string) {
    this.selectedDataSource.filter = filterValue.trim().toLowerCase();
@@ -85,6 +78,3 @@ export class TransferstatusComponent implements OnInit {
  }
 }
 
-
-
-  

@@ -88,9 +88,11 @@ export class UsercreationComponent implements OnInit {
         });
 
       },
+      
       (err) => {
          self.toast.error('Something Went Wrong...!', 'Error!', { opacity: 1 });
       },
+
       () => { });
   }
 
@@ -111,6 +113,11 @@ export class UsercreationComponent implements OnInit {
         this.toast.error('Error!',err.error.Message, { opacity: 1 })
       },
       () => { });
+    }
+  }
+  Clickmethod() {
+    if(confirm("Are you sure do you want save ")) {
+      console.log("Implement delete functionality here");
     }
   }
 

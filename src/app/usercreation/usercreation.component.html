@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-md-6">
                       <mat-form-field class="example-full-width">
-                        <input matInput placeholder="AutoSyncTime" type="time" formControlName="AutoSyncTime"  >
+                        <input matInput placeholder="AutoSyncTime" matTooltip=" Auto Sync will start in the given time" type="time" formControlName="AutoSyncTime"  >
                       </mat-form-field>
                 </div>
                 </div>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-md-6">
                       <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Auto Delete Time" type="number"  formControlName="AutoDeleteInterval" >
+                        <input matInput placeholder="Auto Delete Time" matTooltip=" Auto Delete will start in the given time" type="number"  formControlName="AutoDeleteInterval" >
                       </mat-form-field>
                     </div>
                 </div>
@@ -70,7 +70,8 @@
                     <div class="col-md-6">
                       <mat-form-field >
                         <mat-label>Supervisor</mat-label>
-                        <mat-select formControlName="SupervisorId" name="SupervisorId"> 
+                        <mat-select matTooltip="This technician will be allocated under this supervisor  
+                        *NOTE* : If you are a new user Kindly create a supervisor First" formControlName="SupervisorId" name="SupervisorId"> 
                           <mat-option *ngFor="let supervisor of supervisorList" [value]="supervisor.Key">
                             {{supervisor.Value}}
                           </mat-option>
@@ -80,7 +81,7 @@
                     <div class="col-md-6">
                       <mat-form-field >
                         <mat-label>AutoSyncDays</mat-label>
-                        <mat-select formControlName="AutoSyncDays" multiple >
+                        <mat-select formControlName="AutoSyncDays" multiple matTooltip=" Auto Sync will happen in the selected Days" >
                           <mat-option *ngFor="let Days of AutoSyncDaysList" [value]="Days">{{Days}}</mat-option>
                         </mat-select>
                       </mat-form-field>
