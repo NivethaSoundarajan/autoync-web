@@ -33,12 +33,13 @@ export class TransferstatusComponent implements OnInit {
    this.isLoading=true;
    this.service.GetTransferHistoryList()
    .subscribe((result) => {
-     if(result != null && result.Status)
+     if(result != null && result.Status){
       self.dataSourceOne.data = result.Data;
       self.selectedDataSource.data = result.Data;
-      this.isLoading=false;
+     }
+     self.isLoading=false;
    },
-   (err) => {this.isLoading=false;},
+   (err) => {self.isLoading=false;},
    () => { });
    this.selectedDataSource.paginator = this.tableOnePaginator;
    this.selectedDataSource.sort = this.tableOneSort;
@@ -59,7 +60,7 @@ export class TransferstatusComponent implements OnInit {
    const ws: XLSX.WorkSheet=XLSX.utils.json_to_sheet(data);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-    XLSX.writeFile(wb, 'UserList_'+new Date()+'.xlsx');
+    XLSX.writeFile(wb, 'TransferHistory'+new Date()+'.xlsx');
 }
  changeDate(){
   var lastDay= new Date(this.datepicker).setHours(0,0,0,0);
