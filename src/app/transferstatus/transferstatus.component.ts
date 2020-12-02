@@ -16,37 +16,31 @@ import * as XLSX from 'xlsx';
   providers:[AutoSyncService]
 })
 export class TransferstatusComponent implements OnInit {
-  dataSourceOne: MatTableDataSource<transHistory>;
   selectedDataSource : MatTableDataSource<transHistory>;
   transHistoryFilter= new transHistoryFilter();
   displayedColumns: string[] = ['Sno','CreatedDate','SyncType','JobUniqueId','Username','SupervisorName','TotalFileSize','SourceFilePath','Photo','Excel','Status','action'];
-  @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
-  @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
-  datepicker = new Date();
+  startDate;
+  endDate;
+  page:number;
   isLoading:boolean=false;
   
   constructor(private router: Router, private route: ActivatedRoute,private service: AutoSyncService) {
-    this.dataSourceOne=new MatTableDataSource; 
     this.selectedDataSource =new MatTableDataSource;
   }
   ngOnInit() {
-   var self=this;
    this.isLoading=true;
-   debugger;
-   this.getTransferHistoryList();
-   this.selectedDataSource.paginator = this.tableOnePaginator;
-   this.selectedDataSource.sort = this.tableOneSort;
+   this.getTransferGistoryList();
  }
 
- getTransferHistoryList(){
+ getTransferGistoryList(){
     var self = this;
-    this.transHistoryFilter.EndDate = null;
-    this.transHistoryFilter.Page = this.transHistoryFilter.Page + 1;
+    // this.isLoading = true;
     this.service.GetTransferHistoryList(this.transHistoryFilter)
     .subscribe((result) => {
-      if(result != null && result.Status){
-        self.dataSourceOne.data = result.Data;
+      debugger;
+      if(result != null && result.Status ){
         self.selectedDataSource.data = result.Data;
+        self.page = self.transHistoryFilter.Page;
       }
       self.isLoading=false;
     },
@@ -54,27 +48,45 @@ export class TransferstatusComponent implements OnInit {
     () => { });
  }
 
- applyFilterOne(filterValue: string) {
-   this.selectedDataSource.filter = filterValue.trim().toLowerCase();
+ applyFilter() {
+  this.transHistoryFilter.Page = 0;
+  this.getTransferGistoryList();
  }
 
  exportAsExcel(){
-  /* table id is passed over here */   
-  let data = [];
-  var id = 1;
-  this.selectedDataSource.data.forEach(function(x){
-     data.push({'sno' : id,'Date' : x.CreatedDate,'Sync Type':x.SyncType,'Transfer Id':x.JobUniqueId,'User Name':x.Username,'Supervisor':x.SupervisorName,'Size':x.TotalFileSize,'SourceFilePath':x.SourceFilePath,'Photo':(x.Photos !=null)?x.Photos.Total+'/'+x.Photos.Completed :'0 / 0','Excel':(x.Excel !=null)?x.Excel.Total+'/'+x.Excel.Completed :'0 / 0','Status':x.Status})
-     id++;
-   });
-   const ws: XLSX.WorkSheet=XLSX.utils.json_to_sheet(data);
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-    XLSX.writeFile(wb, 'TransferHistory'+new Date()+'.xlsx');
-}
- changeDate(){
-  var lastDay= new Date(this.datepicker).setHours(0,0,0,0);
-  var nextDay= new Date(this.datepicker).setHours(24,0,0,0)
-  this.selectedDataSource.data = this.dataSourceOne.data.filter(x=>(new Date(x.CreatedDate) > new Date(lastDay) && new Date(x.CreatedDate) < new Date(nextDay)))
- }
+    /* table id is passed over here */   
+    let data = [];
+    var id = 1;
+    this.selectedDataSource.data.forEach(function(x){
+      data.push({'sno' : id,'Date' : x.CreatedDate,'Sync Type':x.SyncType,'Transfer Id':x.JobUniqueId,'User Name':x.Username,'Supervisor':x.SupervisorName,'Size':x.TotalFileSize,'SourceFilePath':x.SourceFilePath,'Photo':(x.Photos !=null)?x.Photos.Total+'/'+x.Photos.Completed :'0 / 0','Excel':(x.Excel !=null)?x.Excel.Total+'/'+x.Excel.Completed :'0 / 0','Status':x.Status})
+      id++;
+    });
+    const ws: XLSX.WorkSheet=XLSX.utils.json_to_sheet(data);
+      const wb: XLSX.WorkBook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+      XLSX.writeFile(wb, 'TransferHistory'+new Date()+'.xlsx');
+  }
+
+  pagination(page){
+    if(page == 'previous' && this.transHistoryFilter.Page != 0) {
+      this.transHistoryFilter.Page = this.transHistoryFilter.Page - 1;
+      this.getTransferGistoryList();
+    }
+    else if(page == 'next' && this.selectedDataSource.data.length == this.transHistoryFilter.PageSize){
+       this.transHistoryFilter.Page = this.transHistoryFilter.Page + 1;
+       this.getTransferGistoryList();
+     }
+  }
+
+  changeDate(){
+    this.transHistoryFilter.StartDate = undefined;
+    this.transHistoryFilter.EndDate = undefined;
+    if(this.startDate != undefined)
+      this.transHistoryFilter.StartDate= new Date(new Date(this.startDate).setHours(0,0,0,0)).toISOString().slice(0,10);
+    if(this.endDate != undefined)
+      this.transHistoryFilter.EndDate= new Date(new Date(this.endDate).setHours(24,0,0,0)).toISOString().slice(0,10);
+    this.transHistoryFilter.Page = 0;
+    this.getTransferGistoryList();
+  }
 }
 

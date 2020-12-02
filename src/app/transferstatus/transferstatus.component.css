@@ -30,3 +30,14 @@ table {
 .card {
   margin-top: 10px !important;
 }
+.page-icon{
+  padding: 6px 20px;
+  font-size: 28px;
+  cursor: pointer;
+}
+.page-item:hover{
+  background-color: lightgray;
+}
+.floatr{
+  float:right !important;
+}

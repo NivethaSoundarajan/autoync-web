@@ -5,7 +5,6 @@ import { environment } from './environments/environment';
 import { AuthService } from './app/services/authservice.service';
 import { transHistoryFilter } from './../src/app/transferstatus/modal';
 
-
 @Injectable()
 export class AutoSyncService {
   private readonly headers;
