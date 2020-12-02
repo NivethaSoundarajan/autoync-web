@@ -37,7 +37,7 @@ export class TransferstatusComponent implements OnInit {
     // this.isLoading = true;
     this.service.GetTransferHistoryList(this.transHistoryFilter)
     .subscribe((result) => {
-      debugger;
+      
       if(result != null && result.Status ){
         self.selectedDataSource.data = result.Data;
         self.page = self.transHistoryFilter.Page;

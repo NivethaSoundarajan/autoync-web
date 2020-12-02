@@ -1,0 +1,12 @@
+.btn-primary{
+    background-color: #0d7bb9 !important;
+    color: white !important;
+}
+.btn-danger{
+    background-color: whitesmoke !important;
+    color: black !important;
+}
+.btn{
+    cursor: pointer !important;
+    padding: 7px 15px 5px 15px !important;
+}

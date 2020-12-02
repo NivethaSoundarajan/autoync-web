@@ -115,11 +115,11 @@ export class UsercreationComponent implements OnInit {
       () => { });
     }
   }
-  Clickmethod() {
-    if(confirm("Are you sure do you want save ")) {
-      console.log("Implement delete functionality here");
-    }
-  }
+  // Clickmethod() {
+  //   if(confirm("Are you sure do you want save ")) {
+  //     console.log("Implement delete functionality here");
+  //   }
+  // }
 
   inputCreation(){
     const userDetails: FormModel<userCreation> ={

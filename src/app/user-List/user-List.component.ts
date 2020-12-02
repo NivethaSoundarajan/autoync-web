@@ -7,7 +7,8 @@ import { userCreation } from './../usercreation/modal';
 import { AutoSyncService } from '../../service';
 import * as XLSX from 'xlsx';
 import {ToastService} from 'ng-uikit-pro-standard';
-import {MatDialog} from '@angular/material/dialog';
+import { ConfirmDialogModel, ConfirmDialogComponent } from './../confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -21,16 +22,12 @@ export class UserListComponent implements OnInit {
   @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
   constructor(public route:Router,private service: AutoSyncService,private toast: ToastService,public dialog: MatDialog){}
-  
-
   displayedColumns: string[] = ['sno','username','name','RoleName','SupervisorName','FolderFilePath','Deviceid','action'];
   selectDataSource = new MatTableDataSource<userCreation>();
   dataSource = new MatTableDataSource<userCreation>();
   roleList:any;
   roleId:number;
   isLoading:boolean=false;
-  
-
   @ViewChild('TABLE') table: ElementRef;
 
  ngOnInit():void {
@@ -53,16 +50,25 @@ export class UserListComponent implements OnInit {
  }
       
  changeActiveStatus(data){
-   var self = this;
-   data.IsActive = !data.IsActive;
-  this.service.SaveUser(data)
-      .subscribe((result) => { 
-        self.toast.success(((data.IsActive) ? 'Activated' : 'DeActivated' )+ '   Successfully..!!','Success!', { opacity: 1 });
-      },
-      (err) => {
-         self.toast.error('Something Went Wrong...!', 'Error!', { opacity: 1 });
-      },
-      () => { });
+  var self = this;
+  const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    width: "27%",
+    data: new ConfirmDialogModel("", `Are you Sure to ${data.IsActive ? 'DeActive' : 'Active'}  this?`)
+  });
+   dialogRef.afterClosed().subscribe(dialogResult => {
+     if(dialogResult){
+         data.IsActive = !data.IsActive;
+        this.service.SaveUser(data)
+        .subscribe((result) => { 
+          self.toast.success(((data.IsActive) ? 'Activated' : 'DeActivated' )+ '   Successfully..!!','Success!', { opacity: 1 });
+        },
+        (err) => {
+          self.toast.error('Something Went Wrong...!', 'Error!', { opacity: 1 });
+        },
+        () => { });
+     }
+});
+  
  }
 
  getMasterData(){
@@ -99,4 +105,9 @@ export class UserListComponent implements OnInit {
  roleChange(){
     this.selectDataSource.data = (this.roleId == 0)? this.dataSource.data : this.dataSource.data.filter(x => (x.RoleId == this.roleId));
  }
+
+ confirmDialog(): void {
+ 
+  
+}
 }
