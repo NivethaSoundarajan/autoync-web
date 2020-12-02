@@ -22,29 +22,31 @@ export class TransferstatusComponent implements OnInit {
   startDate;
   endDate;
   page:number;
-  isLoading:boolean=false;
+  isLoading:boolean=true;
+  ispageLoading:boolean = false;
   
   constructor(private router: Router, private route: ActivatedRoute,private service: AutoSyncService) {
     this.selectedDataSource =new MatTableDataSource;
   }
   ngOnInit() {
-   this.isLoading=true;
    this.getTransferGistoryList();
  }
 
  getTransferGistoryList(){
     var self = this;
-    // this.isLoading = true;
+    this.ispageLoading = true;
     this.service.GetTransferHistoryList(this.transHistoryFilter)
     .subscribe((result) => {
-      debugger;
       if(result != null && result.Status ){
         self.selectedDataSource.data = result.Data;
         self.page = self.transHistoryFilter.Page;
       }
       self.isLoading=false;
+      self.ispageLoading = false;
     },
-    (err) => {self.isLoading=false;},
+    (err) => {
+      self.isLoading=false;
+      self.ispageLoading = false;},
     () => { });
  }
 
@@ -82,9 +84,9 @@ export class TransferstatusComponent implements OnInit {
     this.transHistoryFilter.StartDate = undefined;
     this.transHistoryFilter.EndDate = undefined;
     if(this.startDate != undefined)
-      this.transHistoryFilter.StartDate= new Date(new Date(this.startDate).setHours(0,0,0,0)).toISOString().slice(0,10);
+      this.transHistoryFilter.StartDate= new Date(new Date(this.startDate).setHours(0,0,0,0))
     if(this.endDate != undefined)
-      this.transHistoryFilter.EndDate= new Date(new Date(this.endDate).setHours(24,0,0,0)).toISOString().slice(0,10);
+      this.transHistoryFilter.EndDate= new Date(new Date(this.endDate).setHours(24,0,0,0))
     this.transHistoryFilter.Page = 0;
     this.getTransferGistoryList();
   }

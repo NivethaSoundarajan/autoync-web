@@ -32,7 +32,7 @@ table {
 }
 .page-icon{
   padding: 6px 20px;
-  font-size: 28px;
+  font-size: 40px;
   cursor: pointer;
 }
 .page-item:hover{
@@ -40,4 +40,5 @@ table {
 }
 .floatr{
   float:right !important;
+  margin-top: 10px;
 }
