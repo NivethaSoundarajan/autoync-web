@@ -24,6 +24,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     SidebarComponent,
     LoginComponent,
     FooterComponent,
-    AlertDialogComponent
+    AlertDialogComponent,
+    ConfirmDialogComponent
   ],
 
 
@@ -62,6 +64,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
   ],
 
   providers: [],
+  entryComponents: [ConfirmDialogComponent],
   bootstrap: [AppComponent]
 })
 
