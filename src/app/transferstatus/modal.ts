@@ -24,8 +24,8 @@ export interface transHistory {
    }
   
 export class transHistoryFilter{
-  StartDate:Date;
-  EndDate:Date;
+  StartDate:string;
+  EndDate:string;
   Search:String;
   Page:number = 0;
   PageSize:number = 10;
