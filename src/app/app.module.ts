@@ -18,13 +18,16 @@ import { FooterComponent } from './footer/footer.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ToastModule } from 'ng-uikit-pro-standard';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
-// import {MatProgressSpinnerModule} from '@angular/material'
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { ReadingsComponent } from './readings/readings.component';
+import { AccounthistoryComponent } from './accounthistory/accounthistory.component';
+import { QualityAssuranceComponent } from './quality-assurance/quality-assurance.component';
+import { QualityCheckComponent } from './quality-check/quality-check.component';
+import { BillsComponent } from './bills/bills.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +37,12 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     SidebarComponent,
     LoginComponent,
     FooterComponent,
-    AlertDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    ReadingsComponent,
+    AccounthistoryComponent,
+    QualityAssuranceComponent,
+    QualityCheckComponent,
+    BillsComponent
   ],
 
 

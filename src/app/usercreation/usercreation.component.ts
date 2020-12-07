@@ -98,7 +98,8 @@ export class UsercreationComponent implements OnInit {
 
   userSave(){
     var self = this;
-    this.userForm.value.AutoSyncDays = this.userForm.value.AutoSyncDays.toString();
+    if(this.userForm.value.AutoSyncDays != null)
+      this.userForm.value.AutoSyncDays = this.userForm.value.AutoSyncDays.toString();
     if(this.userForm.valid){
     this.service.SaveUser(this.userForm.value)
       .subscribe((result) => { 

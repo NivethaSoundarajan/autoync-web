@@ -7,7 +7,7 @@
         </mat-form-field>
       </div>
       <div class="col-md-8 row count pull-right">
-        <div class="col-md-4" > <b>TransferId : </b> {{trnasferId}}</div>
+        <div class="col-md-4" > <b>TransferId : </b> {{transferId}}</div>
         <div class="col-md-4 "> <b>Total No. Of Images  :</b> {{imageCount}}</div>
         <div class="col-md-2 float-right"> <b>Bills : </b>{{billCount}}</div>
         <div class="col-md-2 float-right"> <b>Reads :</b> {{readCount}}</div>
@@ -17,7 +17,7 @@
         <div class="clearfix"></div>
       </div>
     </div>
-    <div class="row">
+    <!-- <div class="row" *ngIf ="dataSourceOne[0].Status != 'Stopped'" > -->
       <table mat-table matSort [dataSource]="dataSourceOne"cx #TableOneSort="matSort" class="mat-elevation-z8 col-md-12" >
         <ng-container matColumnDef="sno">
           <th class="tab-head" mat-header-cell *matHeaderCellDef>S.No</th>
@@ -35,10 +35,10 @@
           <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
           <td mat-cell *matCellDef="let element">{{ element.Status}}</td>
         </ng-container>
+       
         <tr mat-header-row *matHeaderRowDef="displayedColumnsOne"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumnsOne"></tr>
       </table>
     </div>
     <mat-paginator #TableOnePaginator="matPaginator" [pageSize]="10" [showFirstLastButtons]="true"></mat-paginator>
   </div>
-</div>

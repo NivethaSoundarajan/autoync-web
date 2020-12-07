@@ -14,7 +14,7 @@ import { AutoSyncService } from '../../service';
 export class ImagestatusComponent implements OnInit {
   dataSourceOne: MatTableDataSource<transHistory>;
   displayedColumnsOne: string[] = ['sno', 'FileName', 'FileSize','Status'];
-  trnasferId:String;
+  transferId:String;
   imageCount : Number;
   readCount: number;
   billCount:number;
@@ -33,7 +33,8 @@ export class ImagestatusComponent implements OnInit {
         this.service.GetTransferHistoryDetails(params.get('Id'))
         .subscribe((result) => {
           this.dataSourceOne.data = result.Data.JobDetails;
-          this.trnasferId= result.Data.JobId;
+          
+          this.transferId= result.Data.JobId;
           this.readCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('reads')).length;
           this.imageCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('.jpg')).length;
           this.billCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('bills')).length;
@@ -56,7 +57,7 @@ interface transHistory {
   FileName: string;
   FileSize: string;
   Status:string;
-  
+ 
 }
 
 

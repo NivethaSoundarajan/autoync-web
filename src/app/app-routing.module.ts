@@ -10,6 +10,11 @@ import { UsercreationComponent } from 'src/app/usercreation/usercreation.compone
 import { UserListComponent } from './user-List/user-List.component';
 import { ImagestatusComponent } from './imagestatus/imagestatus.component';
 import { AuthGuard } from '../app/helper/authguard/auth.guard';
+import { ReadingsComponent } from './readings/readings.component';
+import { AccounthistoryComponent } from './accounthistory/accounthistory.component';
+import { QualityAssuranceComponent } from './quality-assurance/quality-assurance.component';
+import { QualityCheckComponent } from './quality-check/quality-check.component';
+import { BillsComponent } from './bills/bills.component';
 
 
 const routes: Routes = [
@@ -20,6 +25,13 @@ const routes: Routes = [
   { path: 'usercreation/:Id/:visibility',  component:UsercreationComponent,canActivate:[AuthGuard] },
   { path: 'transferstatus',  component: TransferstatusComponent,canActivate:[AuthGuard] },
   { path: 'imagestatus/:Id',  component: ImagestatusComponent,canActivate:[AuthGuard] },
+  { path: 'readings',  component: ReadingsComponent,canActivate:[AuthGuard] },
+  { path: 'bills',  component: BillsComponent,canActivate:[AuthGuard] },
+  { path: 'accounthistory',  component: AccounthistoryComponent,canActivate:[AuthGuard] },
+  { path: 'qualityassurance',  component:QualityAssuranceComponent,canActivate:[AuthGuard] },
+  { path: 'qualitycheck',  component:QualityCheckComponent,canActivate:[AuthGuard] },
+
+
   
 ];
 

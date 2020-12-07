@@ -21,8 +21,9 @@ import { MatDialog } from '@angular/material/dialog';
 export class UserListComponent implements OnInit {
   @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
+  @ViewChild(MatSort) sort: MatSort;
   constructor(public route:Router,private service: AutoSyncService,private toast: ToastService,public dialog: MatDialog){}
-  displayedColumns: string[] = ['sno','username','name','RoleName','SupervisorName','FolderFilePath','Deviceid','action'];
+  displayedColumns: string[] = ['sno','username','name','RoleName','SupervisorName','FolderFilePath','Deviceid','IsActive','action'];
   selectDataSource = new MatTableDataSource<userCreation>();
   dataSource = new MatTableDataSource<userCreation>();
   roleList:any;
