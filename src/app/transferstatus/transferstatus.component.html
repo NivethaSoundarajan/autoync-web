@@ -123,10 +123,10 @@
         <img src="../../assets//img//temp-loader.gif" alt="Please wait..." />
     </div>
     </div>
-    <nav aria-label="Page navigation example floatr">
+    <nav aria-label="Page navigation example " class="floatr">
       <ul class="pagination">
-        <li class="page-item" title="Previous" (disabled)="page == 0"><a class="page-icon" (click)="pagination('previous')">&laquo;</a></li>
-        <li class="page-item" title="Next"><a class="page-icon" (click)="pagination('next')">&raquo;</a></li>
+        <li class="page-item" title="Previous" [attr.disabled]="page == 0 || ispageLoading"><a class="page-icon" (click)="pagination('previous')">&laquo;</a></li>
+        <li class="page-item" title="Next" [attr.disabled]="ispageLoading"><a class="page-icon" (click)="pagination('next')">&raquo;</a></li>
       </ul>
     </nav>
   </div>

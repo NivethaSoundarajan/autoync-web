@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 import {ToastService} from 'ng-uikit-pro-standard';
 import * as XLSX from 'xlsx';
 
+
 @Component({
   selector: 'app-transferstatus',
   templateUrl: './transferstatus.component.html',
@@ -22,29 +23,31 @@ export class TransferstatusComponent implements OnInit {
   startDate;
   endDate;
   page:number;
-  isLoading:boolean=false;
+  isLoading:boolean=true;
+  ispageLoading:boolean = false;
   
   constructor(private router: Router, private route: ActivatedRoute,private service: AutoSyncService) {
     this.selectedDataSource =new MatTableDataSource;
   }
   ngOnInit() {
-   this.isLoading=true;
    this.getTransferGistoryList();
  }
 
  getTransferGistoryList(){
     var self = this;
-    // this.isLoading = true;
+    this.ispageLoading = true;
     this.service.GetTransferHistoryList(this.transHistoryFilter)
     .subscribe((result) => {
-      
       if(result != null && result.Status ){
         self.selectedDataSource.data = result.Data;
         self.page = self.transHistoryFilter.Page;
       }
       self.isLoading=false;
+      self.ispageLoading = false;
     },
-    (err) => {self.isLoading=false;},
+    (err) => {
+      self.isLoading=false;
+      self.ispageLoading = false;},
     () => { });
  }
 
