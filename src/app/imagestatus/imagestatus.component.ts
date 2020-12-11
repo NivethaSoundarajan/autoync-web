@@ -4,6 +4,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import { Router,ActivatedRoute } from '@angular/router';
 import { AutoSyncService } from '../../service';
+import { transHistory } from './modal';
 
 @Component({
   selector: 'app-imagestatus',
@@ -18,6 +19,9 @@ export class ImagestatusComponent implements OnInit {
   imageCount : Number;
   readCount: number;
   billCount:number;
+  isLoading: boolean = true;
+  ispageLoading: boolean = false;
+ 
   @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
 
@@ -28,6 +32,7 @@ export class ImagestatusComponent implements OnInit {
 
   ngOnInit() {
     var self = this;
+    this.ispageLoading = true;
     this.route.paramMap.subscribe(params => {
       if (params.get('Id')) {
         this.service.GetTransferHistoryDetails(params.get('Id'))
@@ -38,8 +43,14 @@ export class ImagestatusComponent implements OnInit {
           this.readCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('reads')).length;
           this.imageCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('.jpg')).length;
           this.billCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('bills')).length;
+          self.isLoading = false;
+          self.ispageLoading = false;
         },
-   (err) => {},
+       
+   (err) => {
+    self.isLoading = false;
+    self.ispageLoading = false;
+   },
    () => { });
       }});
     this.dataSourceOne.paginator = this.tableOnePaginator;
@@ -52,13 +63,6 @@ export class ImagestatusComponent implements OnInit {
 
 }
 
-interface transHistory {
-  sno: string;
-  FileName: string;
-  FileSize: string;
-  Status:string;
- 
-}
 
 
 

@@ -18,7 +18,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/bills', title: 'Bills',  icon:'receipt', class: '' },
     { path: '/accounthistory', title: 'Account History',  icon:'folder_shared', class: '' },
     { path: '/qualityassurance', title: 'Quality Assurance',  icon:'how_to_reg', class: '' },
-    { path: '/qualitycheck', title: 'Quality Check',  icon:'how_to_reg', class: '' },
+    //{ path: '/qualitycheck', title: 'Quality Check',  icon:'how_to_reg', class: '' },
 
     
 ];

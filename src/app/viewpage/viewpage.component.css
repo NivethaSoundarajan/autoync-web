@@ -1,0 +1,28 @@
+table {
+    width: 100%;
+    margin: 5%;
+    padding-right: 50px;
+
+  } 
+  .mat-header-row{
+    background-color: #0d7bb9;
+    margin: 10%;
+  }
+  .card-header{
+    background-color: #0d7bb9;
+  }
+  .row{
+    margin: 0;
+  }
+  small{
+    color: red;
+  }
+  .mat-select-disabled .mat-select-value{
+    color: black !important;
+  }
+  .mat-input-element:disabled{
+    color: black !important;
+  }
+  .card {
+    margin-top: 10px !important;
+}

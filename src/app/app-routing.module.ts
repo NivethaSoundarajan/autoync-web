@@ -15,30 +15,30 @@ import { AccounthistoryComponent } from './accounthistory/accounthistory.compone
 import { QualityAssuranceComponent } from './quality-assurance/quality-assurance.component';
 import { QualityCheckComponent } from './quality-check/quality-check.component';
 import { BillsComponent } from './bills/bills.component';
+import { ViewpageComponent } from './viewpage/viewpage.component';
 
 
 const routes: Routes = [
-  { path: '',redirectTo: 'login',pathMatch: 'full',},
-  { path: 'login',      component: LoginComponent},
-  { path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard] },
-  { path: 'userlist',  component: UserListComponent,canActivate:[AuthGuard] },
-  { path: 'usercreation/:Id/:visibility',  component:UsercreationComponent,canActivate:[AuthGuard] },
-  { path: 'transferstatus',  component: TransferstatusComponent,canActivate:[AuthGuard] },
-  { path: 'imagestatus/:Id',  component: ImagestatusComponent,canActivate:[AuthGuard] },
-  { path: 'readings',  component: ReadingsComponent,canActivate:[AuthGuard] },
-  { path: 'bills',  component: BillsComponent,canActivate:[AuthGuard] },
-  { path: 'accounthistory',  component: AccounthistoryComponent,canActivate:[AuthGuard] },
-  { path: 'qualityassurance',  component:QualityAssuranceComponent,canActivate:[AuthGuard] },
-  { path: 'qualitycheck',  component:QualityCheckComponent,canActivate:[AuthGuard] },
+  { path: '', redirectTo: 'login', pathMatch: 'full', },
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'userlist', component: UserListComponent, canActivate: [AuthGuard] },
+  { path: 'usercreation/:Id/:visibility', component: UsercreationComponent, canActivate: [AuthGuard] },
+  { path:'viewpage/:Id/:visibility', component: ViewpageComponent, canActivate: [AuthGuard] },
+  { path: 'transferstatus', component: TransferstatusComponent, canActivate: [AuthGuard] },
+  { path: 'imagestatus/:Id', component: ImagestatusComponent, canActivate: [AuthGuard] },
+  { path: 'readings', component: ReadingsComponent, canActivate: [AuthGuard] },
+  { path: 'bills', component: BillsComponent, canActivate: [AuthGuard] },
+  { path: 'accounthistory', component: AccounthistoryComponent, canActivate: [AuthGuard] },
+  { path: 'qualityassurance', component: QualityAssuranceComponent, canActivate: [AuthGuard] },
+  { path: 'qualitycheck', component: QualityCheckComponent, canActivate: [AuthGuard] },
 
-
-  
 ];
 
 @NgModule({
   imports: [CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes,{
+    RouterModule.forRoot(routes, {
       useHash: true
     })
   ],

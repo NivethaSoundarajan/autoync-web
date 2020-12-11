@@ -29,7 +29,10 @@ export class UserListComponent implements OnInit {
   roleList:any;
   roleId:number;
   isLoading:boolean=false;
+  disabled:boolean=false;
   @ViewChild('TABLE') table: ElementRef;
+  
+
 
  ngOnInit():void {
    var self = this;
@@ -90,7 +93,7 @@ export class UserListComponent implements OnInit {
    let data = [];
    var id = 1;
    this.selectDataSource.data.forEach(function(x){
-      data.push({'sno' : id,'username' : x.Username,'name':x.Name,'RoleName':x.RoleName,'SupervisorName':x.SupervisorName,'FolderFilePath':x.FolderFilePath,'Deviceid':x.DeviceId,'Status':(x.IsActive) ? 'Active': 'In Active'})
+      data.push({'S NO' : id,'User ID' : x.Username,'Name':x.Name,'Job Title':x.RoleName,'Supervisor':x.SupervisorName,'Folder Path':x.FolderFilePath,'Device ID':x.DeviceId,'Status':(x.IsActive) ? 'Active': 'In Active'})
       id++;
     });
     const ws: XLSX.WorkSheet=XLSX.utils.json_to_sheet(data);
@@ -106,6 +109,10 @@ export class UserListComponent implements OnInit {
  roleChange(){
     this.selectDataSource.data = (this.roleId == 0)? this.dataSource.data : this.dataSource.data.filter(x => (x.RoleId == this.roleId));
  }
+ disable(){
+  this.disabled = true
+}
+
 
  confirmDialog(): void {
  

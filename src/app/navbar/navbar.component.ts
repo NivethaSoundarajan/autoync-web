@@ -27,8 +27,13 @@ export class NavbarComponent implements OnInit {
           {route:'dashboard',title:'Dashboard'},
           {route:'userlist',title:'User List'},
           {route:'usercreation',title:'Create User',updateTitle:'Update User'},
+          {route:'viewpage',title:'View User'},
           {route:'transferstatus',title:'Transfer Status'},
-          {route:'imagestatus',title:'Image Status',updateTitle:'Image Status'},
+          {route:'imagestatus',title:'Transfer Status ',updateTitle:'Transfer Status'},
+          {route:'readings',title:'Readings'},
+          {route:'bills',title:'Bills'},
+          {route:'accounthistory',title:'Account History'},
+          {route:'qualityassurance',title:'Quality Assurance'},
 
       ];
       const navbar: HTMLElement = this.element.nativeElement;

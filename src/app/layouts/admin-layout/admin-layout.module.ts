@@ -30,14 +30,8 @@ import { UsercreationComponent } from '../../usercreation/usercreation.component
 import { TransferstatusComponent } from '../../transferstatus/transferstatus.component';
 import { ImagestatusComponent } from '../../imagestatus/imagestatus.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
-
-
-
-
-
-
-
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { ViewpageComponent } from '../../viewpage/viewpage.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -57,7 +51,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ChartsModule,
     FlexLayoutModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule
   ],
   declarations: [
     DashboardComponent,
@@ -65,9 +60,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     UsercreationComponent,
     TransferstatusComponent,
     ImagestatusComponent,
-    
-    
-    
+    ViewpageComponent
   ]
 })
 
