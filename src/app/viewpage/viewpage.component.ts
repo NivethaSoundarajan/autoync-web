@@ -26,7 +26,7 @@ export class ViewpageComponent implements OnInit {
   id: number;
   label: string;
   hide = true;
-  
+
   constructor(private router: Router, private route: ActivatedRoute, private service: AutoSyncService, private form: FormBuilder, private toast: ToastService) { }
 
   ngOnInit(): void {
@@ -82,6 +82,7 @@ export class ViewpageComponent implements OnInit {
       .subscribe((result) => {
         var data = result.Data;
         self.userForm.patchValue(data);
+        console.log("Kishore", data)
         self.userForm.patchValue({
           AutoSyncDays: (data.AutoSyncDays == null) ? null : (data.AutoSyncDays).split(","),
           Username: data.Username, Name: data.Name, Password: data.Password,

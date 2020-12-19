@@ -18,7 +18,6 @@ export class UsercreationComponent implements OnInit {
   AutoSyncDaysList: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   selectedValue: string;
   autoDeleteTime: number;
-  private formBuilder: FormBuilder;
   supervisorList: [];
   roleList: [];
   userForm: FormGroup;
@@ -48,8 +47,8 @@ export class UsercreationComponent implements OnInit {
     this.userForm = this.inputCreation();
     this.userForm.get('RoleId').valueChanges.subscribe(val => {
       this.userForm.patchValue({
-        AutoDeleteInterval: 0,
-        AutoSyncDays: "",
+        AutoDeleteInterval: "",
+        AutoSyncDays: 0,
         AutoSyncTime: "",
         DeviceId: "",
         FolderFilePath: "",
@@ -100,22 +99,25 @@ export class UsercreationComponent implements OnInit {
 
   userSave() {
     var self = this;
-    if (this.userForm.value.AutoSyncDays != null)
-      this.userForm.value.AutoSyncDays = this.userForm.value.AutoSyncDays.toString();
-    if (this.userForm.valid) {
+    if (this.userForm.valid && this.customValidator(this.userForm)) {
+      if (this.userForm.value.AutoSyncDays != null)
+        this.userForm.value.AutoSyncDays = this.userForm.value.AutoSyncDays.toString();
       this.service.SaveUser(this.userForm.value)
         .subscribe((result) => {
           if (result.Status) {
             self.toast.success('Saved Successfully!', 'Success!', { opacity: 1 });
-            self.router.navigate(["/user-list"]);
+            self.router.navigate(["/userlist"]);
           }
           else
-            this.toast.error('Error!', result.Message, { opacity: 1 })
+            this.toast.error(result.Message, 'Error!', { opacity: 1 })
         },
           (err) => {
-            this.toast.error('Error!', err.error.Message, { opacity: 1 })
+            this.toast.error(err.error.Message, 'Error!', { opacity: 1 })
           },
           () => { });
+    }
+    else {
+      this.toast.error('Please fill the required field', 'Error!', { opacity: 1 })
     }
   }
   // Clickmethod() {
@@ -123,25 +125,51 @@ export class UsercreationComponent implements OnInit {
   //     console.log("Implement delete functionality here");
   //   }
   // }
+  customValidator(form) {
+    
+    return ((form.value.RoleId == 5 && form.value.FolderFilePath != "" && form.value.AutoSyncDays != "" && form.value.AutoDeleteInterval != "" && form.value.SupervisorName != "" && form.value.AutoSyncTime != "") || form.value.RoleId != 5)
+  }
 
   inputCreation() {
     const userDetails: FormModel<userCreation> = {
+
       Id: [0],
-      RoleId: [0, Validators.min(1)],
-      Name: ['', [Validators.maxLength(50)]],
+      RoleId: [0, Validators.required],
+      Name: [''],
       Username: ['', [Validators.required, Validators.maxLength(50)]],
       Password: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(3)]],
-      FolderFilePath: ['', [Validators.maxLength(150)]],
+      FolderFilePath: [''],
       AutoSyncTime: [''],
       DeviceId: [''],
       SupervisorId: [0],
-      AutoSyncDays: [''],
+      AutoSyncDays: [0],
       AutoDeleteInterval: [0],
       IsActive: [true],
       SupervisorName: [''],
       RoleName: ['']
     }
-    return this.form.group(userDetails);;
+    return this.form.group(userDetails);
   }
 
+  // inputCreation(){
+  //   const userDetails: FormModel<userCreation> = {
+  //   this.userForm = this.form.group({
+  //     Id: [0],
+  //     RoleId: [0, Validators.min(1)],
+  //     Name: ['', [Validators.required, Validators.maxLength(50)]],
+  //     Username: ['', [Validators.required, Validators.maxLength(50)]],
+  //     Password: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(3)]],
+  //     FolderFilePath: ['', [Validators.maxLength(150)]],
+  //     AutoSyncTime: [''],
+  //     DeviceId: [''],
+  //     SupervisorId: [0],
+  //     AutoSyncDays: [''],
+  //     AutoDeleteInterval: [0],
+  //     IsActive: [true],
+  //     SupervisorName: [''],
+  //     RoleName: ['']
+  //   })
+  //   console.log("Kishore"+this.userForm)
+  //   return this.userForm;
+  // }
 }

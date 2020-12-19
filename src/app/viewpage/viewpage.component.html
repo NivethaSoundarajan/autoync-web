@@ -47,8 +47,8 @@
                             <!-- <input matInput placeholder="Password" type="password" formControlName="Password" readonly>  -->
                             <mat-form-field class="example-full-width" >
                                 <mat-label>password</mat-label>
-                                <input matInput [type]="hide ? 'password' : 'text'">
-                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password" readonly>
+                                <button mat-icon-button matSuffix (click)="hide = !hide"  [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>
                               </mat-form-field>     
@@ -89,7 +89,7 @@
                     <div class="col-md-6">
                         <mat-form-field>
                             <mat-label>Supervisor</mat-label>
-                            <mat-select formControlName="SupervisorId" name="SupervisorId" >
+                            <mat-select disabled formControlName="SupervisorId" name="SupervisorId">
                                 <mat-option *ngFor="let supervisor of supervisorList" [value]="supervisor.Key" >
                                     {{supervisor.Value}}
                                 </mat-option>
@@ -99,9 +99,9 @@
                     <div class="col-md-6">
                         <mat-form-field>
                             <mat-label>AutoSyncDays</mat-label>
-                            <mat-select formControlName="AutoSyncDays" readonly multiple
+                            <mat-select formControlName="AutoSyncDays" disabled multiple
                                 matTooltip=" Auto Sync will happen in the selected Days" >
-                                <mat-option *ngFor="let Days of AutoSyncDaysList" [value]="Days">{{Days}}</mat-option>
+                                <mat-option *ngFor="let Days of AutoSyncDaysList"  [value]="Days">{{Days}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>

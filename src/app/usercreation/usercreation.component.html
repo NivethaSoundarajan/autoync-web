@@ -1,107 +1,139 @@
 <div class="main-content page-container">
   <div class="row">
     <div class="col-md-9"></div>
-    <div class="col-md-3 pull-right" >
-    <button  mat-raised-button  matTooltip="Click here to Update User"  type="button" class="btn btn-action btn-create pull-right" (click)="userSave()" [hidden]="isVisible">{{label}}</button>
-      <button  mat-raised-button  matTooltip="Click here to go back to User Management Page"  type="button" class="btn btn-action back-btn pull-right" color="warn" [routerLink]="['/userlist']">Back</button>
+    <div class="col-md-3 pull-right">
+      <button mat-raised-button matTooltip="Click here to {{label}} User" type="button"
+        class="btn btn-action btn-create pull-right" (click)="userSave()" novalidate
+        [hidden]="isVisible">{{label}}</button>
+      <button mat-raised-button matTooltip="Click here to go back to User Management Page" type="button"
+        class="btn btn-action back-btn pull-right" color="warn" [routerLink]="['/userlist']">Back</button>
       <div class="clearfix"></div>
-      </div>
-  </div>
-    <div class="card">
-        <div class="card-header">
-            <h4 class="card-title">User Creation</h4>
-            <p class="card-category"></p>
-        </div>
-        <div class="card-body">
-            <form [formGroup]="userForm" >
-                <div class="row">
-                  <div class="col-md-3">
-                    <mat-form-field >
-                      <mat-label>User Role</mat-label>
-                      <mat-select matTooltip="Select the User from DropDown to edit" formControlName="RoleId" name="RoleId">
-                        <mat-option *ngFor="let role of roleList" [value]="role.Key">
-                          {{role.Value}}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  </div>
-                  <div class="col-md-3">
-                    <mat-form-field class="example-full-width">
-                      <input matInput placeholder="User Id" formControlName="Username" >
-                    </mat-form-field>
-                  </div>
-                  <div class="col-md-3" *ngIf="userForm.controls.RoleId.value == 5">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Name" formControlName="Name">
-                      </mat-form-field>
-                  </div>
-                    
-                    <div class="col-md-3">
-                      <div class= "example-container" >
-                        <!-- <mat-form-field class="example-full-width"> -->
-                            <!-- <input matInput placeholder="Password" type="password" formControlName="Password" readonly>  -->
-                            <mat-form-field class="example-full-width" >
-                                <mat-label>password</mat-label>
-                                <input matInput [type]="hide ? 'password' : 'text'">
-                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                                </button>
-                              </mat-form-field>     
-                    </div>
-                        <!-- <mat-form-field class="example-full-width">
-                          <input matInput placeholder="Password" type="password" formControlName="Password">
-                        </mat-form-field> -->
-                    </div>
-                </div>
-                <div class="row" *ngIf="userForm.controls.RoleId.value == 5">
-                    <div class="col-md-6">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Folder Path" type="text" formControlName="FolderFilePath">
-                      </mat-form-field>
-                    </div>
-                    <div class="col-md-6">
-                      <mat-form-field class="example-full-width">
-                        <!-- <input matInput placeholder="AutoSyncTime" matTooltip=" Auto Sync will start in the given time" type="time" formControlName="AutoSyncTime"  > -->
-                        <input  [ngxTimepicker]="picker" [format]="24" matInput placeholder="AutoSyncTime" formControlName="AutoSyncTime" matTooltip=" Auto Sync will start in the given time" readonly>
-                        <ngx-material-timepicker   #picker></ngx-material-timepicker>
-                      </mat-form-field>
-                </div>
-                </div>
-                <div class="row" *ngIf="userForm.controls.RoleId.value == 5">
-                    <div class="col-md-6">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Device Id" type="text" formControlName="DeviceId">
-                      </mat-form-field>
-                    </div>
-                    <div class="col-md-6">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Auto Delete Time" matTooltip=" Auto Delete will start in the given time" type="number"  formControlName="AutoDeleteInterval" >
-                      </mat-form-field>
-                    </div>
-                </div>
-                <div class="row" *ngIf="userForm.controls.RoleId.value == 5">
-                    <div class="col-md-6">
-                      <mat-form-field >
-                        <mat-label>Supervisor</mat-label>
-                        <mat-select matTooltip="This technician will be allocated under this supervisor  
-                        *NOTE* : If you are a new user Kindly create a supervisor First" formControlName="SupervisorId" name="SupervisorId"> 
-                          <mat-option *ngFor="let supervisor of supervisorList" [value]="supervisor.Key">
-                            {{supervisor.Value}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                    </div>
-                    <div class="col-md-6">
-                      <mat-form-field >
-                        <mat-label>AutoSyncDays</mat-label>
-                        <mat-select formControlName="AutoSyncDays" multiple matTooltip=" Auto Sync will happen in the selected Days" >
-                          <mat-option *ngFor="let Days of AutoSyncDaysList" [value]="Days">{{Days}}</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                    </div>
-                </div>
-            </form>
-        </div>
     </div>
   </div>
-  
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">User Creation</h4>
+      <p class="card-category"></p>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="userForm">
+        <div class="row">
+          <div class="col-md-3">
+            <mat-form-field>
+              <mat-label>User Role</mat-label>
+              <mat-select matTooltip="Select the User from DropDown to edit" formControlName="RoleId" name="RoleId"
+                required>
+                <mat-option *ngFor="let role of roleList" [value]="role.Key">
+                  {{role.Value}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="userForm.get('RoleId').hasError('min')">
+                Please select a User Role
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="User Id" formControlName="Username" required>
+              <mat-error *ngIf="userForm.get('Username').hasError('required')">
+                User Id is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3" *ngIf="userForm.controls.RoleId.value == 5">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Name" formControlName="Name">
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-3">
+            <div class="example-container">
+              <!-- <mat-form-field class="example-full-width"> -->
+              <!-- <input matInput placeholder="Password" type="password" formControlName="Password" readonly>  -->
+              <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password" required>
+                <mat-error *ngIf="userForm.get('SupervisorId').hasError('min')">
+                  Password is required
+                </mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+            <!-- <mat-form-field class="example-full-width">
+                          <input matInput placeholder="Password" type="password" formControlName="Password">
+                        </mat-form-field> -->
+          </div>
+        </div>
+        <div class="row" *ngIf="userForm.controls.RoleId.value == 5">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Folder Path" type="text" formControlName="FolderFilePath" required>
+              <mat-error *ngIf="userForm.get('FolderFilePath').hasError('required')">
+                Folder Path is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <!-- <input matInput placeholder="AutoSyncTime" matTooltip=" Auto Sync will start in the given time" type="time" formControlName="AutoSyncTime"  > -->
+              <input [ngxTimepicker]="picker" [format]="24" matInput placeholder="AutoSyncTime" required
+                formControlName="AutoSyncTime" matTooltip=" Auto Sync will start in the given time" readonly>
+              <ngx-material-timepicker #picker></ngx-material-timepicker>
+              <mat-error *ngIf="userForm.get('AutoSyncTime').hasError('required')">
+                Auto sync time is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row" *ngIf="userForm.controls.RoleId.value == 5">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Device Id" type="text" formControlName="DeviceId">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Auto Delete Interval" matTooltip=" Auto Delete will start in the given time"
+                type="number" formControlName="AutoDeleteInterval" required>
+              <mat-error *ngIf="userForm.get('AutoDeleteInterval').hasError('required')">
+                Auto Delete Interval is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row" *ngIf="userForm.controls.RoleId.value == 5">
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-label>Supervisor</mat-label>
+              <mat-select matTooltip="This technician will be allocated under this supervisor  
+                        *NOTE* : If you are a new user Kindly create a supervisor First" formControlName="SupervisorId"
+                name="SupervisorId" required>
+                <mat-option *ngFor="let supervisor of supervisorList" [value]="supervisor.Key">
+                  {{supervisor.Value}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="userForm.get('SupervisorId').hasError('min')">
+                Please select a Supervisor
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-label>AutoSyncDays</mat-label>
+              <mat-select formControlName="AutoSyncDays" multiple required
+                matTooltip=" Auto Sync will happen in the selected Days">
+                <mat-option *ngFor="let Days of AutoSyncDaysList" [value]="Days">{{Days}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="userForm.get('AutoSyncDays').hasError('min')">
+                Please select a Day
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
