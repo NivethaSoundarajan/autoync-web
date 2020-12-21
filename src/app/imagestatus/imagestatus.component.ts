@@ -21,7 +21,9 @@ export class ImagestatusComponent implements OnInit {
   billCount:number;
   isLoading: boolean = true;
   ispageLoading: boolean = false;
- 
+  reason:string;
+  isStopped:boolean = false;
+  
   @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
 
@@ -37,14 +39,16 @@ export class ImagestatusComponent implements OnInit {
       if (params.get('Id')) {
         this.service.GetTransferHistoryDetails(params.get('Id'))
         .subscribe((result) => {
-          this.dataSourceOne.data = result.Data.JobDetails;
-          
-          this.transferId= result.Data.JobId;
-          this.readCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('reads')).length;
-          this.imageCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('.jpg')).length;
-          this.billCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('bills')).length;
+          self.isStopped = (result.Data.JobDetails.length == 0) ? true : (result.Data.JobDetails[0].Status == 'Stopped') ? true : false; 
+          self.reason = result.Data.Reason;
+          self.dataSourceOne.data = result.Data.JobDetails;
+          self.transferId= result.Data.JobId;
+          self.readCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('reads')).length;
+          self.imageCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('.jpg')).length;
+          self.billCount =  result.Data.JobDetails.filter(x => x.FileName.toLowerCase().includes('bills')).length;
           self.isLoading = false;
           self.ispageLoading = false;
+          
         },
        
    (err) => {

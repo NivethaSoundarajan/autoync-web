@@ -55,9 +55,5 @@ export class AutoSyncService {
     }); 
   }
 
-  GetReadsModel(id:Number) {
-    return this.http.post<any>(environment.apiBaseURL + '/User/GetReadsModel?userId='+id,null,{
-      headers: this.headers
-    }); 
-  }
+  
 }
