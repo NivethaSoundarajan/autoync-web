@@ -61,14 +61,21 @@ export class TransferstatusComponent implements OnInit {
     /* table id is passed over here */
     let data = [];
     var id = 1;
+    var self = this;
     this.selectedDataSource.data.forEach(function (x) {
-      data.push({ 'sno': id, 'Date': x.CreatedDate, 'Sync Type': x.SyncType, 'Transfer Id': x.JobUniqueId, 'User Name': x.Username, 'Supervisor': x.SupervisorName, 'Size': x.TotalFileSize, 'SourceFilePath': x.SourceFilePath, 'Photo': (x.Photos != null) ? x.Photos.Total + '/' + x.Photos.Completed : '0 / 0', 'Excel': (x.Excel != null) ? x.Excel.Total + '/' + x.Excel.Completed : '0 / 0', 'Status': x.Status })
+      var da = self.formateDate(x.CreatedDate);
+      data.push({ 'sno': id, 'Date': da, 'Sync Type': x.SyncType, 'Transfer Id': x.JobUniqueId, 'User Name': x.Username, 'Supervisor': x.SupervisorName, 'Size': x.TotalFileSize, 'SourceFilePath': x.SourceFilePath, 'Photo': (x.Photos != null) ? x.Photos.Total + '/' + x.Photos.Completed : '0 / 0', 'Excel': (x.Excel != null) ? x.Excel.Total + '/' + x.Excel.Completed : '0 / 0', 'Status': x.Status })
       id++;
     });
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
     XLSX.writeFile(wb, 'TransferHistory' + new Date() + '.xlsx');
+  }
+
+  formateDate(d){
+    var date = new Date(d);
+    return date.getDate() + "/" +(date.getMonth() + 1)+ "/" +date.getFullYear() ; 
   }
 
   pagination(page) {
