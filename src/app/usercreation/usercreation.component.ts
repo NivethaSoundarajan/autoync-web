@@ -117,7 +117,7 @@ export class UsercreationComponent implements OnInit {
           () => { });
     }
     else {
-      this.toast.error('Please fill the required field', 'Error!', { opacity: 1 })
+      this.toast.error('Please fill the required field', 'Error!')
     }
   }
   // Clickmethod() {
@@ -127,7 +127,7 @@ export class UsercreationComponent implements OnInit {
   // }
   customValidator(form) {
     
-    return ((form.value.RoleId == 5 && form.value.FolderFilePath != "" && form.value.AutoSyncDays != "" && form.value.AutoDeleteInterval != "" && form.value.SupervisorName != "" && form.value.AutoSyncTime != "") || form.value.RoleId != 5)
+    return ((form.value.RoleId == 5 && form.value.FolderFilePath != "" && form.value.AutoSyncDays != "" && form.value.AutoDeleteInterval != "" && form.value.SupervisorId != "" && form.value.AutoSyncTime != "") || form.value.RoleId != 5)
   }
 
   inputCreation() {
@@ -150,26 +150,4 @@ export class UsercreationComponent implements OnInit {
     }
     return this.form.group(userDetails);
   }
-
-  // inputCreation(){
-  //   const userDetails: FormModel<userCreation> = {
-  //   this.userForm = this.form.group({
-  //     Id: [0],
-  //     RoleId: [0, Validators.min(1)],
-  //     Name: ['', [Validators.required, Validators.maxLength(50)]],
-  //     Username: ['', [Validators.required, Validators.maxLength(50)]],
-  //     Password: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(3)]],
-  //     FolderFilePath: ['', [Validators.maxLength(150)]],
-  //     AutoSyncTime: [''],
-  //     DeviceId: [''],
-  //     SupervisorId: [0],
-  //     AutoSyncDays: [''],
-  //     AutoDeleteInterval: [0],
-  //     IsActive: [true],
-  //     SupervisorName: [''],
-  //     RoleName: ['']
-  //   })
-  //   console.log("Kishore"+this.userForm)
-  //   return this.userForm;
-  // }
 }

@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  apiBaseURL:'https://autosyncdev.azurewebsites.net/api',
-  // apiBaseURL:'https://autosynctest.azurewebsites.net/api',
+  // apiBaseURL:'https://autosyncdev.azurewebsites.net/api',   //Production
+  
+  apiBaseURL:'https://autosynctest.azurewebsites.net/api',    //Development
   authKey:"",
 };
 

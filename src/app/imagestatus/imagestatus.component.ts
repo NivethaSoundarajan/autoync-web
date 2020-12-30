@@ -21,6 +21,8 @@ export class ImagestatusComponent implements OnInit {
   billCount:number;
   isLoading: boolean = true;
   ispageLoading: boolean = false;
+  reason:string;
+  isStopped:boolean = false;
  
   @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
   @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
@@ -37,6 +39,8 @@ export class ImagestatusComponent implements OnInit {
       if (params.get('Id')) {
         this.service.GetTransferHistoryDetails(params.get('Id'))
         .subscribe((result) => {
+          self.isStopped = (result.Data.JobDetails.length == 0) ? true : (result.Data.JobDetails[0].Status == 'Stopped') ? true : false; 
+          self.reason = result.Data.Reason;
           this.dataSourceOne.data = result.Data.JobDetails;
           
           this.transferId= result.Data.JobId;

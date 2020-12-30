@@ -21,7 +21,7 @@
           <div class="col-md-3">
             <mat-form-field>
               <mat-label>User Role</mat-label>
-              <mat-select matTooltip="Select the User from DropDown to edit" formControlName="RoleId" name="RoleId"
+              <mat-select matTooltip="Select the User from DropDown " formControlName="RoleId" name="RoleId"
                 required>
                 <mat-option *ngFor="let role of roleList" [value]="role.Key">
                   {{role.Value}}
@@ -40,12 +40,11 @@
               </mat-error>
             </mat-form-field>
           </div>
-          <div class="col-md-3" *ngIf="userForm.controls.RoleId.value == 5">
+          <div class="col-md-3" >
             <mat-form-field class="example-full-width">
               <input matInput placeholder="Name" formControlName="Name">
             </mat-form-field>
           </div>
-
           <div class="col-md-3">
             <div class="example-container">
               <!-- <mat-form-field class="example-full-width"> -->
