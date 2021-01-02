@@ -28,6 +28,7 @@ import { AccounthistoryComponent } from './accounthistory/accounthistory.compone
 import { QualityAssuranceComponent } from './quality-assurance/quality-assurance.component';
 import { QualityCheckComponent } from './quality-check/quality-check.component';
 import { BillsComponent } from './bills/bills.component';
+import { AutoSyncService } from 'src/service';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,7 @@ import { BillsComponent } from './bills/bills.component';
     MatTooltipModule
   ],
 
-  providers: [],
+  providers: [AutoSyncService],
   entryComponents: [ConfirmDialogComponent],
   bootstrap: [AppComponent]
 })

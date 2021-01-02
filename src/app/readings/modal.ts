@@ -1,5 +1,5 @@
 export interface ReadsModel{
-Id: number;
+// Id: number;
 JobId: number;
 AccountId: number;
 AccountType: string;
