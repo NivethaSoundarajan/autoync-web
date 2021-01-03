@@ -4,6 +4,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { environment } from './environments/environment';
 import { AuthService } from './app/services/authservice.service';
 import { transHistoryFilter } from './../src/app/transferstatus/modal';
+import { readsFilter } from './../src/app/readings/modal';
 
 @Injectable()
 export class AutoSyncService {
@@ -55,8 +56,8 @@ export class AutoSyncService {
     }); 
   }
 
-  GetReads() {
-    return this.http.post<any>(environment.apiBaseURL + '/GetReads',null,{
+  GetReads(model:readsFilter) {
+    return this.http.post<any>(environment.apiBaseURL + '/Read/GetReads',model,{
       headers: this.headers
     });
   }

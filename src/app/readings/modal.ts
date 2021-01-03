@@ -1,5 +1,5 @@
 export interface ReadsModel{
-// Id: number;
+Id: number;
 JobId: number;
 AccountId: number;
 AccountType: string;
@@ -13,3 +13,11 @@ Remarks: string;
 ReadFlag: Boolean;
 IsApproved: Boolean;
 }
+export class readsFilter{
+    StartDate:string;
+    EndDate:string;
+    Search:String;
+    Page:number = 0;
+    PageSize:number = 10;
+  }
+  
