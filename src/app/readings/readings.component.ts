@@ -9,32 +9,29 @@ import {AutoSyncService} from 'src/service';
 @Component({
   selector: 'app-readings',
   templateUrl: './readings.component.html',
-  styleUrls: ['./readings.component.css']
+  styleUrls: ['./readings.component.css'],
+  providers:[AutoSyncService]
 })
 
 export class ReadingsComponent implements OnInit {
-  selectDataSource: MatTableDataSource<ReadsModel>;
+  selectedDataSource: MatTableDataSource<ReadsModel[]>;
   // isLoading: boolean = true;
   // ispageLoading: boolean = false;
   // @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
-  displayedColumns: string[] = ['JobId','AccountId','AccountType','ReadingDate','ReadingUnit','HasImage','ImageName','ReadingType','Reason','Remarks','ReadFlag','IsApproved'];
+  displayedColumns: string[] = ['JobId','AccountId','AccountType','ReadingDate','ReadingUnit','HasImage','ImageName','ReadingType','Reason','Remarks','ReadFlag','IsApproved',''];
     constructor(private router: Router, private route: ActivatedRoute, private service: AutoSyncService) { 
-  
+      // this.selectedDataSource = new MatTableDataSource;
   }
   ngOnInit() {
-    var self = this;
+    // var self = this;
     // this.ispageLoading = true;
     this.service.GetReads() 
-    .subscribe((result) => {
-      
-      debugger;
+    .subscribe(result => {
+      console.log("Kishore"+result)
+     return this.selectedDataSource = result;
     },
       (err) => {
-        debugger;
       },
       () => { });
-    
   }
-
-  
 }

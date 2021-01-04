@@ -29,6 +29,7 @@ import { QualityAssuranceComponent } from './quality-assurance/quality-assurance
 import { QualityCheckComponent } from './quality-check/quality-check.component';
 import { BillsComponent } from './bills/bills.component';
 import { AutoSyncService } from 'src/service';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { AutoSyncService } from 'src/service';
     NgxMaterialTimepickerModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTableModule
   ],
 
   providers: [AutoSyncService],

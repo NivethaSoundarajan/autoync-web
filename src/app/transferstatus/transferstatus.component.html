@@ -92,7 +92,7 @@
         <!-- Excel Column -->
         <ng-container matColumnDef="Excel">
           <th class="tab-head" mat-header-cell *matHeaderCellDef mat-sort-header> Excel</th>
-          <td mat-cell *matCellDef="let element"> {{(element.Excel != null)  ? element.Excel.Total + "/" + element.Excel.Completed : 0}}</td>
+          <td mat-cell *matCellDef="let element"> {{(element.Excel != null)  ? element.Excel.Completed + "/" + element.Excel.Total : 0}}</td>
         </ng-container>
 
           <!-- Status Column -->

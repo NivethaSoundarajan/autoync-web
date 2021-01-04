@@ -56,7 +56,7 @@ export class AutoSyncService {
   }
 
   GetReads() {
-    return this.http.post<any>(environment.apiBaseURL + '/GetReads',null,{
+    return this.http.post<any>(environment.apiBaseURL + '/Read/GetReads',null,{
       headers: this.headers
     });
   }
