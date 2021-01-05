@@ -31,7 +31,7 @@ export class TransferstatusComponent implements OnInit {
   }
   ngOnInit() {
     this.getTransferHistoryList();
-  }
+  } 
 
   getTransferHistoryList() {
     var self = this;
